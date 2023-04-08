@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "857967556970",
+    "project_id": "malang-64838",
+    "storage_bucket": "malang-64838.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:857967556970:android:0c127bf5c5400f16eccd13",
+        "android_client_info": {
+          "package_name": "com.example.malangtrip"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "857967556970-gh6fmn4kmveemhumbp21jrihg6aldue2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAT7Mpg_9FtTZwaWkQrr0c14SIA2ahvRTU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "857967556970-gh6fmn4kmveemhumbp21jrihg6aldue2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

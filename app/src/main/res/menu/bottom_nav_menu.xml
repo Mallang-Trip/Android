@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_chat"
+        android:icon="@android:drawable/sym_action_chat"
+        android:title="말랑톡" />
+    <item
+        android:id="@+id/navigation_community"
+        android:icon="@android:drawable/stat_notify_chat"
+        android:title="커뮤니티" />
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="홈" />
+
+
+    <item
+        android:id="@+id/navigation_wishlist"
+        android:icon="@android:drawable/btn_star"
+        android:title="찜" />
+    <item
+        android:id="@+id/navigation_myinfo"
+        android:icon="@android:drawable/ic_dialog_info"
+        android:title="내 정보" />
+
+</menu>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.MalangTrip"
+        tools:targetApi="31">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <!-- Redirect URI: "kakao${NATIVE_APP_KEY}://oauth" -->
+                <data
+                    android:host="oauth"
+                    android:scheme="kakaoa0d1ab4cd4502733d63c9fa927683fd7" />
+            </intent-filter>
+        </activity> <!-- 로그인 액티비티 -->
+        <activity android:name=".login.KakaoLogin" />
+        <activity android:name=".login.User_Data_Input" />
+        <activity android:name=".Main_Screen" />
+
+        <!-- 하단네비바 액티비티 -->
+
+<!--        <activity android:name=".Nav.Chat.Main_Chat" />-->
+<!--        <activity android:name=".Nav.Community.Main_Community" />-->
+<!--        <activity android:name=".Nav.Home.Main_Home" />-->
+<!--        <activity android:name=".Nav.Wishlist.Main_Wishlist" />-->
+<!--        <activity android:name=".Nav.Myinfo.Main_Myinfo" />-->
+    </application>
+
+</manifest>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/Suggest_Resevation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:text="예약 사안 변경 제안"
+        android:textColor="#000000" />
+
+    <Button
+        android:id="@+id/Cancel_Reservation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:text="예약 취소"
+        android:textColor="#000000" />
+
+    <Button
+        android:id="@+id/Chat_To_Driver"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:text="드라이버 1:1 쪽지"
+        android:textColor="#000000" />
+
+    <Button
+        android:id="@+id/Chat_Party"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:text="파티 채팅창"
+        android:textColor="#000000" />
+
+    <Button
+        android:id="@+id/Control_Schedule"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:text="파티 일정 관리"
+        android:textColor="#000000" />
+</LinearLayout>

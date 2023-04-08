@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/Profile_Photo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:text="프로필 사진"
+        android:textColor="#000000" />
+
+    <Button
+        android:id="@+id/My_Title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:text="제목 및 소개글"
+        android:textColor="#000000" />
+
+    <Button
+        android:id="@+id/Driver_My_Trip_Fix"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:text="여행 스케쥴 추가 및 가격 설정"
+        android:textColor="#000000" />
+
+    <Button
+        android:id="@+id/My_Car_Fix"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:text="나의 차 정보 입력 및 수정"
+        android:textColor="#000000" />
+
+    <Button
+        android:id="@+id/FIx_Profile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:text="프로필 변경"
+        android:textColor="#000000" />
+
+</LinearLayout>
