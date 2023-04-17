@@ -4,12 +4,11 @@ import android.os.Bundle
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.example.malangtrip.databinding.NMyinfoAccoutInoutputBinding
-import com.example.malangtrip.databinding.NMyinfoMytextCheckBinding
+import com.example.malangtrip.databinding.NMyinfoFixBinding
 
-//수익금 환불금 관리
-class MyAccount_Inoutput : Fragment(){
-    private var _binding: NMyinfoAccoutInoutputBinding? = null
+//내 정보 수정
+class Myinfo_Fix : Fragment(){
+    private var _binding: NMyinfoFixBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -17,12 +16,12 @@ class MyAccount_Inoutput : Fragment(){
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
 
-        _binding = NMyinfoAccoutInoutputBinding.inflate(inflater, container, false)
+        _binding = NMyinfoFixBinding.inflate(inflater, container, false)
         val root: View = binding.root
         //액션바 활성화 및 이름 변경후 뒤로가기 버튼 활성화
         val actionBar = (requireActivity() as AppCompatActivity).supportActionBar
         actionBar?.setDisplayHomeAsUpEnabled(true)
-        actionBar?.title = "수익금 또는 환불금 관리"
+        actionBar?.title = "나의 작성글 내역"
         //메뉴 사용 활성화
         setHasOptionsMenu(true)
         // 뒤로가기 버튼 처리 이전 프래그먼트로 감

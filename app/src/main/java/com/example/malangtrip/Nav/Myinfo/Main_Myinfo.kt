@@ -34,10 +34,52 @@ class Main_Myinfo : Fragment() {
             transaction.addToBackStack(null)
             transaction.commit()
         }
+        //내 정보 -> 예약일정
         binding.Reservation.setOnClickListener {
             val Reservation_Fragment = Main_Reservation()
             val transaction = parentFragmentManager.beginTransaction()
             transaction.replace(R.id.fragmentContainer, Reservation_Fragment)
+            transaction.addToBackStack(null)
+            transaction.commit()
+        }
+        //내 정보 -> 나의 작성글 내역
+        binding.MyText.setOnClickListener {
+            val MyText_Check = MyText_Check()
+            val transaction = parentFragmentManager.beginTransaction()
+            transaction.replace(R.id.fragmentContainer, MyText_Check)
+            transaction.addToBackStack(null)
+            transaction.commit()
+        }
+        //내 정보 -> 나의 여행 내역
+        binding.MyTrip.setOnClickListener {
+            val MyTrip_Check = MyTrip_Check()
+            val transaction = parentFragmentManager.beginTransaction()
+            transaction.replace(R.id.fragmentContainer, MyTrip_Check)
+            transaction.addToBackStack(null)
+            transaction.commit()
+        }
+        //내 정보 -> 드라이버로 등록하기
+        binding.ResisterDriver.setOnClickListener {
+            val Resister_Driver = Resister_Driver()
+            val transaction = parentFragmentManager.beginTransaction()
+            transaction.replace(R.id.fragmentContainer, Resister_Driver)
+            transaction.addToBackStack(null)
+            transaction.commit()
+        }
+        //내 정보 -> 돈 관리
+        binding.MyAccount.setOnClickListener {
+            val MyAccount_Inoutput = MyAccount_Inoutput()
+            val transaction = parentFragmentManager.beginTransaction()
+            transaction.replace(R.id.fragmentContainer, MyAccount_Inoutput)
+            transaction.addToBackStack(null)
+            transaction.commit()
+        }
+
+        //내 정보 -> 개인정보수정
+        binding.FixMyinfo.setOnClickListener {
+            val Myinfo_Fix = Myinfo_Fix()
+            val transaction = parentFragmentManager.beginTransaction()
+            transaction.replace(R.id.fragmentContainer, Myinfo_Fix)
             transaction.addToBackStack(null)
             transaction.commit()
         }
