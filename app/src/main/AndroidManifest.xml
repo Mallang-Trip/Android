@@ -41,6 +41,7 @@
         <activity android:name=".login.KakaoLogin" />
         <activity android:name=".login.User_Data_Input" />
         <activity android:name=".Main_Screen" />
+        <activity android:name=".login.ToServerTest" />
 
         <!-- 하단네비바 액티비티 -->
 

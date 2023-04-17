@@ -1,47 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-    <RadioGroup
-        android:id="@+id/GenderCheck"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <RadioButton
-            android:id="@+id/women"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="여자" />
-
-        <RadioButton
-            android:id="@+id/man"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="남자" />
-
-
-    </RadioGroup>
-
-    <EditText
-        android:id="@+id/Input_Age"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0"
-        android:hint="생년월일을 입력해주세요" />
 
     <EditText
         android:id="@+id/Input_Nickname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="닉네임을 입력해주세요" />
-
     <EditText
-        android:id="@+id/input_Phone_Num"
+        android:id="@+id/Input_Introduce"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="휴대폰 번호를 입력해주세요" />
+        android:hint="소개글을 입력해주세요" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="사진 입력은 나중에 받을 예정"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
     <CheckBox
         android:id="@+id/check"
@@ -53,24 +34,12 @@
         android:id="@+id/button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="파이어베이스로 데이타 보내기" />
+        android:text="서버로 데이터만 보내기" />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="파이어베이스 데이타로 로그인하기" />
-
-    <Button
-        android:id="@+id/CheckBtn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="입력완료" />
-
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="파이어베이스 데이타로 로그인하기" />
+        android:text="홈으로 이동하기" />
 
 </LinearLayout>

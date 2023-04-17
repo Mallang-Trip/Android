@@ -2,7 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/Go_Main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -25,4 +24,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="1, 2번 둘다 스킵해서 바로 홈가기" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="테스트 목록"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+    <Button
+        android:id="@+id/Test_To_Server_Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="카카오 데이터 서버로 보내기 테스트" />
+
 </LinearLayout>

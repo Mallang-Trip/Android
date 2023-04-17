@@ -7,6 +7,7 @@ import android.util.Log
 import androidx.fragment.app.FragmentManager
 import com.example.malangtrip.databinding.ActivityMainBinding
 import com.example.malangtrip.login.KakaoLogin
+import com.example.malangtrip.login.ToServerTest
 import com.example.malangtrip.login.User_Data_Input
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -32,11 +33,15 @@ class MainActivity : AppCompatActivity() {
         }
         // 데이터 입력 과정으로 가기
         binding.InputDataButton.setOnClickListener {
-            startActivity(Intent(this, Main_Screen::class.java))
+            startActivity(Intent(this, User_Data_Input::class.java))
         }
         // 로그인 과정 다 스킵해서 가기
         binding.GoHome.setOnClickListener {
-            startActivity(Intent(this, User_Data_Input::class.java))
+            startActivity(Intent(this, Main_Screen::class.java))
+        }
+        //서버로 카카오 데이터 보내기 테스트
+        binding.TestToServerButton.setOnClickListener {
+            startActivity(Intent(this, ToServerTest::class.java))
         }
 
 
