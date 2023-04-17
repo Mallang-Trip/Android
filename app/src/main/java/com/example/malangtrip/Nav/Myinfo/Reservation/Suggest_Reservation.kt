@@ -5,7 +5,7 @@ import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import com.example.malangtrip.Nav.Commom_Function_Fragment
 import com.example.malangtrip.databinding.NMyinfoReservationSuggestBinding
-
+//예약 사안 변경 제안
 class Suggest_Reservation : Commom_Function_Fragment() {
     private var _binding: NMyinfoReservationSuggestBinding? = null
 

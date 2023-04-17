@@ -9,7 +9,7 @@ import com.example.malangtrip.Nav.Home.Main_Home
 import com.example.malangtrip.R
 import com.example.malangtrip.databinding.NMyinfoBinding
 import com.example.malangtrip.databinding.NWishlistBinding
-
+//찜목록 메인
 class Main_Wishlist : Fragment(){
     private var _binding: NWishlistBinding? = null
     private val binding get() = _binding!!

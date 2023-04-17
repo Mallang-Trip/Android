@@ -10,7 +10,7 @@ import com.example.malangtrip.login.KakaoLogin
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.kakao.sdk.common.util.Utility
-
+//메인 액티비티
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {

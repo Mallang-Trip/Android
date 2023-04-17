@@ -9,7 +9,7 @@ import com.example.malangtrip.Nav.Myinfo.Reservation.party_schedule.Main_Party_S
 import com.example.malangtrip.R
 import com.example.malangtrip.databinding.NMyinfoProfileCheckProfilePhotoBinding
 import com.example.malangtrip.databinding.NMyinfoReservationBinding
-
+//예약 일정 메인 페이지
 class Main_Reservation : Commom_Function_Fragment() {
     private var _binding: NMyinfoReservationBinding? = null
 
@@ -40,10 +40,10 @@ class Main_Reservation : Commom_Function_Fragment() {
             transaction.commit()
         }
         //드라이버 1대1 쪽지로 이동
-        binding.CancelReservation.setOnClickListener {
-            val Cancel_Reservation= Cancel_Reservation()
+        binding.ChatToDriver.setOnClickListener {
+            val Chat_To_Driver= Chat_To_Driver()
             val transaction = parentFragmentManager.beginTransaction()
-            transaction.replace(R.id.fragmentContainer, Cancel_Reservation)
+            transaction.replace(R.id.fragmentContainer, Chat_To_Driver)
             transaction.addToBackStack(null)
             transaction.commit()
         }

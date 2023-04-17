@@ -11,6 +11,7 @@ import com.example.malangtrip.Nav.Myinfo.Reservation.Main_Reservation
 import com.example.malangtrip.R
 import com.example.malangtrip.databinding.NMyinfoBinding
 
+//내 정보 메인
 class Main_Myinfo : Fragment() {
     private var _binding: NMyinfoBinding? = null
 

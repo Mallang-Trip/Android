@@ -10,7 +10,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import com.example.malangtrip.databinding.NCommunityBinding
 import com.example.malangtrip.databinding.NHomeBinding
-
+//메인 홈
 class Main_Home : Fragment(){
     private var _binding: NHomeBinding? = null
 

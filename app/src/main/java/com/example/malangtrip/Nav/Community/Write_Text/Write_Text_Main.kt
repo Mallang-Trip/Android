@@ -9,7 +9,7 @@ import com.example.malangtrip.Nav.Community.Choice_Party.Choice_Party_Main
 import com.example.malangtrip.Nav.Community.Fix_Delete.Fix_Delete_Main
 import com.example.malangtrip.R
 import com.example.malangtrip.databinding.NCommunityWriteTextBinding
-
+//게시글 작성
 class Write_Text_Main : Fragment() {
     private var _binding: NCommunityWriteTextBinding? = null
     private val binding get() = _binding!!

@@ -14,7 +14,7 @@ import com.example.malangtrip.Nav.Myinfo.Main_Myinfo
 import com.example.malangtrip.Nav.Wishlist.Main_Wishlist
 import com.example.malangtrip.databinding.MainScreenBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
-
+//메인 화면
 class Main_Screen : AppCompatActivity() {
     lateinit var binding: MainScreenBinding
 

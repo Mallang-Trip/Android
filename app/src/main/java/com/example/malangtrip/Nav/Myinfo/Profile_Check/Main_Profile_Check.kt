@@ -10,7 +10,7 @@ import androidx.navigation.Navigation
 import com.example.malangtrip.Nav.Commom_Function_Fragment
 import com.example.malangtrip.R
 import com.example.malangtrip.databinding.NMyinfoProfileCheckBinding
-
+//프로필 확인
 class Main_Profile_Check : Commom_Function_Fragment() {
 
     private var _binding: NMyinfoProfileCheckBinding? = null

@@ -5,7 +5,7 @@ import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import com.example.malangtrip.Nav.Commom_Function_Fragment
 import com.example.malangtrip.databinding.NCommunityWishlistBinding
-
+//파티 선택
 class Choice_Party_Main : Commom_Function_Fragment() {
     private var _binding: NCommunityWishlistBinding? = null
 

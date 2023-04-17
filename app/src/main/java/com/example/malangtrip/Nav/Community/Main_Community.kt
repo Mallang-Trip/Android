@@ -16,7 +16,7 @@ import com.example.malangtrip.Nav.Myinfo.Profile_Check.Main_Profile_Check
 import com.example.malangtrip.R
 import com.example.malangtrip.databinding.NCommunityBinding
 import com.example.malangtrip.databinding.NHomeBinding
-
+//커뮤니티 메인
 class Main_Community : Fragment(){
 
     private var _binding: NCommunityBinding? = null

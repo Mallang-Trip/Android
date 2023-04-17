@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.malangtrip.Nav.Commom_Function_Fragment
 import com.example.malangtrip.databinding.NCommunityTextOtherBinding
 import com.example.malangtrip.databinding.NCommunityWriteTextBinding
-
+//타인이 쓴 게시글
 class Other_Community_Main : Commom_Function_Fragment() {
     private var _binding: NCommunityTextOtherBinding? = null
 

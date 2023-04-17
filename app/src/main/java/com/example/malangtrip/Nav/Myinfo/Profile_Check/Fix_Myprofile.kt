@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.malangtrip.Nav.Commom_Function_Fragment
 import com.example.malangtrip.databinding.NMyinfoProfileCheckFixProfileBinding
 import com.example.malangtrip.databinding.NMyinfoProfileCheckScheduleBinding
-
+//프로필 변경
 class Fix_Myprofile : Commom_Function_Fragment() {
     private var _binding: NMyinfoProfileCheckFixProfileBinding? = null
 

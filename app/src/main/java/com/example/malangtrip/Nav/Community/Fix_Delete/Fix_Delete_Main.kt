@@ -5,7 +5,7 @@ import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import com.example.malangtrip.Nav.Commom_Function_Fragment
 import com.example.malangtrip.databinding.NCommunityFixDeleteBinding
-
+//수정 및 삭제
 class Fix_Delete_Main : Commom_Function_Fragment() {
     private var _binding: NCommunityFixDeleteBinding? = null
 

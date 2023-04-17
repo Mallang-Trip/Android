@@ -1,24 +1,27 @@
-package com.example.malangtrip.Nav.Myinfo.Reservation
+package com.example.malangtrip.Nav.Myinfo
 
 import android.os.Bundle
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
-import com.example.malangtrip.Nav.Commom_Function_Fragment
-import com.example.malangtrip.databinding.NMyinfoReservationPartyChatBinding
-import com.example.malangtrip.databinding.NMyinfoReservationSuggestBinding
-//파티채팅창
-class Chat_Room_Party : Commom_Function_Fragment() {
-    private var _binding: NMyinfoReservationPartyChatBinding? = null
+import androidx.fragment.app.Fragment
+import com.example.malangtrip.databinding.NMyinfoRegisterDriverBinding
+
+//드라이버로 등록하기
+class Resister_Driver : Fragment(){
+    private var _binding: NMyinfoRegisterDriverBinding? = null
+
+    // This property is only valid between onCreateView and
+    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
 
-        _binding = NMyinfoReservationPartyChatBinding.inflate(inflater, container, false)
+        _binding = NMyinfoRegisterDriverBinding.inflate(inflater, container, false)
         val root: View = binding.root
         //액션바 활성화 및 이름 변경후 뒤로가기 버튼 활성화
         val actionBar = (requireActivity() as AppCompatActivity).supportActionBar
         actionBar?.setDisplayHomeAsUpEnabled(true)
-        actionBar?.title = "파티 채팅창"
+        actionBar?.title = "드라이버로 등록하기"
         //메뉴 사용 활성화
         setHasOptionsMenu(true)
         // 뒤로가기 버튼 처리 이전 프래그먼트로 감
@@ -35,7 +38,6 @@ class Chat_Room_Party : Commom_Function_Fragment() {
 
         return root
     }
-
     //상단 뒤로가기 버튼 눌렀을 때 이전 프래그먼트로
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {

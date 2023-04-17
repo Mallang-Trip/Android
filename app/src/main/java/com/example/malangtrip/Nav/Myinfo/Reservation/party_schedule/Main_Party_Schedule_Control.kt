@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.malangtrip.Nav.Commom_Function_Fragment
 import com.example.malangtrip.databinding.NMyinfoReservationCancelBinding
 import com.example.malangtrip.databinding.NMyinfoReservationControlScheduleBinding
-
+//파티 일정 관리
 class Main_Party_Schedule_Control : Commom_Function_Fragment() {
     private var _binding: NMyinfoReservationControlScheduleBinding? = null
 

@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.malangtrip.Nav.Commom_Function_Fragment
 import com.example.malangtrip.databinding.NMyinfoProfileCheckFixCarBinding
 import com.example.malangtrip.databinding.NMyinfoProfileCheckScheduleBinding
-
+//나의 차 정보 입력 및 수정
 class Fix_Driver_Carinfo : Commom_Function_Fragment() {
     private var _binding: NMyinfoProfileCheckFixCarBinding? = null
 

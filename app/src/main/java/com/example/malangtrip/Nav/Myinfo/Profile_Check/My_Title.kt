@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.malangtrip.Nav.Commom_Function_Fragment
 import com.example.malangtrip.databinding.NMyinfoProfileCheckBinding
 import com.example.malangtrip.databinding.NMyinfoProfileCheckTitleBinding
-
+//제목 및 소개글
 class My_Title : Commom_Function_Fragment(){
     private var _binding: NMyinfoProfileCheckTitleBinding? = null
 

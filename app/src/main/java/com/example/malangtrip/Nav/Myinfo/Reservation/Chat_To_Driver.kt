@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.malangtrip.Nav.Commom_Function_Fragment
 import com.example.malangtrip.databinding.NMyinfoReservationSuggestBinding
 import com.example.malangtrip.databinding.NMyinfoReservationToDriverChatBinding
-
+//드라이버와 1대1 쪽지
 class Chat_To_Driver : Commom_Function_Fragment() {
 
     private var _binding: NMyinfoReservationToDriverChatBinding? = null
