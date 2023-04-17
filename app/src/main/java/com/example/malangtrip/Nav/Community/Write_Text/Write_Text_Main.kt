@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.example.malangtrip.Nav.Commom_Function_Fragment
 import com.example.malangtrip.Nav.Community.Choice_Party.Choice_Party_Main
 import com.example.malangtrip.Nav.Community.Fix_Delete.Fix_Delete_Main
 import com.example.malangtrip.R

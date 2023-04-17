@@ -1,17 +1,13 @@
 package com.example.malangtrip.Nav.Myinfo.Profile_Check
 
-import android.icu.text.CaseMap
 import android.os.Bundle
 import android.view.*
-import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
-import androidx.navigation.Navigation
-import com.example.malangtrip.Nav.Commom_Function_Fragment
+import com.example.malangtrip.Nav.Common_Function_Fragment
 import com.example.malangtrip.R
 import com.example.malangtrip.databinding.NMyinfoProfileCheckBinding
 //프로필 확인
-class Main_Profile_Check : Commom_Function_Fragment() {
+class Main_Profile_Check : Common_Function_Fragment() {
 
     private var _binding: NMyinfoProfileCheckBinding? = null
 

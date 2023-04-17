@@ -3,11 +3,12 @@ package com.example.malangtrip.Nav.Myinfo.Reservation.party_schedule
 import android.os.Bundle
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
-import com.example.malangtrip.Nav.Commom_Function_Fragment
-import com.example.malangtrip.databinding.NMyinfoReservationCancelBinding
+import com.example.malangtrip.Nav.Common_Function_Fragment
+import com.example.malangtrip.Nav.Myinfo.Myinfo_Fix
+import com.example.malangtrip.R
 import com.example.malangtrip.databinding.NMyinfoReservationControlScheduleBinding
 //파티 일정 관리
-class Main_Party_Schedule_Control : Commom_Function_Fragment() {
+class Main_Party_Schedule_Control : Common_Function_Fragment() {
     private var _binding: NMyinfoReservationControlScheduleBinding? = null
 
     private val binding get() = _binding!!
@@ -22,6 +23,22 @@ class Main_Party_Schedule_Control : Commom_Function_Fragment() {
         actionBar?.title = "파티 일정 관리"
         //메뉴 사용 활성화
         setHasOptionsMenu(true)
+        //여행 일정표, 인원 명단, 수익금 정산
+        binding.ScheduleRosterSettle.setOnClickListener {
+            val Contact_To_Party = Contact_To_Party()
+            val transaction = parentFragmentManager.beginTransaction()
+            transaction.replace(R.id.fragmentContainer, Contact_To_Party)
+            transaction.addToBackStack(null)
+            transaction.commit()
+        }
+        //파티 일정 변경 / 취소
+        binding.PartyFix.setOnClickListener {
+            val Fix_Date = Contact_To_Party()
+            val transaction = parentFragmentManager.beginTransaction()
+            transaction.replace(R.id.fragmentContainer, Fix_Date)
+            transaction.addToBackStack(null)
+            transaction.commit()
+        }
         // 뒤로가기 버튼 처리 이전 프래그먼트로 감
         root.isFocusableInTouchMode = true
         root.requestFocus()

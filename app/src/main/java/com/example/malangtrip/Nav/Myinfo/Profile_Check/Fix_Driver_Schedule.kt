@@ -3,11 +3,10 @@ package com.example.malangtrip.Nav.Myinfo.Profile_Check
 import android.os.Bundle
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
-import com.example.malangtrip.Nav.Commom_Function_Fragment
-import com.example.malangtrip.databinding.NMyinfoProfileCheckProfilePhotoBinding
+import com.example.malangtrip.Nav.Common_Function_Fragment
 import com.example.malangtrip.databinding.NMyinfoProfileCheckScheduleBinding
 //여행 스케쥴 추가 및 가격 설정
-class Fix_Driver_Schedule : Commom_Function_Fragment() {
+class Fix_Driver_Schedule : Common_Function_Fragment() {
     private var _binding: NMyinfoProfileCheckScheduleBinding? = null
 
     // This property is only valid between onCreateView and

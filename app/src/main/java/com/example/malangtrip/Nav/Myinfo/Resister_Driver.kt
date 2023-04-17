@@ -4,10 +4,11 @@ import android.os.Bundle
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.example.malangtrip.Nav.Common_Function_Fragment
 import com.example.malangtrip.databinding.NMyinfoRegisterDriverBinding
 
 //드라이버로 등록하기
-class Resister_Driver : Fragment(){
+class Resister_Driver : Common_Function_Fragment(){
     private var _binding: NMyinfoRegisterDriverBinding? = null
 
     // This property is only valid between onCreateView and

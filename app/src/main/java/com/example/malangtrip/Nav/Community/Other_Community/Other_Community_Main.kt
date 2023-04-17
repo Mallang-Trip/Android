@@ -3,11 +3,11 @@ package com.example.malangtrip.Nav.Community.Other_Community
 import android.os.Bundle
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
-import com.example.malangtrip.Nav.Commom_Function_Fragment
+import com.example.malangtrip.Nav.Common_Function_Fragment
 import com.example.malangtrip.databinding.NCommunityTextOtherBinding
-import com.example.malangtrip.databinding.NCommunityWriteTextBinding
+
 //타인이 쓴 게시글
-class Other_Community_Main : Commom_Function_Fragment() {
+class Other_Community_Main : Common_Function_Fragment() {
     private var _binding: NCommunityTextOtherBinding? = null
 
     private val binding get() = _binding!!

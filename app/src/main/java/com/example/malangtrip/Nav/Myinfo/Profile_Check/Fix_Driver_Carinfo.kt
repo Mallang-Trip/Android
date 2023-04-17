@@ -3,11 +3,11 @@ package com.example.malangtrip.Nav.Myinfo.Profile_Check
 import android.os.Bundle
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
-import com.example.malangtrip.Nav.Commom_Function_Fragment
+import com.example.malangtrip.Nav.Common_Function_Fragment
 import com.example.malangtrip.databinding.NMyinfoProfileCheckFixCarBinding
-import com.example.malangtrip.databinding.NMyinfoProfileCheckScheduleBinding
+
 //나의 차 정보 입력 및 수정
-class Fix_Driver_Carinfo : Commom_Function_Fragment() {
+class Fix_Driver_Carinfo : Common_Function_Fragment() {
     private var _binding: NMyinfoProfileCheckFixCarBinding? = null
 
     // This property is only valid between onCreateView and

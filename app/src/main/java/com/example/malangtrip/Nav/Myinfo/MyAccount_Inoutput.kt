@@ -4,11 +4,12 @@ import android.os.Bundle
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.example.malangtrip.Nav.Common_Function_Fragment
 import com.example.malangtrip.databinding.NMyinfoAccoutInoutputBinding
 import com.example.malangtrip.databinding.NMyinfoMytextCheckBinding
 
 //수익금 환불금 관리
-class MyAccount_Inoutput : Fragment(){
+class MyAccount_Inoutput : Common_Function_Fragment(){
     private var _binding: NMyinfoAccoutInoutputBinding? = null
 
     // This property is only valid between onCreateView and

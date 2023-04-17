@@ -21,7 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
-        android:text="나의 예약 내역"
+        android:text="예약 일정"
         android:textColor="#000000" />
 
     <Button

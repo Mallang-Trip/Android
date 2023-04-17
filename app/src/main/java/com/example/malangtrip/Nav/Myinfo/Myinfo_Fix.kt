@@ -4,10 +4,11 @@ import android.os.Bundle
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.example.malangtrip.Nav.Common_Function_Fragment
 import com.example.malangtrip.databinding.NMyinfoFixBinding
 
 //내 정보 수정
-class Myinfo_Fix : Fragment(){
+class Myinfo_Fix : Common_Function_Fragment(){
     private var _binding: NMyinfoFixBinding? = null
 
     // This property is only valid between onCreateView and

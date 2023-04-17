@@ -3,11 +3,11 @@ package com.example.malangtrip.Nav.Myinfo.Reservation
 import android.os.Bundle
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
-import com.example.malangtrip.Nav.Commom_Function_Fragment
+import com.example.malangtrip.Nav.Common_Function_Fragment
 import com.example.malangtrip.databinding.NMyinfoReservationPartyChatBinding
-import com.example.malangtrip.databinding.NMyinfoReservationSuggestBinding
+
 //파티채팅창
-class Chat_Room_Party : Commom_Function_Fragment() {
+class Chat_Room_Party : Common_Function_Fragment() {
     private var _binding: NMyinfoReservationPartyChatBinding? = null
     private val binding get() = _binding!!
 

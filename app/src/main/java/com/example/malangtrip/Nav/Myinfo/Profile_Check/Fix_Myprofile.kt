@@ -3,11 +3,11 @@ package com.example.malangtrip.Nav.Myinfo.Profile_Check
 import android.os.Bundle
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
-import com.example.malangtrip.Nav.Commom_Function_Fragment
+import com.example.malangtrip.Nav.Common_Function_Fragment
 import com.example.malangtrip.databinding.NMyinfoProfileCheckFixProfileBinding
-import com.example.malangtrip.databinding.NMyinfoProfileCheckScheduleBinding
+
 //프로필 변경
-class Fix_Myprofile : Commom_Function_Fragment() {
+class Fix_Myprofile : Common_Function_Fragment() {
     private var _binding: NMyinfoProfileCheckFixProfileBinding? = null
 
     // This property is only valid between onCreateView and

@@ -3,14 +3,12 @@ package com.example.malangtrip.Nav.Myinfo.Reservation
 import android.os.Bundle
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
-import com.example.malangtrip.Nav.Commom_Function_Fragment
-import com.example.malangtrip.Nav.Myinfo.Profile_Check.Main_Profile_Check
+import com.example.malangtrip.Nav.Common_Function_Fragment
 import com.example.malangtrip.Nav.Myinfo.Reservation.party_schedule.Main_Party_Schedule_Control
 import com.example.malangtrip.R
-import com.example.malangtrip.databinding.NMyinfoProfileCheckProfilePhotoBinding
 import com.example.malangtrip.databinding.NMyinfoReservationBinding
 //예약 일정 메인 페이지
-class Main_Reservation : Commom_Function_Fragment() {
+class Main_Reservation : Common_Function_Fragment() {
     private var _binding: NMyinfoReservationBinding? = null
 
     private val binding get() = _binding!!

@@ -3,10 +3,10 @@ package com.example.malangtrip.Nav.Myinfo.Reservation
 import android.os.Bundle
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
-import com.example.malangtrip.Nav.Commom_Function_Fragment
+import com.example.malangtrip.Nav.Common_Function_Fragment
 import com.example.malangtrip.databinding.NMyinfoReservationCancelBinding
 //예약취소
-class Cancel_Reservation : Commom_Function_Fragment() {
+class Cancel_Reservation : Common_Function_Fragment() {
     private var _binding: NMyinfoReservationCancelBinding? = null
 
     private val binding get() = _binding!!
