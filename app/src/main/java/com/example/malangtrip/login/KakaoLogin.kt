@@ -3,18 +3,14 @@ package com.example.malangtrip.login
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.malangtrip.R
-import com.example.malangtrip.databinding.LoginScreenBinding
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
+import com.example.malangtrip.databinding.BLoginScreenBinding
 import com.kakao.sdk.auth.model.OAuthToken
 import com.kakao.sdk.common.KakaoSdk
 import com.kakao.sdk.common.model.ClientError
 import com.kakao.sdk.common.model.ClientErrorCause
 import com.kakao.sdk.user.UserApiClient
-
+//카카오 로그인 페이지
 class KakaoLogin : AppCompatActivity(){
     private val callback:(OAuthToken?,Throwable?)->Unit = {token, error ->
         if(error!=null)
@@ -27,12 +23,12 @@ class KakaoLogin : AppCompatActivity(){
             Log.e("login", "LoginSuccess : $token")
         }
     }
-    private lateinit var binding: LoginScreenBinding
+    private lateinit var binding: BLoginScreenBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = LoginScreenBinding.inflate(layoutInflater)
+        binding = BLoginScreenBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         KakaoSdk.init(this, "a0d1ab4cd4502733d63c9fa927683fd7")

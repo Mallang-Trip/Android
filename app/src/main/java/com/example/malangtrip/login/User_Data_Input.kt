@@ -2,26 +2,26 @@ package com.example.malangtrip.login
 
 import android.content.Intent
 import android.os.Bundle
-import android.provider.ContactsContract.CommonDataKinds.Nickname
+
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.malangtrip.Main_Screen
 import com.example.malangtrip.R
-
-import com.example.malangtrip.databinding.UserDataInputBinding
+import com.example.malangtrip.databinding.BLoginUserDataInputBinding
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.kakao.sdk.common.KakaoSdk
-import com.kakao.sdk.user.model.User
 
+//데이터 입력 받기
 class User_Data_Input : AppCompatActivity(){
-    private lateinit var binding: UserDataInputBinding
+    private lateinit var binding: BLoginUserDataInputBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = UserDataInputBinding.inflate(layoutInflater)
+        binding = BLoginUserDataInputBinding
+            .inflate(layoutInflater)
         setContentView(binding.root)
         //임시 버튼 누르면 앱 시작
         binding.CheckBtn.setOnClickListener {

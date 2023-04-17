@@ -5,45 +5,31 @@
     android:orientation="vertical">
 
     <Button
-        android:id="@+id/Write_Introduction"
+        android:id="@+id/Add_Fix_Delete"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
-        android:text="소개글 작성"
+        android:text="시간대 별 코스 추가 / 변경 / 삭제"
         android:textColor="#000000" />
     <Button
-        android:id="@+id/Activity_Area"
+        android:id="@+id/Input_Time"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
-        android:text="활동 지역"
+        android:text="코스 이동 소요 시간 입력"
         android:textColor="#000000" />
     <Button
-        android:id="@+id/Fix_Schedule_Add_Fix_Price"
+        android:id="@+id/Setting_Price"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
-        android:text="여행 스케쥴 추가 및 가격 설정"
+        android:text="가격 설정 및 저장"
         android:textColor="#000000" />
     <Button
-        android:id="@+id/Possible_Date"
+        android:id="@+id/Save_Profile_Publish"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
-        android:text="활동 가능 날짜"
-        android:textColor="#000000" />
-    <Button
-        android:id="@+id/Tag_Button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        android:text="태그"
-        android:textColor="#000000" />
-    <Button
-        android:id="@+id/Temporary_Storage"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        android:text="임시 저장"
+        android:text="임시 저장 / 저장 및 프로필 개제"
         android:textColor="#000000" />
 </LinearLayout>

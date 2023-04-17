@@ -12,6 +12,7 @@ import retrofit2.http.POST
 import retrofit2.http.PUT
 import retrofit2.http.Path
 
+//서버로 데이터 보내기
 // User 클래스 작성
 class Go_To_Spring {
 

@@ -2,7 +2,27 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/Go_Main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity" />
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/Kakao_Test"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="1. 카카오톡 로그인 통해서 가기" />
+
+    <Button
+        android:id="@+id/Input_Data_Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="카카오톡 로그인(1번) 스킵해서 가기" />
+
+    <Button
+        android:id="@+id/Go_Home"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="1, 2번 둘다 스킵해서 바로 홈가기" />
+</LinearLayout>

@@ -8,6 +8,7 @@ import com.example.malangtrip.Main_Screen
 import com.example.malangtrip.Nav.Home.Main_Home
 import com.example.malangtrip.Nav.Myinfo.Profile_Check.Main_Profile_Check
 import com.example.malangtrip.Nav.Myinfo.Reservation.Main_Reservation
+import com.example.malangtrip.Nav.Myinfo.Resister_Driver.Main_Resister_Driver
 import com.example.malangtrip.R
 import com.example.malangtrip.databinding.NMyinfoBinding
 
@@ -60,7 +61,7 @@ class Main_Myinfo : Fragment() {
         }
         //내 정보 -> 드라이버로 등록하기
         binding.ResisterDriver.setOnClickListener {
-            val Resister_Driver = Resister_Driver()
+            val Resister_Driver = Main_Resister_Driver()
             val transaction = parentFragmentManager.beginTransaction()
             transaction.replace(R.id.fragmentContainer, Resister_Driver)
             transaction.addToBackStack(null)

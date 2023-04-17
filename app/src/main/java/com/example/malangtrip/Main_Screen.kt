@@ -12,15 +12,14 @@ import com.example.malangtrip.Nav.Community.Main_Community
 import com.example.malangtrip.Nav.Home.Main_Home
 import com.example.malangtrip.Nav.Myinfo.Main_Myinfo
 import com.example.malangtrip.Nav.Wishlist.Main_Wishlist
-import com.example.malangtrip.databinding.MainScreenBinding
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.example.malangtrip.databinding.BMainScreenBinding
 //메인 화면
 class Main_Screen : AppCompatActivity() {
-    lateinit var binding: MainScreenBinding
+    lateinit var binding: BMainScreenBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = MainScreenBinding.inflate(layoutInflater)
+        binding = BMainScreenBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         //처음에 홈으로 세팅
