@@ -9,13 +9,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0"
-        android:hint="전화번호테스트" />
+        android:hint="전화번호입력(010-1234-1234식으로)" />
+
     <EditText
         android:id="@+id/test2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0"
-        android:hint="생년월일테스트" />
+        android:hint="생년월일입력(1111-11-11식으로)" />
     <RadioGroup
         android:id="@+id/test3"
         android:layout_width="match_parent"

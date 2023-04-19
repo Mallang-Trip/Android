@@ -34,7 +34,7 @@
         android:id="@+id/button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="서버로 데이터만 보내기" />
+        android:text="서버로 데이터 보내기 테스트" />
 
     <Button
         android:id="@+id/button2"
