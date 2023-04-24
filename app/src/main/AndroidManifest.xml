@@ -42,6 +42,8 @@
         <activity android:name=".login.User_Data_Input" />
         <activity android:name=".Main_Screen" />
         <activity android:name=".login.ToServerTest" />
+        <activity android:name=".login.Go_To_Firebase" />
+        <activity android:name=".login.Join_Membership" />
 
         <!-- 하단네비바 액티비티 -->
 

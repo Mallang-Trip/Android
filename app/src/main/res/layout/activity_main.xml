@@ -8,38 +8,14 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/Kakao_Test"
+        android:id="@+id/go_to_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="1. 카카오톡 로그인 통해서 가기" />
+        android:text="로그인으로 가기" />
 
     <Button
-        android:id="@+id/Input_Data_Button"
+        android:id="@+id/skip_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="카카오톡 로그인(1번) 스킵해서 가기" />
-
-    <Button
-        android:id="@+id/Go_Home"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="1, 2번 둘다 스킵해서 바로 홈가기" />
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="50dp" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="테스트 목록"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
-
-    <Button
-        android:id="@+id/Test_To_Server_Button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="카카오 데이터 서버로 보내기 테스트" />
-
+        android:text="바로 메인화면으로 가기" />
 </LinearLayout>
