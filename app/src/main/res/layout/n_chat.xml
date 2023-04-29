@@ -4,8 +4,16 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/friend_list"
+    <Button
+        android:id="@+id/go_to_friendlist"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content"
+        android:text="친구목록으로 이동하기" />
+
+    <Button
+        android:id="@+id/go_to_chat_room"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="채팅방목록으로 이동하기" />
+
 </LinearLayout>

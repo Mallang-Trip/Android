@@ -5,14 +5,13 @@ import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.malangtrip.Main_Screen
+import com.example.malangtrip.Nav.Chat.User.User_List
 import com.example.malangtrip.Nav.Home.Main_Home
 import com.example.malangtrip.R
 import com.example.malangtrip.databinding.NChatBinding
-import com.example.malangtrip.databinding.NHomeBinding
 
 class Main_Chat : Fragment(){
 
@@ -26,6 +25,22 @@ class Main_Chat : Fragment(){
         // 액션바 설정, 이름변경
         val actionBar = (requireActivity() as AppCompatActivity).supportActionBar
         actionBar?.title = "쪽지"
+
+        binding.goToFriendlist.setOnClickListener {
+            val User_List = User_List()
+            val transaction = parentFragmentManager.beginTransaction()
+            transaction.replace(R.id.fragmentContainer,User_List )
+            transaction.addToBackStack(null)
+            transaction.commit()
+        }
+        binding.goToChatRoom.setOnClickListener {
+            val Chat_List = Chat_List()
+            val transaction = parentFragmentManager.beginTransaction()
+            transaction.replace(R.id.fragmentContainer,Chat_List)
+            transaction.addToBackStack(null)
+            transaction.commit()
+        }
+
         // 뒤로가기 버튼 처리 기본 뒤로가기 버튼 눌렀을 때 홈 프래그먼트로
         root.isFocusableInTouchMode = true
         root.requestFocus()

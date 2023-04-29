@@ -44,7 +44,7 @@ class Join_Membership :AppCompatActivity() {
                         {
                             Toast.makeText(this, "비밀번호를 똑같이 입력하지 않으셨습니다", Toast.LENGTH_SHORT).show()
                         }
-                        Toast.makeText(this, "이미 등록된 이메일을 등록하셨거나 이메일 형식으로 입력하지 않으셨습니다ㅛ", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, "이미 등록된 이메일을 등록하셨거나 이메일 형식으로 입력하지 않으셨습니다", Toast.LENGTH_SHORT).show()
                     }
 
                 }

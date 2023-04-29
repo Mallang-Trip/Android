@@ -6,9 +6,7 @@ import android.os.Bundle
 import android.util.Log
 
 import com.example.malangtrip.databinding.ActivityMainBinding
-import com.example.malangtrip.login.Go_To_Firebase
-
-import com.example.malangtrip.login.User_Data_Input
+import com.example.malangtrip.login.Email_Login
 
 import com.kakao.sdk.common.util.Utility
 //메인 액티비티
@@ -32,7 +30,7 @@ class MainActivity : AppCompatActivity() {
 //        }
         // 데이터 입력 과정으로 가기
         binding.goToLogin.setOnClickListener {
-            startActivity(Intent(this, Go_To_Firebase::class.java))
+            startActivity(Intent(this, Email_Login::class.java))
         }
         // 로그인 과정 다 스킵해서 가기
         binding.skipLogin.setOnClickListener {

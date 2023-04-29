@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0"
-        android:hint="전화번호를 입력해주세요" />
+        android:hint="이메일을 입력해주세요" />
     <EditText
         android:id="@+id/password_input"
         android:layout_width="match_parent"
