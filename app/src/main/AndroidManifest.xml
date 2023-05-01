@@ -44,6 +44,7 @@
         <activity android:name=".login.ToServerTest" />
         <activity android:name=".login.Email_Login" />
         <activity android:name=".login.Join_Membership" />
+        <activity android:name=".Nav.Chat.Detail_Chat.Chat_Screen" />
 
         <!-- 하단네비바 액티비티 -->
 

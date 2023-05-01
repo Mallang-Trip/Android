@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.malangtrip.Main_Screen
+import com.example.malangtrip.Nav.Chat.Chat_List.Chat_List
 import com.example.malangtrip.Nav.Chat.User.User_List
 import com.example.malangtrip.Nav.Home.Main_Home
 import com.example.malangtrip.R

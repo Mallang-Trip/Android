@@ -42,8 +42,8 @@ class Email_Login: AppCompatActivity() {
                 {
                     val userId = curruntUser.uid
                     val user = mutableMapOf<String,Any>()
-                    user["UserId"] = userId
-                    user["Nickname"] = email
+                    user["userId"] = userId
+                    user["nickname"] = email
 
                     Firebase.database(DB_URL).reference.child(DB_USERS).child(userId).updateChildren(user)
                     startActivity(Intent(this,User_Data_Input::class.java))
