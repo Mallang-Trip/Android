@@ -2,7 +2,7 @@ package com.example.malangtrip.Nav.Chat.User
 
 //유저 정보
 data class User_Info(
-    val UserId: String,
-    val NickName: String,
-    val descriptioin: String
+    val UserId: String?=null,
+    val Nickname: String?=null,
+    val Description: String?=null
 )

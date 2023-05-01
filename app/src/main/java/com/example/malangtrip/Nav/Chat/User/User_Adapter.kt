@@ -12,8 +12,8 @@ class User_Adapter : ListAdapter<User_Info, User_Adapter.ViewHolder>(differ){
     inner class ViewHolder(private val binding: NChatUserBinding):RecyclerView.ViewHolder(binding.root){
         fun bind(item: User_Info)
         {
-            binding.nicknameTextView.text = item.NickName
-            binding.descriptionTextView.text = item.descriptioin
+            binding.nicknameTextView.text = item.Nickname
+            binding.descriptionTextView.text = item.Description
         }
     }
 
