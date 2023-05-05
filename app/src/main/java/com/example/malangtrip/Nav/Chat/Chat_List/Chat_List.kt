@@ -1,10 +1,11 @@
 package com.example.malangtrip.Nav.Chat.Chat_List
 
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.malangtrip.Nav.Chat.Chat_Screen.Chat_Screen
 import com.example.malangtrip.R
 import com.example.malangtrip.databinding.NChatChatlistBinding
 import com.example.malangtrip.login.DBKey.Companion.DB_CHAT_ROOMS
@@ -22,7 +23,14 @@ class Chat_List : Fragment(R.layout.n_chat_chatlist) {
         super.onViewCreated(view, savedInstanceState)
         binding = NChatChatlistBinding.bind(view)
         //챗어뎁터
-        val chatlistadapter = Chat_Adapter()
+        val chatlistadapter = Chat_Adapter{chat_item->
+            //눌렀을 씨 채팅방 이동
+            val intent = Intent(context, Chat_Screen::class.java)
+            intent.putExtra(Chat_Screen.Extra_Frineds_Id,chat_item.friend_Id)
+            intent.putExtra(Chat_Screen.EXTRA_CHAT_ROOM_ID,chat_item.chatRoomId)
+            intent.putExtra("friend_Name",chat_item.friend_Name)
+            startActivity(intent)
+        }
         binding.chatListRecyclerView.apply {
                 layoutManager = LinearLayoutManager(context)
                 adapter = chatlistadapter

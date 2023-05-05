@@ -1,9 +1,8 @@
-package com.example.malangtrip.Nav.Chat.Detail_Chat
+package com.example.malangtrip.Nav.Chat.Chat_Screen
 
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.view.GravityCompat
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter

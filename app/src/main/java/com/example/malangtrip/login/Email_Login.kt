@@ -12,6 +12,7 @@ import com.example.malangtrip.login.DBKey.Companion.DB_USERS
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.messaging.ktx.messaging
 
 //로그인 화면
 class Email_Login: AppCompatActivity() {
@@ -41,13 +42,20 @@ class Email_Login: AppCompatActivity() {
                 if(task.isSuccessful&&curruntUser!=null)
                 {
                     val userId = curruntUser.uid
-                    val user = mutableMapOf<String,Any>()
-                    user["userId"] = userId
-                    user["nickname"] = email
 
-                    Firebase.database(DB_URL).reference.child(DB_USERS).child(userId).updateChildren(user)
-                    startActivity(Intent(this,User_Data_Input::class.java))
-                    finish()
+                    Firebase.messaging.token.addOnCompleteListener {
+                        val token = it.result
+                        val user = mutableMapOf<String,Any>()
+                        user["userId"] = userId
+                        user["nickname"] = email
+                        user["fcmToken"] = token
+
+                        Firebase.database(DB_URL).reference.child(DB_USERS).child(userId).updateChildren(user)
+                        startActivity(Intent(this,User_Data_Input::class.java))
+                        finish()
+                    }
+
+
                 }
                 else{
                     Log.e("로그인실패원인",task.exception.toString())

@@ -51,8 +51,8 @@ class Fix_Myprofile : Common_Function_Fragment() {
            val mydb = Firebase.database.reference.child(DBKey.DB_USERS).child(curruntId)//내 정보 접근
            //제이슨업데이트
            val myprofile = mutableMapOf<String, Any>()
-           myprofile["Nickname"] = Nickname
-           myprofile["Description"] = Description
+           myprofile["nickname"] = Nickname
+           myprofile["description"] = Description
            mydb.updateChildren(myprofile)
 
        }

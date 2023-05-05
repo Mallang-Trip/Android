@@ -24,17 +24,12 @@
         android:text="사진 입력은 나중에 받을 예정"
         android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
-    <CheckBox
-        android:id="@+id/check"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="동의 했습니다." />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/go_firebase"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="서버로 데이터 보내기 테스트" />
+        android:text="서버로 데이터 보냄(닉네임, 상메 체크 버튼)" />
 
     <Button
         android:id="@+id/go_to_main"

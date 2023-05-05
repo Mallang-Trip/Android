@@ -12,7 +12,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.MalangTrip"
-        tools:targetApi="31">
+        tools:targetApi="33">
 
         <activity
             android:name=".MainActivity"
@@ -44,8 +44,18 @@
         <activity android:name=".login.ToServerTest" />
         <activity android:name=".login.Email_Login" />
         <activity android:name=".login.Join_Membership" />
-        <activity android:name=".Nav.Chat.Detail_Chat.Chat_Screen" />
-
+        <activity android:name=".Nav.Chat.Chat_Screen.Chat_Screen"
+            android:windowSoftInputMode="adjustResize"/>
+        <service
+            android:name=".Nav.Chat.MyFirebaseMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_channel_id"
+            android:value="@string/default_notification_channel_id" />
         <!-- 하단네비바 액티비티 -->
 
 <!--        <activity android:name=".Nav.Chat.Main_Chat" />-->

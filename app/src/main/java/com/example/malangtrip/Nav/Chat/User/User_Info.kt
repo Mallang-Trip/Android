@@ -4,5 +4,6 @@ package com.example.malangtrip.Nav.Chat.User
 data class User_Info(
     val userId: String?=null,
     val nickname: String?=null,
-    val description: String?=null
+    val description: String?=null,
+    val fcmToken: String?=null
 )

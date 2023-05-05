@@ -2,13 +2,11 @@ package com.example.malangtrip.Nav.Chat.User
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.malangtrip.Nav.Chat.Chat_List.Chat_Info
-import com.example.malangtrip.Nav.Chat.Detail_Chat.Chat_Screen
-import com.example.malangtrip.Nav.Chat.Detail_Chat.Chat_Screen_Adapter
+import com.example.malangtrip.Nav.Chat.Chat_Screen.Chat_Screen
 import com.example.malangtrip.R
 import com.example.malangtrip.databinding.NChatUserlistBinding
 import com.example.malangtrip.login.DBKey.Companion.DB_CHAT_ROOMS
@@ -37,12 +35,12 @@ class User_List : Fragment(R.layout.n_chat_userlist) {
                 if(it.value !=null)
                 {
                         val chat_room = it.getValue(Chat_Info::class.java)
-                        chat_rood_id = chat_room?.chatId?:""
+                        chat_rood_id = chat_room?.chatRoomId?:""
                 }
                 else{
                     chat_rood_id = UUID.randomUUID().toString()
                     val new_chat_room = Chat_Info(
-                        chatId = chat_rood_id,
+                        chatRoomId =  chat_rood_id,
                         friend_Name = friend.nickname,
                         friend_Id = friend.userId
                     )
@@ -51,6 +49,7 @@ class User_List : Fragment(R.layout.n_chat_userlist) {
                 val intent = Intent(context, Chat_Screen::class.java)
                 intent.putExtra(Chat_Screen.Extra_Frineds_Id,friend.userId)
                 intent.putExtra(Chat_Screen.EXTRA_CHAT_ROOM_ID,chat_rood_id)
+                intent.putExtra("friend_Name",friend.nickname)
                 startActivity(intent)
             }
 
