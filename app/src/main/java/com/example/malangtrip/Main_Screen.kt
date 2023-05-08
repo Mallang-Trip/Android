@@ -99,6 +99,7 @@ class Main_Screen : AppCompatActivity() {
     {
         binding.navigationView.selectedItemId = R.id.navigation_home
     }
+
     private val requestPermissionLauncher = registerForActivityResult(
         ActivityResultContracts.RequestPermission()
     ) { isGranted: Boolean ->

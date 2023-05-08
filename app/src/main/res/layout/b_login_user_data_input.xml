@@ -17,13 +17,6 @@
         android:layout_height="wrap_content"
         android:hint="소개글을 입력해주세요" />
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="사진 입력은 나중에 받을 예정"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
-
 
     <Button
         android:id="@+id/go_firebase"

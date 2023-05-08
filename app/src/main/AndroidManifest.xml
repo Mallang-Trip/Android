@@ -40,12 +40,13 @@
         </activity> <!-- 로그인 액티비티 -->
         <activity android:name=".login.KakaoLogin" />
         <activity android:name=".login.User_Data_Input" />
-        <activity android:name=".Main_Screen" />
+        <activity android:name=".Main_Screen"
+            android:windowSoftInputMode="adjustPan"/>
         <activity android:name=".login.ToServerTest" />
         <activity android:name=".login.Email_Login" />
         <activity android:name=".login.Join_Membership" />
-        <activity android:name=".Nav.Chat.Chat_Screen.Chat_Screen"
-            android:windowSoftInputMode="adjustResize"/>
+        <activity android:name=".Nav.Chat.Chat_Screen.Chat_Screen" />
+        <activity android:name=".Nav.Community.Write_Community.Write_Text" />
         <service
             android:name=".Nav.Chat.MyFirebaseMessagingService"
             android:exported="false">

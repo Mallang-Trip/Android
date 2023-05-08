@@ -49,11 +49,14 @@ class Fix_Myprofile : Common_Function_Fragment() {
            }
            val curruntId = Firebase.auth.currentUser?.uid ?: "" // 현재 유저 아이디 가져오기
            val mydb = Firebase.database.reference.child(DBKey.DB_USERS).child(curruntId)//내 정보 접근
+           val mydb_in_friends = Firebase.database.reference.child(DBKey.DB_Friends).child(curruntId)//내 정보 접근
            //제이슨업데이트
            val myprofile = mutableMapOf<String, Any>()
            myprofile["nickname"] = Nickname
            myprofile["description"] = Description
            mydb.updateChildren(myprofile)
+           //friend내에 모든 나의 닉네임 찾아서 변경하는 코드 작성해야함
+          // mydb_in_friends.updateChildren(myprofile)
 
        }
         //로그아웃 버튼

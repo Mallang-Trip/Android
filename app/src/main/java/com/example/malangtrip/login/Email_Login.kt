@@ -47,7 +47,7 @@ class Email_Login: AppCompatActivity() {
                         val token = it.result
                         val user = mutableMapOf<String,Any>()
                         user["userId"] = userId
-                        user["nickname"] = email
+                        //user["nickname"] = email
                         user["fcmToken"] = token
 
                         Firebase.database(DB_URL).reference.child(DB_USERS).child(userId).updateChildren(user)

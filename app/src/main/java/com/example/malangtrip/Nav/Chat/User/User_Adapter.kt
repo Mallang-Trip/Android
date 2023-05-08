@@ -29,6 +29,7 @@ class User_Adapter(private val onClick:(User_Info)->Unit) : ListAdapter<User_Inf
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(currentList[position])
     }
+
     companion object{
         val differ = object: DiffUtil.ItemCallback<User_Info>()
         {

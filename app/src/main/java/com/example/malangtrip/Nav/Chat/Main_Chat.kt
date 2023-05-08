@@ -1,18 +1,31 @@
 package com.example.malangtrip.Nav.Chat
 
 import android.os.Bundle
-import android.view.KeyEvent
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentPagerAdapter
+import androidx.viewpager.widget.PagerAdapter
 import com.example.malangtrip.Main_Screen
+import com.example.malangtrip.Nav.Chat.Chat_List.Chat_Adapter
+import com.example.malangtrip.Nav.Chat.Chat_List.Chat_Info
 import com.example.malangtrip.Nav.Chat.Chat_List.Chat_List
 import com.example.malangtrip.Nav.Chat.User.User_List
 import com.example.malangtrip.Nav.Home.Main_Home
 import com.example.malangtrip.R
 import com.example.malangtrip.databinding.NChatBinding
+import com.example.malangtrip.login.DBKey
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 
 class Main_Chat : Fragment(){
 
@@ -25,22 +38,26 @@ class Main_Chat : Fragment(){
         val root: View = binding.root
         // 액션바 설정, 이름변경
         val actionBar = (requireActivity() as AppCompatActivity).supportActionBar
-        actionBar?.title = "쪽지"
+        actionBar?.title = "말랑톡"
+        // 뷰페이저 어댑터 생성
+        val viewPagerAdapter = ChatViewPagerAdapter(childFragmentManager, lifecycle)
 
-        binding.goToFriendlist.setOnClickListener {
-            val User_List = User_List()
-            val transaction = parentFragmentManager.beginTransaction()
-            transaction.replace(R.id.fragmentContainer,User_List )
-            transaction.addToBackStack(null)
-            transaction.commit()
-        }
-        binding.goToChatRoom.setOnClickListener {
-            val Chat_List = Chat_List()
-            val transaction = parentFragmentManager.beginTransaction()
-            transaction.replace(R.id.fragmentContainer,Chat_List)
-            transaction.addToBackStack(null)
-            transaction.commit()
-        }
+        // 뷰페이저 설정
+        val viewPager = binding.viewPager
+        viewPager.adapter = viewPagerAdapter
+
+        // 탭 레이아웃과 뷰페이저 연결
+        val tabLayout = binding.tabs
+        TabLayoutMediator(tabLayout, viewPager) { tab, position ->
+            tab.text = when (position) {
+                0 -> "친구 목록"
+                1 -> "채팅방 목록"
+                2 -> "친구 찾기"
+                else -> ""
+            }
+        }.attach()
+
+
 
         // 뒤로가기 버튼 처리 기본 뒤로가기 버튼 눌렀을 때 홈 프래그먼트로
         root.isFocusableInTouchMode = true
@@ -65,6 +82,13 @@ class Main_Chat : Fragment(){
                 false
             }
         }
+
+
+
+
+
+
+
         return root
     }
 
@@ -72,5 +96,6 @@ class Main_Chat : Fragment(){
         super.onDestroyView()
         _binding = null
     }
+
 
 }

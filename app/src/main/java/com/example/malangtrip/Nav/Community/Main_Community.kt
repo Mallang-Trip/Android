@@ -1,21 +1,23 @@
 package com.example.malangtrip.Nav.Community
 
+
 import android.os.Bundle
+
 import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.malangtrip.Main_Screen
-import com.example.malangtrip.Nav.Community.Other_Community.Other_Community_Main
-import com.example.malangtrip.Nav.Community.Write_Text.Write_Text_Main
+import com.example.malangtrip.Nav.Chat.ChatViewPagerAdapter
 import com.example.malangtrip.Nav.Home.Main_Home
-import com.example.malangtrip.Nav.Myinfo.Profile_Check.Main_Profile_Check
 import com.example.malangtrip.R
 import com.example.malangtrip.databinding.NCommunityBinding
-import com.example.malangtrip.databinding.NHomeBinding
+import com.google.android.material.tabs.TabLayoutMediator
+
+
 //커뮤니티 메인
 class Main_Community : Fragment(){
 
@@ -26,26 +28,34 @@ class Main_Community : Fragment(){
 
         _binding = NCommunityBinding.inflate(inflater, container, false)
         val root: View = binding.root
+
+
+
+
         // 액션바 설정, 이름변경, 액티비티에 연결되어 있는 프래그먼트이므로 상단 뒤로가기 버튼 없음
         val actionBar = (requireActivity() as AppCompatActivity).supportActionBar
         actionBar?.setDisplayHomeAsUpEnabled(false)
         actionBar?.title = "커뮤니티"
-        //메인 커뮤니티 화면 -> 게시글 작성
-        binding.WriteText.setOnClickListener {
-            val Write_Text_Fragment = Write_Text_Main()
-            val transaction = parentFragmentManager.beginTransaction()
-            transaction.replace(R.id.fragmentContainer, Write_Text_Fragment)
-            transaction.addToBackStack(null)
-            transaction.commit()
-        }
-        //메인 커뮤니티 화면 -> 타인이 쓴 게시글
-        binding.OtherText.setOnClickListener {
-            val Other_Community_Main_Fragment = Other_Community_Main()
-            val transaction = parentFragmentManager.beginTransaction()
-            transaction.replace(R.id.fragmentContainer, Other_Community_Main_Fragment)
-            transaction.addToBackStack(null)
-            transaction.commit()
-        }
+
+        // 뷰페이저 어댑터 생성
+        val viewPagerAdapter = CommunityViewPagerAdapter(childFragmentManager, lifecycle)
+
+        // 뷰페이저 설정
+        val viewPager = binding.viewPager
+        viewPager.adapter = viewPagerAdapter
+
+        // 탭 레이아웃과 뷰페이저 연결
+        val tabLayout = binding.tabs
+        TabLayoutMediator(tabLayout, viewPager) { tab, position ->
+            tab.text = when (position) {
+                0 -> "전체 게시판"
+                1 -> "자유글"
+                2 -> "동승자 구해요"
+                else -> ""
+            }
+        }.attach()
+
+
         // 뒤로가기 버튼 처리 기본 뒤로가기 버튼 눌렀을 때 홈 프래그먼트로
         root.isFocusableInTouchMode = true
         root.requestFocus()

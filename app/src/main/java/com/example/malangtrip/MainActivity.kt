@@ -29,6 +29,7 @@ import android.Manifest
 
 import com.example.malangtrip.databinding.ActivityMainBinding
 import com.example.malangtrip.login.Email_Login
+import com.google.firebase.auth.FirebaseAuth
 
 import com.kakao.sdk.common.util.Utility
 //메인 액티비티
@@ -52,6 +53,16 @@ class MainActivity : AppCompatActivity() {
 //        binding.KakaoTest.setOnClickListener {
 //            startActivity(Intent(this, KakaoLogin::class.java))
 //        }
+        // FirebaseAuth 인스턴스 생성
+        val mAuth: FirebaseAuth = FirebaseAuth.getInstance()
+
+        // 현재 로그인 상태 확인
+        val currentUser = mAuth.currentUser
+        if (currentUser != null) {
+            // 이미 로그인 되어 있으면 Main_Screen 액티비티로 바로 이동
+            startActivity(Intent(this, Main_Screen::class.java))
+            finish() // 현재 액티비티 종료
+        }
         // 데이터 입력 과정으로 가기
         binding.goToLogin.setOnClickListener {
             startActivity(Intent(this, Email_Login::class.java))
@@ -68,41 +79,41 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private val requestPermissionLauncher = registerForActivityResult(
-        ActivityResultContracts.RequestPermission()
-    ) { isGranted: Boolean ->
-        if (isGranted) {
-            // FCM SDK (and your app) can post notifications.
-        } else {
-            // 알림권한 없음
-        }
-    }
+//    private val requestPermissionLauncher = registerForActivityResult(
+//        ActivityResultContracts.RequestPermission()
+//    ) { isGranted: Boolean ->
+//        if (isGranted) {
+//            // FCM SDK (and your app) can post notifications.
+//        } else {
+//            // 알림권한 없음
+//        }
+//    }
 
-    private fun askNotificationPermission() {
-        // This is only necessary for API level >= 33 (TIRAMISU)
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) ==
-                PackageManager.PERMISSION_GRANTED
-            ) {
-                // FCM SDK (and your app) can post notifications.
-            } else if (shouldShowRequestPermissionRationale(Manifest.permission.POST_NOTIFICATIONS)) {
-                showPermissionRationalDialog()
-            } else {
-                // Directly ask for the permission
-                requestPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
-            }
-        }
-    }
+//    private fun askNotificationPermission() {
+//        // This is only necessary for API level >= 33 (TIRAMISU)
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+//            if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) ==
+//                PackageManager.PERMISSION_GRANTED
+//            ) {
+//                // FCM SDK (and your app) can post notifications.
+//            } else if (shouldShowRequestPermissionRationale(Manifest.permission.POST_NOTIFICATIONS)) {
+//                showPermissionRationalDialog()
+//            } else {
+//                // Directly ask for the permission
+//                requestPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+//            }
+//        }
+//    }
 
-    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
-    private fun showPermissionRationalDialog() {
-        AlertDialog.Builder(this)
-            .setMessage("알림 권한이 없으면 알림을 받을 수 없습니다.")
-            .setPositiveButton("권한 허용하기") { _, _ ->
-                requestPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
-            }.setNegativeButton("취소") { dialogInterface, _ -> dialogInterface.cancel() }
-            .show()
-    }
+//    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
+//    private fun showPermissionRationalDialog() {
+//        AlertDialog.Builder(this)
+//            .setMessage("알림 권한이 없으면 알림을 받을 수 없습니다.")
+//            .setPositiveButton("권한 허용하기") { _, _ ->
+//                requestPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+//            }.setNegativeButton("취소") { dialogInterface, _ -> dialogInterface.cancel() }
+//            .show()
+//    }
 
 
 }

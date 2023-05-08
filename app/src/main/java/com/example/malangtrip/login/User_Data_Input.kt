@@ -40,6 +40,7 @@ class User_Data_Input : AppCompatActivity(){
             val curruntId = Firebase.auth.currentUser?.uid ?: ""// 현재 유저 아이디 가져오기
             val mydb = Firebase.database.reference.child(DBKey.DB_USERS).child(curruntId)//내 정보 접근
             val myprofile = mutableMapOf<String, Any>()
+
             myprofile["nickname"] = nickname
             myprofile["description"] = description
             mydb.updateChildren(myprofile)
