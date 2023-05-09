@@ -146,7 +146,7 @@ class Chat_Screen : AppCompatActivity() {
                 root.toString().toRequestBody("application/json; charset=utf-8".toMediaType())
             val request =
                 Request.Builder().post(requestBody).url("https://fcm.googleapis.com/fcm/send")
-                    .header("Authorization", "key=${getString(R.string.fcm_key)}").build()
+                    .header("Authorization", "key=AAAAx8LZ-Wo:APA91bHXs1xZmDSCP1x6w1Iv-ujY3Xq3h_50w5l5TlDLtdHWdCzh5BBqSHkOdkKXKHrK2tVyB7XAGVjJ1o50YBPIru1UbOg-HNzxzmJSWxAxU1R6TtHNlqDhyk_Xf8Rhw-JENVMKiuly").build()
             client.newCall(request).enqueue(object : Callback {
                 override fun onFailure(call: Call, e: IOException) {
                     e.stackTraceToString()

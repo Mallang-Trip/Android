@@ -2,6 +2,7 @@ package com.example.malangtrip.Nav.Myinfo.Profile_Check
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -11,6 +12,9 @@ import com.example.malangtrip.databinding.NMyinfoProfileCheckFixProfileBinding
 import com.example.malangtrip.login.DBKey
 import com.example.malangtrip.login.Email_Login
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 
@@ -49,7 +53,7 @@ class Fix_Myprofile : Common_Function_Fragment() {
            }
            val curruntId = Firebase.auth.currentUser?.uid ?: "" // 현재 유저 아이디 가져오기
            val mydb = Firebase.database.reference.child(DBKey.DB_USERS).child(curruntId)//내 정보 접근
-           val mydb_in_friends = Firebase.database.reference.child(DBKey.DB_Friends).child(curruntId)//내 정보 접근
+           val mydb_in_friends = Firebase.database.reference.child(DBKey.DB_Friends)//내 정보 접근
            //제이슨업데이트
            val myprofile = mutableMapOf<String, Any>()
            myprofile["nickname"] = Nickname
@@ -57,6 +61,23 @@ class Fix_Myprofile : Common_Function_Fragment() {
            mydb.updateChildren(myprofile)
            //friend내에 모든 나의 닉네임 찾아서 변경하는 코드 작성해야함
           // mydb_in_friends.updateChildren(myprofile)
+           // Friend 내에 모든 나의 닉네임 찾아서 변경하는 코드
+           mydb_in_friends.addListenerForSingleValueEvent(object : ValueEventListener {
+               override fun onDataChange(snapshot: DataSnapshot) {
+                   for (user in snapshot.children) { // 모든 사용자에 대해서
+                       for (friend in user.children) { // 각 사용자의 친구 목록에 대해서
+                           val friendNickname = friend.child("nickname").getValue(String::class.java)
+                           if (friendNickname == Nickname) {
+                               friend.ref.child("description").setValue(Description)
+                           }
+                       }
+                   }
+               }
+
+               override fun onCancelled(error: DatabaseError) {
+                   //Log.w(TAG, "Failed to read value.", error.toException())
+               }
+           })
 
        }
         //로그아웃 버튼
