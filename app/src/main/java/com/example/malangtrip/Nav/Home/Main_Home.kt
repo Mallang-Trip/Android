@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
-import com.example.malangtrip.databinding.NCommunityBinding
+import com.example.malangtrip.Nav.Home.Jeju.Main_Jeju
 import com.example.malangtrip.databinding.NHomeBinding
 //메인 홈
 class Main_Home : Fragment(){
@@ -23,6 +23,10 @@ class Main_Home : Fragment(){
 
         _binding = NHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
+
+        binding.goJeju.setOnClickListener {
+            startActivity(Intent(context, Main_Jeju::class.java))
+        }
         // 뒤로가기 버튼을 눌렀을 때 앱 종료
         root.isFocusableInTouchMode = true
         root.requestFocus()

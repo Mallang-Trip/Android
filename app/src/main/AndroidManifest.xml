@@ -47,6 +47,7 @@
         <activity android:name=".login.Join_Membership" />
         <activity android:name=".Nav.Chat.Chat_Screen.Chat_Screen" />
         <activity android:name=".Nav.Community.Write_Community.Write_Text" />
+        <activity android:name=".Nav.Home.Jeju.Main_Jeju"/>
         <service
             android:name=".Nav.Chat.MyFirebaseMessagingService"
             android:exported="false">
