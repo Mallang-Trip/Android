@@ -6,5 +6,6 @@ data class CommunityItem(
     val userName: String="", // 작성자 이름
     val title: String="", // 글 제목
     val content: String="", // 글 내용
-    val time: String="" // 작성 시간
+    val time: String="", // 작성 시간
+    val boardType: String = ""//글종류
 )

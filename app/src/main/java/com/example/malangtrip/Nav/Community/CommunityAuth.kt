@@ -14,8 +14,9 @@ class CommunityAuth {
         }
         fun getTime() : String{
             val currentDate = Calendar.getInstance().time
-            val dateFormat = SimpleDateFormat("yyyy.MM.dd HH:mm:ss", Locale.KOREA).format(currentDate)
-            return dateFormat
+            val dateFormat = SimpleDateFormat("yyyy.MM.dd HH:mm:ss", Locale.KOREA)
+            dateFormat.timeZone = TimeZone.getTimeZone("Asia/Seoul")  // Timezone 설정
+            return dateFormat.format(currentDate)
         }
     }
 }

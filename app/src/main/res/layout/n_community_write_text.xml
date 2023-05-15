@@ -76,12 +76,13 @@
                         android:layout_height="wrap_content"
                         android:text="동행자 구해요 게시판" />
                 </RadioGroup>
-                <ImageView
-                    android:id="@+id/imageArea"
+
+                <Button
+                    android:id="@+id/image_choice_btn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    app:srcCompat="@drawable/ic_menu_camera" />
+                    android:text="사진선택" />
+
                 <Button
                     android:id="@+id/input_btn"
                     android:text="입력"

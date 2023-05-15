@@ -24,4 +24,7 @@ class ImageAdapter (private val imageUris: List<Uri>) : RecyclerView.Adapter<Ima
     }
 
     override fun getItemCount() = imageUris.size
+    fun getImageUris(): List<Uri> {
+        return imageUris
+    }
 }

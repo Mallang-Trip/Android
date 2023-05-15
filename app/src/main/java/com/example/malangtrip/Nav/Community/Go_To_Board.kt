@@ -3,14 +3,14 @@ package com.example.malangtrip.Nav.Community
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import com.example.malangtrip.databinding.NCommunityBoardBinding
+import com.example.malangtrip.databinding.NCommunityTextBinding
 
 
 class Go_To_Board : AppCompatActivity(){
-    private lateinit var binding: NCommunityBoardBinding
+    private lateinit var binding: NCommunityTextBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding =NCommunityBoardBinding.inflate(layoutInflater)
+        binding =NCommunityTextBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val title = intent.getStringExtra("title").toString()
