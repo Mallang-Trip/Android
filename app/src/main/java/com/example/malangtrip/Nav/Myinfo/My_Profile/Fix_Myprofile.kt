@@ -1,8 +1,7 @@
-package com.example.malangtrip.Nav.Myinfo.Profile_Check
+package com.example.malangtrip.Nav.Myinfo.My_Profile
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -80,12 +79,7 @@ class Fix_Myprofile : Common_Function_Fragment() {
            })
 
        }
-        //로그아웃 버튼
-        binding.logoutBtn.setOnClickListener {
-            Firebase.auth.signOut()
-            startActivity(Intent(context, Email_Login::class.java))
-            activity?.finish()
-        }
+
         //메뉴 사용 활성화
         setHasOptionsMenu(true)
         // 뒤로가기 버튼 처리 이전 프래그먼트로 감

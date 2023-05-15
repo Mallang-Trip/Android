@@ -1,16 +1,19 @@
 package com.example.malangtrip.Nav.Myinfo
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.malangtrip.Main_Screen
 import com.example.malangtrip.Nav.Home.Main_Home
-import com.example.malangtrip.Nav.Myinfo.Profile_Check.Main_Profile_Check
+import com.example.malangtrip.Nav.Myinfo.My_Profile.Fix_Myprofile
 import com.example.malangtrip.Nav.Myinfo.Reservation.Main_Reservation
-import com.example.malangtrip.Nav.Myinfo.Resister_Driver.Main_Resister_Driver
 import com.example.malangtrip.R
 import com.example.malangtrip.databinding.NMyinfoBinding
+import com.example.malangtrip.login.Email_Login
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 //내 정보 메인
 class Main_Myinfo : Fragment() {
@@ -28,8 +31,8 @@ class Main_Myinfo : Fragment() {
         actionBar?.title = "내 정보"
         actionBar?.setDisplayHomeAsUpEnabled(false)
         //내 정보-> 프로필 확인
-        binding.ProfileCheck.setOnClickListener {
-            val Profile_Check_Fragment = Main_Profile_Check()
+        binding.GoToMyProfile.setOnClickListener {
+            val Profile_Check_Fragment = Fix_Myprofile()
             val transaction = parentFragmentManager.beginTransaction()
             transaction.replace(R.id.fragmentContainer, Profile_Check_Fragment)
             transaction.addToBackStack(null)
@@ -44,45 +47,17 @@ class Main_Myinfo : Fragment() {
             transaction.commit()
         }
         //내 정보 -> 나의 작성글 내역
-        binding.MyText.setOnClickListener {
-            val MyText_Check = MyText_Check()
-            val transaction = parentFragmentManager.beginTransaction()
-            transaction.replace(R.id.fragmentContainer, MyText_Check)
-            transaction.addToBackStack(null)
-            transaction.commit()
-        }
-        //내 정보 -> 나의 여행 내역
-        binding.MyTrip.setOnClickListener {
-            val MyTrip_Check = MyTrip_Check()
-            val transaction = parentFragmentManager.beginTransaction()
-            transaction.replace(R.id.fragmentContainer, MyTrip_Check)
-            transaction.addToBackStack(null)
-            transaction.commit()
-        }
-        //내 정보 -> 드라이버로 등록하기
-        binding.ResisterDriver.setOnClickListener {
-            val Resister_Driver = Main_Resister_Driver()
-            val transaction = parentFragmentManager.beginTransaction()
-            transaction.replace(R.id.fragmentContainer, Resister_Driver)
-            transaction.addToBackStack(null)
-            transaction.commit()
-        }
-        //내 정보 -> 돈 관리
-        binding.MyAccount.setOnClickListener {
-            val MyAccount_Inoutput = MyAccount_Inoutput()
-            val transaction = parentFragmentManager.beginTransaction()
-            transaction.replace(R.id.fragmentContainer, MyAccount_Inoutput)
-            transaction.addToBackStack(null)
-            transaction.commit()
-        }
-
-        //내 정보 -> 개인정보수정
-        binding.FixMyinfo.setOnClickListener {
-            val Myinfo_Fix = Myinfo_Fix()
-            val transaction = parentFragmentManager.beginTransaction()
-            transaction.replace(R.id.fragmentContainer, Myinfo_Fix)
-            transaction.addToBackStack(null)
-            transaction.commit()
+//        binding.MyText.setOnClickListener {
+//            val MyText_Check = MyText_Check()
+//            val transaction = parentFragmentManager.beginTransaction()
+//            transaction.replace(R.id.fragmentContainer, MyText_Check)
+//            transaction.addToBackStack(null)
+//            transaction.commit()
+//        }
+        binding.goLogoutBtn.setOnClickListener {
+            Firebase.auth.signOut()
+            startActivity(Intent(context, Email_Login::class.java))
+            activity?.finish()
         }
 
 // 뒤로가기 버튼 처리 기본 뒤로가기 버튼 눌렀을 때 홈 프래그먼트로

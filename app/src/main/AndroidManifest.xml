@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -48,6 +48,7 @@
         <activity android:name=".Nav.Chat.Chat_Screen.Chat_Screen" />
         <activity android:name=".Nav.Community.Write_Community.Write_Text" />
         <activity android:name=".Nav.Home.Jeju.Main_Jeju"/>
+        <activity android:name=".Nav.Community.Go_To_Board"/>
         <service
             android:name=".Nav.Chat.MyFirebaseMessagingService"
             android:exported="false">

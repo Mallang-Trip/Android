@@ -2,11 +2,7 @@ package com.example.malangtrip.Nav.Community
 
 
 import android.os.Bundle
-
-import android.view.KeyEvent
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -86,4 +82,5 @@ class Main_Community : Fragment(){
         super.onDestroyView()
         _binding = null
     }
+
 }

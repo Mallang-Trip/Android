@@ -17,7 +17,8 @@ class Main_Jeju : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         binding = NHomeJejuBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        val actionBar = supportActionBar
+        actionBar?.setTitle("제주도")
         val jeju_driver_list : RecyclerView = findViewById(R.id.jeju_driver_list)
 
         val driver_items = ArrayList<Driver_Data>()

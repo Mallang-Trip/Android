@@ -4,8 +4,6 @@ import android.os.Bundle
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import com.example.malangtrip.Nav.Common_Function_Fragment
-import com.example.malangtrip.Nav.Myinfo.Reservation.party_schedule.Main_Party_Schedule_Control
-import com.example.malangtrip.R
 import com.example.malangtrip.databinding.NMyinfoReservationBinding
 //예약 일정 메인 페이지
 class Main_Reservation : Common_Function_Fragment() {
@@ -21,46 +19,7 @@ class Main_Reservation : Common_Function_Fragment() {
         val actionBar = (requireActivity() as AppCompatActivity).supportActionBar
         actionBar?.setDisplayHomeAsUpEnabled(true)
         actionBar?.title = "예약 일정"
-        //예약 사안 변경 제안으로 이동
-        binding.SuggestResevation.setOnClickListener {
-            val Suggest_Reservation= Suggest_Reservation()
-            val transaction = parentFragmentManager.beginTransaction()
-            transaction.replace(R.id.fragmentContainer, Suggest_Reservation)
-            transaction.addToBackStack(null)
-            transaction.commit()
-        }
-        //예약취소로 이동
-        binding.CancelReservation.setOnClickListener {
-            val Cancel_Reservation= Cancel_Reservation()
-            val transaction = parentFragmentManager.beginTransaction()
-            transaction.replace(R.id.fragmentContainer, Cancel_Reservation)
-            transaction.addToBackStack(null)
-            transaction.commit()
-        }
-        //드라이버 1대1 쪽지로 이동
-        binding.ChatToDriver.setOnClickListener {
-            val Chat_To_Driver= Chat_To_Driver()
-            val transaction = parentFragmentManager.beginTransaction()
-            transaction.replace(R.id.fragmentContainer, Chat_To_Driver)
-            transaction.addToBackStack(null)
-            transaction.commit()
-        }
-        //파티채팅 창으로 이동
-        binding.ChatParty.setOnClickListener {
-            val Chat_Room_Party= Chat_Room_Party()
-            val transaction = parentFragmentManager.beginTransaction()
-            transaction.replace(R.id.fragmentContainer, Chat_Room_Party)
-            transaction.addToBackStack(null)
-            transaction.commit()
-        }
-        //파티 일정 관리로 이동
-        binding.ControlSchedule.setOnClickListener {
-            val Main_Party_Schedule_Control= Main_Party_Schedule_Control()
-            val transaction = parentFragmentManager.beginTransaction()
-            transaction.replace(R.id.fragmentContainer, Main_Party_Schedule_Control)
-            transaction.addToBackStack(null)
-            transaction.commit()
-        }
+
         //메뉴 사용 활성화
         setHasOptionsMenu(true)
         // 뒤로가기 버튼 처리 이전 프래그먼트로 감
