@@ -39,7 +39,8 @@ class Write_Text : AppCompatActivity(){
     private lateinit var binding: NCommunityWriteTextBinding
     private lateinit var imageAdapter: ImageAdapter
     private lateinit var key: String
-    private var imageCount by Delegates.notNull<Int>()
+    private var imageCount = 1
+    private var photo_Check = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = NCommunityWriteTextBinding.inflate(layoutInflater)
@@ -96,7 +97,10 @@ class Write_Text : AppCompatActivity(){
                 Toast.makeText(this, "내용이나 제목을 입력해주세요", Toast.LENGTH_SHORT).show()
                 }
             }
-            upload_Image(key)
+            if(photo_Check==true)
+            {
+                upload_Image(key)
+            }
         }
         // 사진 한장만 선택할 때
 //        binding.imageChoiceBtn.setOnClickListener {
@@ -111,6 +115,7 @@ class Write_Text : AppCompatActivity(){
                 putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true)
 
             }
+            photo_Check = true
             startActivityForResult(gallery, 100)
 
         }
