@@ -7,10 +7,9 @@ import android.view.*
 import androidx.fragment.app.Fragment
 import com.example.malangtrip.Nav.Community.Board_Adapter
 import com.example.malangtrip.Nav.Community.CommunityItem
-import com.example.malangtrip.Nav.Community.Go_To_Board
+import com.example.malangtrip.Nav.Community.Read_Community.Go_To_Board
 import com.example.malangtrip.Nav.Community.Write_Community.Write_Text
 import com.example.malangtrip.R
-import com.example.malangtrip.databinding.NCommunityEveryBoardWriteBinding
 import com.example.malangtrip.databinding.NCommunityFellowPassengerBoardBinding
 import com.example.malangtrip.login.DBKey
 import com.google.firebase.database.DataSnapshot
@@ -23,7 +22,8 @@ import com.google.firebase.ktx.Firebase
 class Fellow_Passenger_Board_Screen : Fragment(){
     private var _binding: NCommunityFellowPassengerBoardBinding? = null
     private val binding get() = _binding!!
-    private val Passenger_Board_List = mutableListOf<CommunityItem>()
+    private val Every_Board_List = mutableListOf<CommunityItem>()
+    private val boardKeyList = mutableListOf<String>()
     private lateinit var Every_adapter : Board_Adapter
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
 
@@ -32,14 +32,15 @@ class Fellow_Passenger_Board_Screen : Fragment(){
         setHasOptionsMenu(true)
         //Get_Every_Board_info()
 
-        Every_adapter = Board_Adapter(Passenger_Board_List)
+        Every_adapter = Board_Adapter(Every_Board_List)
         binding.pasengerList.adapter = Every_adapter
         binding.pasengerList.setOnItemClickListener { parent, view, position, id ->
             val intent = Intent(context, Go_To_Board::class.java)
-            intent.putExtra("title",Passenger_Board_List[position].title)
-            intent.putExtra("time",Passenger_Board_List[position].time)
-            intent.putExtra("content",Passenger_Board_List[position].content)
-            intent.putExtra("name",Passenger_Board_List[position].userName)
+            intent.putExtra("title",Every_Board_List[position].title)
+            intent.putExtra("time",Every_Board_List[position].time)
+            intent.putExtra("content",Every_Board_List[position].content)
+            intent.putExtra("name",Every_Board_List[position].userName)
+            intent.putExtra("key", boardKeyList[position])
             startActivity(intent)
         }
 
@@ -56,21 +57,23 @@ class Fellow_Passenger_Board_Screen : Fragment(){
     {
         val postListener = object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                Passenger_Board_List.clear()
+                Every_Board_List.clear()
                 if (snapshot.exists()) {
                     for (WriteSnapshot in snapshot.children) {
 
 
                         val item = WriteSnapshot.getValue(CommunityItem::class.java)
                         if (item?.boardType == "passenger") {
-                            Passenger_Board_List.add(item!!)
+                            Every_Board_List.add(item!!)
+                            boardKeyList.add(WriteSnapshot.key.toString())
                         }
                         //Every_Board_List.add(item!!)
 
                     }
-                    Passenger_Board_List.reverse()
+                    Every_Board_List.reverse()
+                    Every_Board_List.reverse()
                     Every_adapter.notifyDataSetChanged()
-                    Log.d("dffff",Passenger_Board_List.toString())
+                    Log.d("dffff",Every_Board_List.toString())
                 }
                 else
                 {

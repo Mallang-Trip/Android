@@ -7,10 +7,9 @@ import android.view.*
 import androidx.fragment.app.Fragment
 import com.example.malangtrip.Nav.Community.Board_Adapter
 import com.example.malangtrip.Nav.Community.CommunityItem
-import com.example.malangtrip.Nav.Community.Go_To_Board
+import com.example.malangtrip.Nav.Community.Read_Community.Go_To_Board
 import com.example.malangtrip.Nav.Community.Write_Community.Write_Text
 import com.example.malangtrip.R
-import com.example.malangtrip.databinding.NCommunityFellowPassengerBoardBinding
 import com.example.malangtrip.databinding.NCommunityFreeWriteBoardBinding
 import com.example.malangtrip.login.DBKey
 import com.google.firebase.database.DataSnapshot
@@ -24,6 +23,7 @@ class Free_Write_Board_Screen : Fragment(){
     private var _binding: NCommunityFreeWriteBoardBinding? = null
     private val binding get() = _binding!!
     private val Every_Board_List = mutableListOf<CommunityItem>()
+    private val boardKeyList = mutableListOf<String>()
     private lateinit var Every_adapter : Board_Adapter
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
 
@@ -40,6 +40,7 @@ class Free_Write_Board_Screen : Fragment(){
             intent.putExtra("time",Every_Board_List[position].time)
             intent.putExtra("content",Every_Board_List[position].content)
             intent.putExtra("name",Every_Board_List[position].userName)
+            intent.putExtra("key", boardKeyList[position])
             startActivity(intent)
         }
 
@@ -64,10 +65,12 @@ class Free_Write_Board_Screen : Fragment(){
                         val item = WriteSnapshot.getValue(CommunityItem::class.java)
                         if (item?.boardType == "free") {
                             Every_Board_List.add(item!!)
+                            boardKeyList.add(WriteSnapshot.key.toString())
                         }
                         //Every_Board_List.add(item!!)
 
                     }
+                    boardKeyList.reverse()
                     Every_Board_List.reverse()
                     Every_adapter.notifyDataSetChanged()
                     Log.d("dffff",Every_Board_List.toString())

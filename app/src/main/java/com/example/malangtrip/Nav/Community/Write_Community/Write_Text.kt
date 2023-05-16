@@ -16,6 +16,7 @@ import com.bumptech.glide.request.transition.Transition
 import com.example.malangtrip.Nav.Chat.User.User_Info
 import com.example.malangtrip.Nav.Community.CommunityAuth
 import com.example.malangtrip.Nav.Community.CommunityItem
+import com.example.malangtrip.Nav.Community.Read_Community.Go_To_Board
 import com.example.malangtrip.R
 
 import com.example.malangtrip.databinding.NCommunityWriteTextBinding
@@ -28,15 +29,17 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.annotations.Nullable
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.StorageMetadata
 import com.google.firebase.storage.ktx.storage
 import java.io.ByteArrayOutputStream
-import java.util.*
+import kotlin.properties.Delegates
 
 
 class Write_Text : AppCompatActivity(){
     private lateinit var binding: NCommunityWriteTextBinding
     private lateinit var imageAdapter: ImageAdapter
     private lateinit var key: String
+    private var imageCount by Delegates.notNull<Int>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = NCommunityWriteTextBinding.inflate(layoutInflater)
@@ -54,7 +57,8 @@ class Write_Text : AppCompatActivity(){
             val curruntId = Firebase.auth.currentUser?.uid ?: "" // 현재 유저 아이디 가져오기
             val Mydb = Firebase.database.reference.child(DBKey.DB_USERS).child(curruntId)//내 정보 접근
              key =  Firebase.database(DB_URL).reference.push().key.toString()
-            Log.d("key",key)
+//            val intent = Intent(this, Go_To_Board::class.java)
+//            intent.putExtra("key",key)
 //            val key1 = Firebase.database(DB_URL).reference.push().key.toString()
 //            val key2 = Firebase.database(DB_URL).reference.push().key.toString()
 
@@ -69,7 +73,7 @@ class Write_Text : AppCompatActivity(){
                 when (selectedRadioButtonId) {
                     R.id.select_free -> {
                         Firebase.database(DB_URL).reference.child(Community_Key).child(key)
-                            .setValue(CommunityItem(uid,My_Name, title, content, time,"free"))
+                            .setValue(CommunityItem(uid,My_Name, title, content, time,"free",imageCount))
 //                        Firebase.database(DB_URL).reference.child(Community_Key).child(key)
 //                            .setValue(CommunityItem(uid,My_Name, title, content, time))
 //                        Firebase.database(DB_URL).reference.child(Free_Community_Key).child(key1)
@@ -77,7 +81,7 @@ class Write_Text : AppCompatActivity(){
                     }
                     R.id.select_passenger -> {
                         Firebase.database(DB_URL).reference.child(Community_Key).child(key)
-                            .setValue(CommunityItem(uid,My_Name, title, content, time,"passenger"))
+                            .setValue(CommunityItem(uid,My_Name, title, content, time,"passenger",imageCount))
 //                        Firebase.database(DB_URL).reference.child(Community_Key).child(key)
 //                            .setValue(CommunityItem(uid,My_Name, title, content, time))
 //                        Firebase.database(DB_URL).reference.child(Passenger_Community_Key).child(key2)
@@ -92,6 +96,7 @@ class Write_Text : AppCompatActivity(){
                 Toast.makeText(this, "내용이나 제목을 입력해주세요", Toast.LENGTH_SHORT).show()
                 }
             }
+            upload_Image(key)
         }
         // 사진 한장만 선택할 때
 //        binding.imageChoiceBtn.setOnClickListener {
@@ -104,9 +109,10 @@ class Write_Text : AppCompatActivity(){
                 addCategory(Intent.CATEGORY_OPENABLE)
                 type = "image/*"
                 putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true)
+
             }
             startActivityForResult(gallery, 100)
-            upload_Image(key)
+
         }
     }
             //사진 한장만 선택 할 때
@@ -141,9 +147,11 @@ class Write_Text : AppCompatActivity(){
     {
         val storage = Firebase.storage
         val imageUris = imageAdapter.getImageUris()
+        imageCount = imageUris.size
+        //intent.putExtra("imageCount",imageUris.size)
         val storageRef = storage.reference
-        for (uri in imageUris) {
-            val fileName = UUID.randomUUID().toString() + ".jpg" // Here we make sure every image has a unique name using UUID
+        for ((index, uri) in imageUris.withIndex()) { // Here, we get the index with the Uri
+            val fileName = "$key-$index.png" // We append the index to the key for unique names
             val mountainsRef = storageRef.child(fileName)
             Glide.with(this)
                 .asBitmap()

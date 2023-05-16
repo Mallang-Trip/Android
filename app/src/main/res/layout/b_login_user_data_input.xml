@@ -18,6 +18,13 @@
         android:hint="소개글을 입력해주세요" />
 
 
+    <ImageView
+        android:id="@+id/select_profile_photo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/baseline_supervised_user_circle_24"
+      />
+
     <Button
         android:id="@+id/go_firebase"
         android:layout_width="match_parent"

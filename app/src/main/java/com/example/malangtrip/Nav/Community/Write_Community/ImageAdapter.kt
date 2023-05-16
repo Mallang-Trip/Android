@@ -4,6 +4,7 @@ import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.malangtrip.R
@@ -12,6 +13,7 @@ class ImageAdapter (private val imageUris: List<Uri>) : RecyclerView.Adapter<Ima
 
     class ImageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val imageView: ImageView = itemView.findViewById(R.id.image_Item)
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageViewHolder {
@@ -21,6 +23,7 @@ class ImageAdapter (private val imageUris: List<Uri>) : RecyclerView.Adapter<Ima
 
     override fun onBindViewHolder(holder: ImageViewHolder, position: Int) {
         holder.imageView.setImageURI(imageUris[position])
+
     }
 
     override fun getItemCount() = imageUris.size
