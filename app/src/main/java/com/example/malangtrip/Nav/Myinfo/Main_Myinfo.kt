@@ -9,6 +9,7 @@ import com.example.malangtrip.Main_Screen
 import com.example.malangtrip.Nav.Home.Main_Home
 import com.example.malangtrip.Nav.Myinfo.My_Profile.Fix_Myprofile
 import com.example.malangtrip.Nav.Myinfo.Reservation.Main_Reservation
+import com.example.malangtrip.Nav.Myinfo.Resister_Driver.Main_Resister_Driver
 import com.example.malangtrip.R
 import com.example.malangtrip.databinding.NMyinfoBinding
 import com.example.malangtrip.login.Email_Login
@@ -46,14 +47,14 @@ class Main_Myinfo : Fragment() {
             transaction.addToBackStack(null)
             transaction.commit()
         }
-        //내 정보 -> 나의 작성글 내역
-//        binding.MyText.setOnClickListener {
-//            val MyText_Check = MyText_Check()
-//            val transaction = parentFragmentManager.beginTransaction()
-//            transaction.replace(R.id.fragmentContainer, MyText_Check)
-//            transaction.addToBackStack(null)
-//            transaction.commit()
-//        }
+        // 드라이버 등록하기로 이동
+        binding.ResisterDriver.setOnClickListener {
+            val MyText_Check = Main_Resister_Driver()
+            val transaction = parentFragmentManager.beginTransaction()
+            transaction.replace(R.id.fragmentContainer, MyText_Check)
+            transaction.addToBackStack(null)
+            transaction.commit()
+        }
         binding.goLogoutBtn.setOnClickListener {
             Firebase.auth.signOut()
             startActivity(Intent(context, Email_Login::class.java))

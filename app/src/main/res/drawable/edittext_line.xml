@@ -1,0 +1,4 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#000000" /> <!-- 검정색 배경 -->
+    <corners android:bottomRightRadius="0dp" android:bottomLeftRadius="0dp" /> <!-- 오른쪽 아래와 왼쪽 아래 코너를 없앱니다 -->
+</shape>
