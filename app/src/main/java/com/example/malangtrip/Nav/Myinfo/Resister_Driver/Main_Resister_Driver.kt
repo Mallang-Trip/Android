@@ -1,10 +1,17 @@
 package com.example.malangtrip.Nav.Myinfo.Resister_Driver
 
+import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
+import android.provider.MediaStore
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import com.example.malangtrip.Nav.Common_Function_Fragment
 import com.example.malangtrip.databinding.NMyinfoRegisterDriverBinding
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.ktx.storage
+import java.io.ByteArrayOutputStream
 
 //드라이버로 등록하기
 class Main_Resister_Driver : Common_Function_Fragment(){
@@ -13,7 +20,7 @@ class Main_Resister_Driver : Common_Function_Fragment(){
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
-
+    private var photo_Check = false
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
 
         _binding = NMyinfoRegisterDriverBinding.inflate(inflater, container, false)
@@ -36,8 +43,42 @@ class Main_Resister_Driver : Common_Function_Fragment(){
                 false
             }
         }
-
+        //사진 선택
+        binding.selectBtn.setOnClickListener {
+            val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
+            startActivityForResult(gallery, 100)
+        }
         return root
+    }
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(resultCode== AppCompatActivity.RESULT_OK && requestCode ==100)
+        {
+            photo_Check = true
+            binding.uploadBtn.setImageURI( data?.data)
+        }
+    }
+    private fun upload_Image(key : String){
+
+        val storage = Firebase.storage
+        val storageRef = storage.reference
+        val mountainsRef = storageRef.child(key + ".png")
+
+        val imageView = binding.uploadBtn
+        imageView.isDrawingCacheEnabled = true
+        imageView.buildDrawingCache()
+        val bitmap = (imageView.drawable as BitmapDrawable).bitmap
+        val baos = ByteArrayOutputStream()
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos)
+        val data = baos.toByteArray()
+
+        var uploadTask = mountainsRef.putBytes(data)
+        uploadTask.addOnFailureListener {
+            // Handle unsuccessful uploads
+        }.addOnSuccessListener { taskSnapshot ->
+            // taskSnapshot.metadata contains file metadata such as size, content-type, etc.
+            // ...
+        }
     }
     //상단 뒤로가기 버튼 눌렀을 때 이전 프래그먼트로
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

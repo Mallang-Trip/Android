@@ -11,7 +11,9 @@ class DBKey {
         const val DB_CHATS = "Chats"
         const val DB_Friends = "Friends"
         const val Community_Key = "EveryCommunity"
-        const val Free_Community_Key = "FreeCommunity"
-        const val Passenger_Community_Key = "PassengerCommunity"
+        const val Comment_Key = "Comment"
+        const val Jeju_Driver = "JejuDriver"
+        const val Ulleung_Driver = "UlleungDriver"
+
     }
 }

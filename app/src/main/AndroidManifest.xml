@@ -49,6 +49,7 @@
         <activity android:name=".Nav.Community.Write_Community.Write_Text" />
         <activity android:name=".Nav.Home.Jeju.Main_Jeju"/>
         <activity android:name=".Nav.Community.Read_Community.Go_To_Board"/>
+        <activity android:name=".Nav.Community.Write_Community.Fix_Board"/>
         <service
             android:name=".Nav.Chat.MyFirebaseMessagingService"
             android:exported="false">

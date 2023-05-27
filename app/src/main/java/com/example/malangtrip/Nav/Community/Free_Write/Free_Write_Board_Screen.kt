@@ -36,9 +36,9 @@ class Free_Write_Board_Screen : Fragment(){
         binding.freeBoardList.adapter = Every_adapter
         binding.freeBoardList.setOnItemClickListener { parent, view, position, id ->
             val intent = Intent(context, Go_To_Board::class.java)
-            intent.putExtra("title",Every_Board_List[position].title)
-            intent.putExtra("time",Every_Board_List[position].time)
-            intent.putExtra("content",Every_Board_List[position].content)
+//            intent.putExtra("title",Every_Board_List[position].title)
+//            intent.putExtra("time",Every_Board_List[position].time)
+//            intent.putExtra("content",Every_Board_List[position].content)
             intent.putExtra("name",Every_Board_List[position].userName)
             intent.putExtra("key", boardKeyList[position])
             startActivity(intent)

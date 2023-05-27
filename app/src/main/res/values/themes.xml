@@ -4,35 +4,39 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
 
 
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">#469EFF</item>
-        <item name="colorPrimaryDark">#469EFF</item>
-        <item name="colorAccent">#469EFF</item>
-
     </style>
     <style name="HomeTheme" parent="Theme.AppCompat.Light.NoActionBar">
     </style>
-    <style name="Theme.MalangTrip" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
 
+    <style name="Theme.MalangTrip" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">#469EFF</item>
+        <item name="android:textColorPrimary">@android:color/black</item>
         <item name="colorPrimaryDark">#469EFF</item>
         <item name="colorAccent">#469EFF</item>
+
+        <!-- 아이콘 및 제목 색상 설정 -->
+        <item name="colorOnPrimary">@android:color/black</item> <!-- 추가 -->
+
         <!-- Secondary brand color. -->
         <item name="colorSecondary">#469EFF</item>
         <item name="colorSecondaryVariant">#469EFF</item>
         <item name="colorOnSecondary">#469EFF</item>
+
         <!-- Status bar color. -->
-        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor">@android:color/holo_purple</item>
         <!-- Customize your theme here. -->
-<!--        <item name="windowNoTitle">true</item>-->
-<!--        <item name="android:windowFullscreen">true</item>-->
         <item name="android:fontFamily">@font/jejugothic</item>
 
-
-
-
+<!--        &lt;!&ndash; 액션바 스타일 지정 &ndash;&gt;-->
+<!--        <item name="actionBarStyle">@style/MyActionBarStyle</item>-->
     </style>
+
+<!--    <style name="MyActionBarStyle" parent="Widget.MaterialComponents.ActionBar.Solid">-->
+<!--        &lt;!&ndash; 음영(셰도우) 제거 &ndash;&gt;-->
+<!--        <item name="elevation">0dp</item>-->
+<!--        <item name="background">@color/white</item>-->
+<!--    </style>-->
 
 
 

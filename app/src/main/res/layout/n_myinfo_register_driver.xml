@@ -15,13 +15,19 @@
         android:textColor="@color/black"
         android:textSize="20sp" />
 
-    <Button
+    <ImageView
         android:id="@+id/upload_btn"
         android:layout_width="match_parent"
         android:layout_height="182dp"
         android:backgroundTint="@android:color/darker_gray"
         android:padding="0dp"
         android:text="사진 또는 파일을\n이곳에 업로드 해주세요" />
+
+    <Button
+        android:id="@+id/select_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="사진(자격증) 선택하기" />
 
     <TextView
         android:id="@+id/input_car_info"

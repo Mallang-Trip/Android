@@ -23,62 +23,40 @@
                     android:layout_height="60dp">
 
                     <TextView
-                        android:text="글쓰기 페이지"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:textColor="@color/black"
-                        android:gravity="center"/>
+                        android:gravity="center"
+                        android:text="글 수정"
+                        android:textColor="@color/black" />
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0.5dp"
-                    android:background="#000000"/>
+                    android:background="#000000" />
 
                 <EditText
                     android:id="@+id/edit_Title"
-                    android:layout_margin="20dp"
                     android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_margin="20dp"
                     android:background="@android:color/transparent"
-                    android:hint="제목을 입력해주세요"
-                    android:layout_height="60dp"/>
+                    android:hint="제목을 입력해주세요" />
 
                 <EditText
                     android:id="@+id/edit_Content"
-                    android:layout_margin="20dp"
                     android:layout_width="match_parent"
-                    android:hint="내용을 입력해주세요"
+                    android:layout_height="60dp"
+                    android:layout_margin="20dp"
                     android:background="@android:color/transparent"
-                    android:layout_height="60dp"/>
-
+                    android:hint="내용을 입력해주세요" />
 
                 <ImageView
                     android:id="@+id/imageArea"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="20dp"
-                   />
-
-                <RadioGroup
-                    android:id="@+id/check_board"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:checkedButton="@id/select_free">
-
-                    <RadioButton
-                        android:id="@+id/select_free"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="자유게시판" />
-
-                    <RadioButton
-                        android:id="@+id/select_passenger"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="동행자 구해요 게시판" />
-                </RadioGroup>
-
+                    android:layout_height="300dp"
+                    android:layout_marginTop="20dp" />
                 <Button
                     android:id="@+id/image_choice_btn"
                     android:layout_width="match_parent"
@@ -87,12 +65,12 @@
 
                 <Button
                     android:id="@+id/input_btn"
-                    android:text="입력"
                     android:layout_width="match_parent"
-                    android:layout_marginTop="50dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
+                    android:layout_marginTop="50dp"
                     android:layout_marginRight="20dp"
-                    android:layout_height="wrap_content"/>
+                    android:text="입력" />
 
             </LinearLayout>
 

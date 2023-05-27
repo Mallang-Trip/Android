@@ -37,12 +37,10 @@ class Every_Board_Screen : Fragment() {
         binding.freeBoard.adapter = Every_adapter
         binding.freeBoard.setOnItemClickListener { parent, view, position, id ->
             val intent = Intent(context, Go_To_Board::class.java)
-            intent.putExtra("title",Every_Board_List[position].title)
-            intent.putExtra("time",Every_Board_List[position].time)
-            intent.putExtra("content",Every_Board_List[position].content)
+//            intent.putExtra("title",Every_Board_List[position].title)
+//            intent.putExtra("time",Every_Board_List[position].time)
+//            intent.putExtra("content",Every_Board_List[position].content)
             intent.putExtra("name",Every_Board_List[position].userName)
-            intent.putExtra("name",Every_Board_List[position].userName)
-            intent.putExtra("imageCount",Every_Board_List[position].imageCount)
             intent.putExtra("key", boardKeyList[position])
             startActivity(intent)
         }
