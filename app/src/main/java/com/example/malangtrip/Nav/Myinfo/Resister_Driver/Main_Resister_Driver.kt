@@ -6,15 +6,23 @@ import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.*
+import android.widget.Button
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat.startActivityForResult
+import androidx.fragment.app.Fragment
 import com.example.malangtrip.Nav.Common_Function_Fragment
+import com.example.malangtrip.Nav.Community.Write_Community.Fix_Board
+import com.example.malangtrip.R
 import com.example.malangtrip.databinding.NMyinfoRegisterDriverBinding
+import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 import java.io.ByteArrayOutputStream
 
 //드라이버로 등록하기
-class Main_Resister_Driver : Common_Function_Fragment(){
+class Main_Resister_Driver : Fragment(){
     private var _binding: NMyinfoRegisterDriverBinding? = null
 
     // This property is only valid between onCreateView and
@@ -47,6 +55,14 @@ class Main_Resister_Driver : Common_Function_Fragment(){
         binding.selectBtn.setOnClickListener {
             val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
             startActivityForResult(gallery, 100)
+        }
+        binding.completeBtn.setOnClickListener {
+
+
+            if(photo_Check==true)
+            {
+
+            }
         }
         return root
     }
@@ -89,6 +105,25 @@ class Main_Resister_Driver : Common_Function_Fragment(){
                 true
             }
             else -> super.onOptionsItemSelected(item)
+        }
+    }
+    private fun show_dialog()
+    {
+        val DialogView = LayoutInflater.from(context).inflate(R.layout.n_myinfo_register_driver_dialog,null)
+        val builder = context?.let {
+            AlertDialog.Builder(it)
+                .setView(DialogView)
+                .setTitle("지역선택")
+        }
+
+        val alterDialog = builder?.show()
+        alterDialog?.findViewById<Button>(R.id.cancle_Btn)?.setOnClickListener {
+
+
+
+        }
+        alterDialog?.findViewById<Button>(R.id.check_Btn)?.setOnClickListener {
+
         }
     }
 }
