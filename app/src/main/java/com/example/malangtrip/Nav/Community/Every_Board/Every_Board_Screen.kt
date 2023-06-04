@@ -72,7 +72,7 @@ class Every_Board_Screen : Fragment() {
                     boardKeyList.reverse()
                     Every_Board_List.reverse()
                     Every_adapter.notifyDataSetChanged()
-                    Log.d("dffff",Every_Board_List.toString())
+                    //Log.d("dffff",Every_Board_List.toString())
                 }
                 else
                 {

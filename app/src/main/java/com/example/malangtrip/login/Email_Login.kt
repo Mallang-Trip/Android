@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.malangtrip.Main_Screen
 import com.example.malangtrip.databinding.BMainLoginScreenBinding
 import com.example.malangtrip.login.DBKey.Companion.DB_URL
 import com.example.malangtrip.login.DBKey.Companion.DB_USERS
@@ -51,7 +52,7 @@ class Email_Login: AppCompatActivity() {
                         user["fcmToken"] = token
 
                         Firebase.database(DB_URL).reference.child(DB_USERS).child(userId).updateChildren(user)
-                        startActivity(Intent(this,User_Data_Input::class.java))
+                        startActivity(Intent(this,Main_Screen::class.java))
                         finish()
                     }
 

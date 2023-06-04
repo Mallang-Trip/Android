@@ -48,7 +48,10 @@
         <activity android:name=".Nav.Chat.Chat_Screen.Chat_Screen" />
         <activity android:name=".Nav.Community.Write_Community.Write_Text" />
         <activity android:name=".Nav.Home.Jeju.Main_Jeju"/>
-        <activity android:name=".Nav.Community.Read_Community.Go_To_Board"/>
+        <activity android:name=".Nav.Community.Read_Community.Go_To_Board"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity android:name=".login.Complete_Join"/>
         <activity android:name=".Nav.Community.Write_Community.Fix_Board"/>
         <service
             android:name=".Nav.Chat.MyFirebaseMessagingService"

@@ -97,5 +97,14 @@ class Main_Chat : Fragment(){
         _binding = null
     }
 
-
+//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+//        return when (item.itemId) {
+//            android.R.id.home -> {
+//                //requireActivity().onBackPressed()
+//                requireActivity().supportFragmentManager.popBackStack()
+//                true
+//            }
+//            else -> super.onOptionsItemSelected(item)
+//        }
+//    }
 }

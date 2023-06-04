@@ -9,6 +9,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
+import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -39,12 +40,14 @@ class Write_Text : AppCompatActivity(){
     private lateinit var binding: NCommunityWriteTextBinding
     //private lateinit var imageAdapter: ImageAdapter
     private lateinit var key: String
+    private var photo_Check : Boolean = false
     //private var imageCount = 1
-    private var photo_Check = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = NCommunityWriteTextBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         var selectedRadioButtonId = R.id.select_free // Default value
         binding.checkBoard.setOnCheckedChangeListener { group, checkedId ->
             selectedRadioButtonId = checkedId
@@ -80,6 +83,7 @@ class Write_Text : AppCompatActivity(){
                 }
                 if(photo_Check==true)
                 {
+                    Log.d("!2323","이미지 업로드완료")
                     upload_Image(key)
                 }
 
@@ -180,7 +184,7 @@ class Write_Text : AppCompatActivity(){
 
         val storage = Firebase.storage
         val storageRef = storage.reference
-        val mountainsRef = storageRef.child(key + ".png")
+        val mountainsRef = storageRef.child(key+".png")
 
         val imageView = binding.imageArea
         imageView.isDrawingCacheEnabled = true

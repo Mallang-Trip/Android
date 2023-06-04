@@ -62,7 +62,7 @@
         android:layout_height="10dp" />
 
     <EditText
-        android:id="@+id/input_friend_name2"
+        android:id="@+id/input_avail_num"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -86,7 +86,7 @@
         android:layout_height="5dp" />
 
     <Button
-        android:id="@+id/select_loacl_btn"
+        android:id="@+id/select_local_btn"
         android:layout_width="165dp"
         android:layout_height="wrap_content"
         android:layout_weight="0"

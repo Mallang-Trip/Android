@@ -1,6 +1,7 @@
 package com.example.malangtrip.login
 
 import com.example.malangtrip.Nav.Community.CommunityItem
+import com.example.malangtrip.Nav.Myinfo.Driver.Driver_Info.Trip_Info
 
 class DBKey {
     companion object
@@ -12,8 +13,8 @@ class DBKey {
         const val DB_Friends = "Friends"
         const val Community_Key = "EveryCommunity"
         const val Comment_Key = "Comment"
-        const val Jeju_Driver = "JejuDriver"
-        const val Ulleung_Driver = "UlleungDriver"
+        const val Driver = "Driver"
+        const val Trip_Info = "TripInfo"
 
     }
 }

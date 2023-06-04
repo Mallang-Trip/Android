@@ -37,14 +37,42 @@ class User_Data_Input : AppCompatActivity(){
         }
 
         //닉네임 자기 소개 입력 받기
-        binding.goFirebase.setOnClickListener {
+//        binding.goFirebase.setOnClickListener {
+//            if(isImageUpload == true) {
+//                imageUpload(curruntId)
+//            }
+//            val nickname = binding.InputNickname.text.toString()
+//            val description = binding.InputIntroduce.text.toString()
+//            if (nickname.isEmpty()) {
+//                Toast.makeText(this, "유저이름은 빈 값으로 둘 수 없습니다", Toast.LENGTH_SHORT).show()
+//                return@setOnClickListener
+//            }
+//
+//            val mydb = Firebase.database.reference.child(DBKey.DB_USERS).child(curruntId)//내 정보 접근
+//            val myprofile = mutableMapOf<String, Any>()
+//
+//            myprofile["nickname"] = nickname
+//            myprofile["description"] = description
+//            mydb.updateChildren(myprofile)
+//
+//        }
+        binding.selectProfilePhoto.setOnClickListener {
+            val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
+            startActivityForResult(gallery, 100)
+            isImageUpload = true
+        }
+
+        binding.goToMain.setOnClickListener {
             if(isImageUpload == true) {
                 imageUpload(curruntId)
             }
             val nickname = binding.InputNickname.text.toString()
             val description = binding.InputIntroduce.text.toString()
-            if (nickname.isEmpty()) {
-                Toast.makeText(this, "유저이름은 빈 값으로 둘 수 없습니다", Toast.LENGTH_SHORT).show()
+            val bank = binding.InputBank.text.toString()
+            val bank_Num = binding.InputBankNum.text.toString()
+
+            if (nickname.isEmpty()||bank.isEmpty()||bank_Num.isEmpty()) {
+                Toast.makeText(this, "닉네임, 계좌번호, 거래은행은 빈 값으로 둘 수 없습니다", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
@@ -53,17 +81,10 @@ class User_Data_Input : AppCompatActivity(){
 
             myprofile["nickname"] = nickname
             myprofile["description"] = description
+            myprofile["bankNum"] = bank_Num
+            myprofile["bankNum"] =  bank
             mydb.updateChildren(myprofile)
-
-        }
-        binding.selectProfilePhoto.setOnClickListener {
-            val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
-            startActivityForResult(gallery, 100)
-            isImageUpload = true
-        }
-
-        binding.goToMain.setOnClickListener {
-            startActivity(Intent(this,Main_Screen::class.java))
+            startActivity(Intent(this,Complete_Join::class.java))
             finish()
         }
 

@@ -3,17 +3,22 @@ package com.example.malangtrip.Nav.Myinfo
 import android.content.Intent
 import android.os.Bundle
 import android.view.*
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.malangtrip.Main_Screen
+import com.example.malangtrip.Nav.Chat.User.User_Info
 import com.example.malangtrip.Nav.Home.Main_Home
 import com.example.malangtrip.Nav.Myinfo.My_Profile.Fix_Myprofile
 import com.example.malangtrip.Nav.Myinfo.Reservation.Main_Reservation
-import com.example.malangtrip.Nav.Myinfo.Resister_Driver.Main_Resister_Driver
+import com.example.malangtrip.Nav.Myinfo.Driver.Main_Resister_Driver
+import com.example.malangtrip.Nav.Myinfo.Driver.Resister_Driver_Schedule
 import com.example.malangtrip.R
 import com.example.malangtrip.databinding.NMyinfoBinding
+import com.example.malangtrip.login.DBKey
 import com.example.malangtrip.login.Email_Login
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 
 //내 정보 메인
@@ -54,6 +59,26 @@ class Main_Myinfo : Fragment() {
             transaction.replace(R.id.fragmentContainer, MyText_Check)
             transaction.addToBackStack(null)
             transaction.commit()
+        }
+        // 내 여행 정보 등록
+        binding.MyScheduleControl.setOnClickListener {
+            val curruntId = Firebase.auth.currentUser?.uid ?: "" // 현재 유저 아이디 가져오기
+            val mydb = Firebase.database.reference.child(DBKey.DB_USERS).child(curruntId)//내 정보 접근
+            mydb.get().addOnSuccessListener {
+                val myinfo = it.getValue(User_Info::class.java)?: return@addOnSuccessListener
+                val driver_Check = myinfo.driver_Check.toString()
+                if(driver_Check=="false")
+                {
+                    Toast.makeText(context,"드라이버로 등록된 사람만 사용할 수 있는 기능입니다.", Toast.LENGTH_SHORT).show()
+                }
+                else{
+                    val MyText_Check = Resister_Driver_Schedule()
+                    val transaction = parentFragmentManager.beginTransaction()
+                    transaction.replace(R.id.fragmentContainer, MyText_Check)
+                    transaction.addToBackStack(null)
+                    transaction.commit()
+                }
+            }
         }
         binding.goLogoutBtn.setOnClickListener {
             Firebase.auth.signOut()

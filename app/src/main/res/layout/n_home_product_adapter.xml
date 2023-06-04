@@ -33,6 +33,6 @@
         android:id="@+id/bookmark_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:srcCompat="@android:drawable/btn_star_big_on" />
+        app:srcCompat="@android:drawable/btn_star_big_off" />
 
 </LinearLayout>

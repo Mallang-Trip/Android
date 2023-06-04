@@ -3,11 +3,15 @@ package com.example.malangtrip.Nav.Community.Read_Community
 import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.provider.ContactsContract.CommonDataKinds.Nickname
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.RelativeLayout
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -73,11 +77,24 @@ class Go_To_Board : AppCompatActivity(){
         binding.commentBtn.setOnClickListener {
             insertComment(key)
             Toast.makeText(this, "댓글 입력 완료", Toast.LENGTH_SHORT).show()
-
+//            binding.commentLV.post {
+//                binding.commentLV.setSelection(commentAdapter.count - 1)
+//            }
+            Handler(Looper.getMainLooper()).postDelayed({
+                binding.forDown.fullScroll(View.FOCUS_DOWN)
+            }, 300)
         }
-        getCommentData(key)
+       // getCommentData(key)
+
+        //리스트뷰
         commentAdapter = Comment_Adapter(commentDataList)
         binding.commentLV.adapter = commentAdapter
+        getCommentData(key)
+        //리사이클러뷰
+//        commentAdapter = Comment_Adapter(commentDataList)
+//        binding.commentLV.layoutManager = LinearLayoutManager(this)
+//        binding.commentLV.adapter = commentAdapter
+        //키보드 나타났을 때 채팅창 위로 올림
 
 
 
@@ -111,13 +128,14 @@ private fun getImageData(key : String)
 
     // ImageView in your Activity
     val imageViewFromFB = binding.imageArea
-
+    Log.d("123",key + ".png")
     storageReference.downloadUrl.addOnCompleteListener(OnCompleteListener { task ->
         if(task.isSuccessful) {
 
             Glide.with(this)
                 .load(task.result)
                 .into(imageViewFromFB)
+
 
         } else {
                 binding.imageArea.isVisible = false
@@ -172,9 +190,11 @@ private fun getImageData(key : String)
                                 )
                             )
                         binding.commentArea.setText("")
-
+                        getCommentData(key)
+                        //binding.commentLV.setSelection(commentAdapter.count - 1)
 
                     }
+
                 }
 
                 override fun onCancelled(databaseError: DatabaseError) {
@@ -246,6 +266,12 @@ private fun getImageData(key : String)
                     commentDataList.add(item!!)
                 }
                 commentAdapter.notifyDataSetChanged()
+                // 스크롤을 마지막 댓글로 이동
+
+
+
+                updateListViewHeight()
+
             }
 
 
@@ -254,9 +280,25 @@ private fun getImageData(key : String)
                 Log.w(TAG, "loadPost:onCancelled", databaseError.toException())
             }
         }
+
+
         //Firebase.database.reference.child(DBKey.DB_USERS).child(curruntId)//내 정보 접근
         Firebase.database.reference.child(DBKey.Comment_Key).child(key).addValueEventListener(postListener)
 
 
+    }
+    fun updateListViewHeight() {
+        val totalHeight = commentDataList.size *81
+        val params = binding.commentLV.layoutParams
+        params.height = totalHeight.dpToPx()
+        binding.commentLV.layoutParams = params
+        binding.commentLV.requestLayout()
+
+
+    }
+
+    fun Int.dpToPx(): Int {
+        val density = resources.displayMetrics.density
+        return (this * density).toInt()
     }
 }

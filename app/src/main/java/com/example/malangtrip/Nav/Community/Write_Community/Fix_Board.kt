@@ -192,9 +192,10 @@ class Fix_Board : AppCompatActivity() {
     }
     private fun editBoardDataWithDelay(key: String) {
         // 1.5초 딜레이를 주기 위해 Handler를 사용합니다.
+        finish()
         Handler().postDelayed({
             editBoardData(key)
-        }, 1250)
+        }, 1400)
     }
 
     private fun getBoardData(key : String){
