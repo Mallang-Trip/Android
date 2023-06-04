@@ -4,22 +4,14 @@ package com.example.malangtrip.Nav.Community.Write_Community
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
-import android.graphics.drawable.Drawable
-import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
-import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.target.CustomTarget
-import com.bumptech.glide.request.transition.Transition
-import com.example.malangtrip.Nav.Chat.User.User_Info
+import com.example.malangtrip.login.User_Info
 import com.example.malangtrip.Nav.Community.CommunityAuth
 import com.example.malangtrip.Nav.Community.CommunityItem
-import com.example.malangtrip.Nav.Community.Read_Community.Go_To_Board
 import com.example.malangtrip.R
 
 import com.example.malangtrip.databinding.NCommunityWriteTextBinding
@@ -27,13 +19,10 @@ import com.example.malangtrip.login.DBKey
 import com.example.malangtrip.login.DBKey.Companion.Community_Key
 import com.example.malangtrip.login.DBKey.Companion.DB_URL
 import com.google.firebase.auth.ktx.auth
-import com.google.firebase.database.annotations.Nullable
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
-import com.google.firebase.storage.StorageMetadata
 import com.google.firebase.storage.ktx.storage
 import java.io.ByteArrayOutputStream
-import kotlin.properties.Delegates
 
 
 class Write_Text : AppCompatActivity(){

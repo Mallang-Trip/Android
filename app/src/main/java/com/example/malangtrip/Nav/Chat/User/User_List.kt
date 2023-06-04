@@ -15,7 +15,7 @@ import com.example.malangtrip.R
 import com.example.malangtrip.databinding.NChatUserlistBinding
 import com.example.malangtrip.login.DBKey.Companion.DB_CHAT_ROOMS
 import com.example.malangtrip.login.DBKey.Companion.DB_Friends
-import com.example.malangtrip.login.DBKey.Companion.DB_USERS
+import com.example.malangtrip.login.User_Info
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError

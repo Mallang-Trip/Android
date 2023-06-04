@@ -1,4 +1,4 @@
-package com.example.malangtrip.Nav.Chat.User
+package com.example.malangtrip.login
 
 //유저 정보
 data class User_Info(

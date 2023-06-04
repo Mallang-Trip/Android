@@ -1,5 +1,6 @@
 package com.example.malangtrip.login
 
+import android.content.Intent
 import java.util.concurrent.TimeUnit
 import android.os.Bundle
 import android.widget.Toast
@@ -36,7 +37,8 @@ class Join_Membership :AppCompatActivity() {
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful&&password==password_check) {
                         // 회원가입 성공
-                        Toast.makeText(this, "회원가입에 성공했습니다. 로그인해주세요.", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, "회원가입에 성공했습니다.", Toast.LENGTH_SHORT).show()
+                        startActivity(Intent(this,User_Data_Input::class.java))
                         finish()
                     } else {
                         // 회원가입 실패

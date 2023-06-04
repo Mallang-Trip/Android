@@ -27,7 +27,13 @@ class Main_Screen : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = BMainScreenBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        //supportActionBar?.apply {
+           // setDisplayShowCustomEnabled(true)
+            //setDisplayShowTitleEnabled(false)  // 필요한 경우 제목 표시를 비활성화합니다.
+         //   setCustomView(R.layout.action_bar)
+       // }
         //알림권한 물어보기ㅛ
+
         askNotificationPermission()
         //처음에 홈으로 세팅
         val fragmentManager = supportFragmentManager

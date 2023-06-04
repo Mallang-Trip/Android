@@ -1,13 +1,12 @@
 package com.example.malangtrip.Nav.Chat.Chat_Screen
 
-import android.graphics.Rect
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.malangtrip.Nav.Chat.User.User_Info
+import com.example.malangtrip.login.User_Info
 import com.example.malangtrip.R
 import com.example.malangtrip.databinding.NChatChatscreenBinding
 import com.example.malangtrip.login.DBKey

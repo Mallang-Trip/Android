@@ -8,7 +8,7 @@
     <style name="HomeTheme" parent="Theme.AppCompat.Light.NoActionBar">
     </style>
 
-    <style name="Theme.MalangTrip" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.MalangTrip" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">#469EFF</item>
         <item name="android:textColorPrimary">@android:color/black</item>
@@ -24,13 +24,17 @@
         <item name="colorOnSecondary">#469EFF</item>
 
         <!-- Status bar color. -->
-        <item name="android:statusBarColor">@android:color/holo_purple</item>
+        <item name="android:statusBarColor">#469EFF</item>
         <!-- Customize your theme here. -->
         <item name="android:fontFamily">@font/jejugothic</item>
 
 <!--        &lt;!&ndash; 액션바 스타일 지정 &ndash;&gt;-->
-<!--        <item name="actionBarStyle">@style/MyActionBarStyle</item>-->
+
+        <item name="actionBarStyle">@style/MyActionBar</item>
+
+
     </style>
+
 
 <!--    <style name="MyActionBarStyle" parent="Widget.MaterialComponents.ActionBar.Solid">-->
 <!--        &lt;!&ndash; 음영(셰도우) 제거 &ndash;&gt;-->
@@ -39,6 +43,20 @@
 <!--    </style>-->
 
 
+    <style name="MyActionBar" parent="@style/Widget.AppCompat.ActionBar">
+        <item name="android:background">@android:color/white</item>
+        <item name="android:logo">@drawable/main_logo</item>
+        <item name="android:elevation">0dp</item> <!-- 이 부분을 추가 -->
+        <item name="titleTextStyle">@style/MyTitleTextStyle</item> <!-- 액션바의 제목 텍스트 스타일을 설정 -->
+    </style>
+    <!-- 액션바의 제목 텍스트 스타일 -->
+    <style name="MyTitleTextStyle" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textColor">@android:color/black</item> <!-- 제목 텍스트 색상을 검은색으로 설정 -->
+    </style>
+    <style name="MyNavigationViewStyle" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="android:background">@android:color/white</item>
 
+
+    </style>
 
 </resources>

@@ -1,15 +1,13 @@
 package com.example.malangtrip.Nav.Myinfo.My_Profile
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.*
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.malangtrip.Nav.Chat.User.User_Info
+import com.example.malangtrip.login.User_Info
 import com.example.malangtrip.Nav.Common_Function_Fragment
 import com.example.malangtrip.databinding.NMyinfoProfileCheckFixProfileBinding
 import com.example.malangtrip.login.DBKey
-import com.example.malangtrip.login.Email_Login
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -39,12 +37,14 @@ class Fix_Myprofile : Common_Function_Fragment() {
         mydb.get().addOnSuccessListener {
                 val myinfo = it.getValue(User_Info::class.java)?: return@addOnSuccessListener
             binding.fixNicknameEdit.setText(myinfo.nickname)
-            binding.fixDescriptionEdit.setText(myinfo.description)
+            binding.fixDesEdit.setText(myinfo.description)
+            binding.InputBank.setText(myinfo.bank)
+            myinfo.bankNum?.let { it1 -> binding.InputBankNum.setText(it1) }
         }
         //수정한거 적용하는 버튼튼
        binding.applyBtn.setOnClickListener {
            val Nickname = binding.fixNicknameEdit.text.toString()
-           val Description = binding.fixDescriptionEdit.text.toString()
+           val Description = binding.fixDesEdit.text.toString()
 
            if (Nickname.isEmpty()) {
                Toast.makeText(context, "유저이름은 빈 값으로 둘 수 없습니다", Toast.LENGTH_SHORT).show()

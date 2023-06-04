@@ -7,14 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.example.malangtrip.Nav.Chat.User.User_Adapter
-import com.example.malangtrip.Nav.Chat.User.User_Info
-import com.example.malangtrip.Nav.Chat.User.User_List
 
 
 import com.example.malangtrip.databinding.NChatSearchFriendBinding
 import com.example.malangtrip.login.DBKey
-import com.example.malangtrip.login.DBKey.Companion.DB_URL
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
