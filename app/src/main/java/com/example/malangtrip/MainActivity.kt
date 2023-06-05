@@ -28,8 +28,14 @@ import android.Manifest
 
 
 import com.example.malangtrip.databinding.ActivityMainBinding
+import com.example.malangtrip.login.DBKey
 import com.example.malangtrip.login.Email_Login
+import com.example.malangtrip.login.User_Data_Input
+import com.example.malangtrip.login.User_Info
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 
 import com.kakao.sdk.common.util.Utility
 //메인 액티비티
@@ -58,19 +64,36 @@ class MainActivity : AppCompatActivity() {
 
         // 현재 로그인 상태 확인
         val currentUser = mAuth.currentUser
-        if (currentUser != null) {
-            // 이미 로그인 되어 있으면 Main_Screen 액티비티로 바로 이동
-            startActivity(Intent(this, Main_Screen::class.java))
-            finish() // 현재 액티비티 종료
-        }
+
+//        if (currentUser != null) {
+//            // 이미 로그인 되어 있으면 Main_Screen 액티비티로 바로 이동
+//            startActivity(Intent(this, Main_Screen::class.java))
+//            finish() // 현재 액티비티 종료
+//        }
+//        else{
+            val curruntId=Firebase.auth.currentUser?.uid?:""
+            val mydb = Firebase.database.reference.child(DBKey.DB_USERS).child(curruntId)//내 정보 접근
+           mydb.get().addOnSuccessListener {
+              val myinfo = it.getValue(User_Info::class.java)?: return@addOnSuccessListener
+               val bank = myinfo.bank
+               val bank_Num = myinfo.bankNum
+               val nickName = myinfo.nickname
+               if(bank==null||bank_Num==null||nickName==null)
+               {
+                   startActivity(Intent(this, User_Data_Input::class.java))
+               }
+               else{
+                   startActivity(Intent(this, Main_Screen::class.java))
+               }
+
+          }
+
+        //}
         // 데이터 입력 과정으로 가기
-        binding.goToLogin.setOnClickListener {
-            startActivity(Intent(this, Email_Login::class.java))
-        }
-        // 로그인 과정 다 스킵해서 가기
-        binding.skipLogin.setOnClickListener {
-            startActivity(Intent(this, Main_Screen::class.java))
-        }
+
+
+        startActivity(Intent(this, Email_Login::class.java))
+
         //서버로 카카오 데이터 보내기 테스트
 //        binding.TestToServerButton.setOnClickListener {
 //            startActivity(Intent(this, ToServerTest::class.java))

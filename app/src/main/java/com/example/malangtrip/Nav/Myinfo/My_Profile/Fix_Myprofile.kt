@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.malangtrip.login.User_Info
 import com.example.malangtrip.Nav.Common_Function_Fragment
+import com.example.malangtrip.R
 import com.example.malangtrip.databinding.NMyinfoProfileCheckFixProfileBinding
 import com.example.malangtrip.login.DBKey
 import com.google.firebase.auth.ktx.auth
@@ -30,15 +31,19 @@ class Fix_Myprofile : Common_Function_Fragment() {
         //액션바 활성화 및 이름 변경후 뒤로가기 버튼 활성화
         val actionBar = (requireActivity() as AppCompatActivity).supportActionBar
         actionBar?.setDisplayHomeAsUpEnabled(true)
-        actionBar?.title = "프로필 변경"
+        actionBar?.title = "나의 프로필"
+
         //현재 내 정보 가져오기
         val curruntId=Firebase.auth.currentUser?.uid?:"" // 현재 유저 아이디 가져오기
         val mydb = Firebase.database.reference.child(DBKey.DB_USERS).child(curruntId)//내 정보 접근
+        val currentUser = Firebase.auth.currentUser
+        val email = currentUser?.email.toString()
         mydb.get().addOnSuccessListener {
                 val myinfo = it.getValue(User_Info::class.java)?: return@addOnSuccessListener
             binding.fixNicknameEdit.setText(myinfo.nickname)
             binding.fixDesEdit.setText(myinfo.description)
             binding.InputBank.setText(myinfo.bank)
+            binding.myId.setText(" "+email)
             myinfo.bankNum?.let { it1 -> binding.InputBankNum.setText(it1) }
         }
         //수정한거 적용하는 버튼튼
@@ -77,7 +82,7 @@ class Fix_Myprofile : Common_Function_Fragment() {
                    //Log.w(TAG, "Failed to read value.", error.toException())
                }
            })
-
+           requireActivity().supportFragmentManager.popBackStack()
        }
 
         //메뉴 사용 활성화
@@ -93,7 +98,9 @@ class Fix_Myprofile : Common_Function_Fragment() {
                 false
             }
         }
-
+    binding.cancleButton.setOnClickListener {
+        requireActivity().supportFragmentManager.popBackStack()
+    }
         return root
     }
 

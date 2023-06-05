@@ -1,9 +1,12 @@
 package com.example.malangtrip.Nav.Community.Every_Board
 
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.PorterDuff
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.malangtrip.Nav.Community.CommunityItem
 import com.example.malangtrip.Nav.Community.Board_Adapter
@@ -89,6 +92,9 @@ class Every_Board_Screen : Fragment() {
     }
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.community_write, menu)
+
+
+
         super.onCreateOptionsMenu(menu, inflater)
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

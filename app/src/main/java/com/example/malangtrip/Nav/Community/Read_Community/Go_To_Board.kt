@@ -1,6 +1,7 @@
 package com.example.malangtrip.Nav.Community.Read_Community
 
 import android.content.ContentValues.TAG
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
@@ -8,7 +9,10 @@ import android.os.Looper
 import android.provider.ContactsContract.CommonDataKinds.Nickname
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.RelativeLayout
@@ -27,6 +31,7 @@ import com.example.malangtrip.Nav.Community.Write_Community.Write_Text
 import com.example.malangtrip.R
 import com.example.malangtrip.databinding.NCommunityTextBinding
 import com.example.malangtrip.login.DBKey
+import com.example.malangtrip.login.User_Info
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
@@ -46,6 +51,7 @@ class Go_To_Board : AppCompatActivity(){
 
 
     private lateinit var key: String
+    var menu_Check = false
     //사진 여러장
     //private lateinit var imageAdapter: Board_Image_Adapter
 //    private var imageCount by Delegates.notNull<Int>()
@@ -58,10 +64,7 @@ class Go_To_Board : AppCompatActivity(){
         binding =NCommunityTextBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-    binding.fixDeleteIcon.setOnClickListener {
-        show_dialog()
 
-    }
         key = intent.getStringExtra("key").toString()
         name  = intent.getStringExtra("name").toString()
 
@@ -75,11 +78,21 @@ class Go_To_Board : AppCompatActivity(){
         getBoardData(key)
         getImageData(key)
         binding.commentBtn.setOnClickListener {
+            val comment = binding.commentArea.text.toString()
+            if(comment==null)
+            {
+                Toast.makeText(this, "아무 것도 입력하지 않으셨습니다.", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
             insertComment(key)
             Toast.makeText(this, "댓글 입력 완료", Toast.LENGTH_SHORT).show()
 //            binding.commentLV.post {
 //                binding.commentLV.setSelection(commentAdapter.count - 1)
 //            }
+            // 키보드 내리기
+            val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.hideSoftInputFromWindow(binding.commentArea.windowToken, 0)
+
             Handler(Looper.getMainLooper()).postDelayed({
                 binding.forDown.fullScroll(View.FOCUS_DOWN)
             }, 300)
@@ -142,29 +155,21 @@ private fun getImageData(key : String)
         }
     })
 }
-    private fun show_dialog()
-    {
-                val DialogView = LayoutInflater.from(this).inflate(R.layout.n_community_board_fix_dialog,null)
-                val builder = AlertDialog.Builder(this)
-                    .setView(DialogView)
-                    .setTitle("게시글 수정/삭제")
 
-        val alterDialog = builder.show()
-        alterDialog.findViewById<Button>(R.id.fix_btn)?.setOnClickListener {
-            val intent = Intent(this, Fix_Board::class.java)
-            intent.putExtra("key", key)
-            intent.putExtra("name", name)
-            startActivity(intent)
-            finish()
-
-        }
-        alterDialog.findViewById<Button>(R.id.delete_btn)?.setOnClickListener {
-            Firebase.database.getReference("EveryCommunity").child(key).removeValue()
-            Toast.makeText(this,"글이 삭제되었습니다",Toast.LENGTH_LONG).show()
-            finish()
-        }
-    }
     fun insertComment(key : String){
+    val boardDb = Firebase.database.reference.child(DBKey.Community_Key).child(key)
+    boardDb.addListenerForSingleValueEvent(object : ValueEventListener {
+        override fun onDataChange(dataSnapshot: DataSnapshot) {
+            val boardInfo = dataSnapshot.getValue(CommunityItem::class.java)
+            val commentNum = boardInfo?.commentNum ?: 0
+            boardDb.child("commentNum").setValue(commentNum + 1)
+        }
+
+        override fun onCancelled(databaseError: DatabaseError) {
+            // 오류 처리
+        }
+    })
+
         val myid = Firebase.auth.currentUser?.uid ?: "" // 현재 유저 아이디 가져오기
         // comment
         //   - BoardKey
@@ -216,7 +221,12 @@ private fun getImageData(key : String)
                     val dataModel = dataSnapshot.getValue(CommunityItem::class.java)
 
 
-                    binding.boardTitle.text = dataModel!!.title
+                        //binding.boardTitle.text = dataModel!!.title
+                    supportActionBar?.apply {
+                        title = dataModel!!.title
+                        setDisplayHomeAsUpEnabled(true) // 뒤로가기 버튼 표시
+                        supportActionBar?.setHomeAsUpIndicator(R.drawable.my_home_back)
+                    }
                     binding.boardContent.text = dataModel!!.content
                     binding.boardTime.text = dataModel!!.time
                     binding.boardUserName.text = dataModel!!.userName
@@ -224,8 +234,10 @@ private fun getImageData(key : String)
                     val text_id = dataModel.userId
                     if(myid==text_id)
                     {
+
                         Log.d("나 자신임",myid)
-                        binding.fixDeleteIcon.isVisible = true
+                        menu_Check=true
+                        //invalidateOptionsMenu()
                     }
                     else{
                         Log.d("나 자신이 아님",myid)
@@ -300,5 +312,34 @@ private fun getImageData(key : String)
     fun Int.dpToPx(): Int {
         val density = resources.displayMetrics.density
         return (this * density).toInt()
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                //requireActivity().onBackPressed()
+                finish()
+                true
+            }
+            R.id.fix_Btn->{
+                val intent = Intent(this, Fix_Board::class.java)
+                intent.putExtra("key", key)
+                intent.putExtra("name", name)
+                startActivity(intent)
+                finish()
+                true
+            }
+            R.id.delete_Btn->{
+                Firebase.database.getReference("EveryCommunity").child(key).removeValue()
+                Toast.makeText(this,"글이 삭제되었습니다",Toast.LENGTH_LONG).show()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        if(menu_Check) {
+            menuInflater.inflate(R.menu.fix_board, menu)
+        }
+        return true
     }
 }

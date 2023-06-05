@@ -38,7 +38,6 @@
                     android:scheme="kakaoa0d1ab4cd4502733d63c9fa927683fd7" />
             </intent-filter>
         </activity> <!-- 로그인 액티비티 -->
-        <activity android:name=".login.KakaoLogin" />
         <activity android:name=".login.User_Data_Input" />
         <activity android:name=".Main_Screen"
             android:windowSoftInputMode="adjustPan"/>

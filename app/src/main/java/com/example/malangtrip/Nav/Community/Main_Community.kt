@@ -30,9 +30,10 @@ class Main_Community : Fragment(){
 
         // 액션바 설정, 이름변경, 액티비티에 연결되어 있는 프래그먼트이므로 상단 뒤로가기 버튼 없음
         val actionBar = (requireActivity() as AppCompatActivity).supportActionBar
-        actionBar?.setDisplayHomeAsUpEnabled(false)
+        actionBar?.setDisplayHomeAsUpEnabled(true)
         actionBar?.title = "커뮤니티"
-
+        actionBar?.setDisplayHomeAsUpEnabled(true)
+        setHasOptionsMenu(true)
         // 뷰페이저 어댑터 생성
         val viewPagerAdapter = CommunityViewPagerAdapter(childFragmentManager, lifecycle)
 
@@ -82,5 +83,18 @@ class Main_Community : Fragment(){
         super.onDestroyView()
         _binding = null
     }
-
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                //requireActivity().onBackPressed()
+                val homeFragment = Main_Home()
+                val transaction = requireActivity().supportFragmentManager.beginTransaction()
+                transaction.replace(R.id.fragmentContainer, homeFragment)
+                transaction.addToBackStack(null)
+                transaction.commit()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
 }

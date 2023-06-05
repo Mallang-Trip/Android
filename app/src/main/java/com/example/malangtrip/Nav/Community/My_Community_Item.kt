@@ -1,7 +1,6 @@
 package com.example.malangtrip.Nav.Community
 
-data class CommunityItem(
-
+data class My_Community_Item (
     val userId: String="", // 작성자 ID
     val userName: String="", // 작성자 이름
     var title: String="", // 글 제목
@@ -9,4 +8,4 @@ data class CommunityItem(
     var time: String="", // 작성 시간
     var boardType: String = "",//글종류
     var commentNum:Int=0
-)
+    )

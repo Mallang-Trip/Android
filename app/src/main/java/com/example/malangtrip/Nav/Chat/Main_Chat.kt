@@ -39,6 +39,8 @@ class Main_Chat : Fragment(){
         // 액션바 설정, 이름변경
         val actionBar = (requireActivity() as AppCompatActivity).supportActionBar
         actionBar?.title = "말랑톡"
+        actionBar?.setDisplayHomeAsUpEnabled(true)
+        setHasOptionsMenu(true)
         // 뷰페이저 어댑터 생성
         val viewPagerAdapter = ChatViewPagerAdapter(childFragmentManager, lifecycle)
 
@@ -97,14 +99,19 @@ class Main_Chat : Fragment(){
         _binding = null
     }
 
-//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-//        return when (item.itemId) {
-//            android.R.id.home -> {
-//                //requireActivity().onBackPressed()
-//                requireActivity().supportFragmentManager.popBackStack()
-//                true
-//            }
-//            else -> super.onOptionsItemSelected(item)
-//        }
-//    }
+
+override fun onOptionsItemSelected(item: MenuItem): Boolean {
+    return when (item.itemId) {
+        android.R.id.home -> {
+            //requireActivity().onBackPressed()
+            val homeFragment = Main_Home()
+            val transaction = requireActivity().supportFragmentManager.beginTransaction()
+            transaction.replace(R.id.fragmentContainer, homeFragment)
+            transaction.addToBackStack(null)
+            transaction.commit()
+            true
+        }
+        else -> super.onOptionsItemSelected(item)
+    }
+}
 }

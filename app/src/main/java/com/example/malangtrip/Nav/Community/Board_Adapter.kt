@@ -46,7 +46,12 @@ class Board_Adapter(val writer_info :MutableList<CommunityItem>) : BaseAdapter()
             }
             val time = Every_Write_Text?.findViewById<TextView>(R.id.every_write_time)
             time?.apply {
-                text = writer_info[position].time
+                text = writer_info[position].time+" / "+writer_info[position].commentNum+"개"
+                setTextColor(Color.BLUE)
+            }
+            val writer_Name = Every_Write_Text?.findViewById<TextView>(R.id.nickName)
+            writer_Name?.apply {
+                text = writer_info[position].userName
                 setTextColor(Color.BLUE)
             }
         }
@@ -57,7 +62,9 @@ class Board_Adapter(val writer_info :MutableList<CommunityItem>) : BaseAdapter()
             content!!.maxLines = 3
             content!!.text=writer_info[position].content
             val time = Every_Write_Text?.findViewById<TextView>(R.id.every_write_time)
-            time!!.text=writer_info[position].time
+            time!!.text=writer_info[position].time+" / "+writer_info[position].commentNum+"개"
+            val writer_Name = Every_Write_Text?.findViewById<TextView>(R.id.nickName)
+            writer_Name!!.text=writer_info[position].userName
         }
         return  Every_Write_Text!!
     }

@@ -35,7 +35,8 @@ class Main_Myinfo : Fragment() {
         // 액션바 설정, 이름변경
         val actionBar = (requireActivity() as AppCompatActivity).supportActionBar
         actionBar?.title = "내 정보"
-        actionBar?.setDisplayHomeAsUpEnabled(false)
+        actionBar?.setDisplayHomeAsUpEnabled(true)
+        setHasOptionsMenu(true)
         //내 정보-> 프로필 확인
         binding.GoToMyProfile.setOnClickListener {
             val Profile_Check_Fragment = Fix_Myprofile()
@@ -117,5 +118,19 @@ class Main_Myinfo : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                //requireActivity().onBackPressed()
+                val homeFragment = Main_Home()
+                val transaction = requireActivity().supportFragmentManager.beginTransaction()
+                transaction.replace(R.id.fragmentContainer, homeFragment)
+                transaction.addToBackStack(null)
+                transaction.commit()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 }

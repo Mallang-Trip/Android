@@ -70,6 +70,9 @@ class User_Data_Input : AppCompatActivity(){
             val description = binding.InputIntroduce.text.toString()
             val bank = binding.InputBank.text.toString()
             val bank_Num = binding.InputBankNum.text.toString()
+            val currentUser = Firebase.auth.currentUser
+            val email = currentUser?.email.toString()
+
 
             if (nickname.isEmpty()||bank.isEmpty()||bank_Num.isEmpty()) {
                 Toast.makeText(this, "닉네임, 계좌번호, 거래은행은 빈 값으로 둘 수 없습니다", Toast.LENGTH_SHORT).show()
@@ -78,11 +81,11 @@ class User_Data_Input : AppCompatActivity(){
 
             val mydb = Firebase.database.reference.child(DBKey.DB_USERS).child(curruntId)//내 정보 접근
             val myprofile = mutableMapOf<String, Any>()
-
+            myprofile["userId"] = email
             myprofile["nickname"] = nickname
             myprofile["description"] = description
             myprofile["bankNum"] = bank_Num
-            myprofile["bankNum"] =  bank
+            myprofile["bank"] =  bank
             mydb.updateChildren(myprofile)
             startActivity(Intent(this,Complete_Join::class.java))
             finish()

@@ -7,11 +7,15 @@ import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.malangtrip.login.User_Info
 import com.example.malangtrip.Nav.Community.CommunityAuth
 import com.example.malangtrip.Nav.Community.CommunityItem
+import com.example.malangtrip.Nav.Home.Main_Home
 import com.example.malangtrip.R
 
 import com.example.malangtrip.databinding.NCommunityWriteTextBinding
@@ -36,6 +40,11 @@ class Write_Text : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         binding = NCommunityWriteTextBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        supportActionBar?.apply {
+            title = "글쓰기"
+            setDisplayHomeAsUpEnabled(true) // 뒤로가기 버튼 표시
+            supportActionBar?.setHomeAsUpIndicator(R.drawable.my_home_back)
+        }
 
         var selectedRadioButtonId = R.id.select_free // Default value
         binding.checkBoard.setOnCheckedChangeListener { group, checkedId ->
@@ -103,7 +112,9 @@ class Write_Text : AppCompatActivity(){
 //            startActivityForResult(gallery, 100)
 //
 //        }
+
     }
+
             //사진 한장만 선택 할 때
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -191,4 +202,16 @@ class Write_Text : AppCompatActivity(){
             // ...
         }
     }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                //requireActivity().onBackPressed()
+                finish()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
 }

@@ -22,6 +22,7 @@ class Join_Membership :AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = BJoinScreenBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        supportActionBar?.hide() // 액션바 숨김
         mAuth = FirebaseAuth.getInstance()
 
         binding.joinBtn.setOnClickListener {

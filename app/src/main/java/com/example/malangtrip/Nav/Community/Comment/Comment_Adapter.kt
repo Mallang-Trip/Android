@@ -1,6 +1,7 @@
 package com.example.malangtrip.Nav.Community.Comment
 
 
+import android.graphics.Color
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -33,7 +34,10 @@ class Comment_Adapter(val commentList : MutableList<Comment_Item>) : BaseAdapter
                 .inflate(R.layout.n_community_comment_adapter, parent, false)
         }
         val title = Comment_Text?.findViewById<TextView>(R.id.UserName)
-        title!!.text=commentList[position].commentWriter
+        title?.apply {
+            text = commentList[position].commentWriter
+            setTextColor(Color.BLUE)
+        }
         val content = Comment_Text?.findViewById<TextView>(R.id.content)
         content!!.text=commentList[position].commentContent
         val time = Comment_Text?.findViewById<TextView>(R.id.timeArea)

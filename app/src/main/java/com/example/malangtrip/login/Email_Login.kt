@@ -23,6 +23,7 @@ class Email_Login: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = BMainLoginScreenBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        supportActionBar?.hide() // 액션바 숨김
     //회원가입으로 이동
         binding.joinBtn.setOnClickListener {
             startActivity(Intent(this,Join_Membership::class.java))

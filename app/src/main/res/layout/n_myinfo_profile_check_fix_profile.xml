@@ -123,159 +123,159 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:hint=" 아이디"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
-
-    </LinearLayout>
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="5dp"
-        android:layout_weight="0" />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_weight="0"
-        android:orientation="horizontal">
-
-        <LinearLayout
-            android:layout_width="400dp"
-            android:layout_height="match_parent"
-            android:layout_weight="2.8"
-            android:orientation="vertical">
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="3.1" />
-
-            <TextView
-                android:id="@+id/password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="2.8"
-                android:text="비밀번호"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="horizontal">
-
-            <EditText
-                android:id="@+id/fix_password_edit"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:hint="비밀번호" />
-
-            <Button
-                android:id="@+id/fix_phonemnum"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.3"
-                android:text="비밀번호변경"
-                android:textSize="6dp" />
-        </LinearLayout>
-
-    </LinearLayout>
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="5dp"
-        android:layout_weight="0" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/name"
-            android:layout_width="400dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2.8"
-            android:text="이름(실명)"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
-        <TextView
-            android:id="@+id/myName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:hint=" 이름"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
     </LinearLayout>
+<!--    <Space-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="5dp"-->
+<!--        android:layout_weight="0" />-->
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="40dp"-->
+<!--        android:layout_weight="0"-->
+<!--        android:orientation="horizontal">-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="400dp"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_weight="2.8"-->
+<!--            android:orientation="vertical">-->
+
+<!--            <Space-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_weight="3.1" />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/password"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_weight="2.8"-->
+<!--                android:text="비밀번호"-->
+<!--                android:textAppearance="@style/TextAppearance.AppCompat.Large" />-->
+<!--        </LinearLayout>-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:orientation="horizontal">-->
+
+<!--            <EditText-->
+<!--                android:id="@+id/fix_password_edit"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_weight="1"-->
+<!--                android:hint="비밀번호" />-->
+
+<!--            <Button-->
+<!--                android:id="@+id/fix_phonemnum"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_weight="0.3"-->
+<!--                android:text="비밀번호변경"-->
+<!--                android:textSize="6dp" />-->
+<!--        </LinearLayout>-->
+
+<!--    </LinearLayout>-->
+<!--    <Space-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="5dp"-->
+<!--        android:layout_weight="0" />-->
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_weight="0"-->
+<!--        android:orientation="horizontal">-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/name"-->
+<!--            android:layout_width="400dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="2.8"-->
+<!--            android:text="이름(실명)"-->
+<!--            android:textAppearance="@style/TextAppearance.AppCompat.Large" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/myName"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:hint=" 이름"-->
+<!--            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />-->
+<!--    </LinearLayout>-->
     <Space
         android:layout_width="match_parent"
         android:layout_height="5dp"
         android:layout_weight="0" />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_weight="0"
-        android:orientation="horizontal">
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="40dp"-->
+<!--        android:layout_weight="0"-->
+<!--        android:orientation="horizontal">-->
 
-        <LinearLayout
-            android:layout_width="400dp"
-            android:layout_height="match_parent"
-            android:layout_weight="2.8"
-            android:orientation="vertical">
+<!--        <LinearLayout-->
+<!--            android:layout_width="400dp"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_weight="2.8"-->
+<!--            android:orientation="vertical">-->
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="3.1" />
+<!--            <Space-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_weight="3.1" />-->
 
-            <TextView
-                android:id="@+id/phonenum"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="3.1"
-                android:text="휴대전화"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
-        </LinearLayout>
+<!--            <TextView-->
+<!--                android:id="@+id/phonenum"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_weight="3.1"-->
+<!--                android:text="휴대전화"-->
+<!--                android:textAppearance="@style/TextAppearance.AppCompat.Large" />-->
+<!--        </LinearLayout>-->
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="horizontal">
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:orientation="horizontal">-->
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical">
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_weight="1"-->
+<!--                android:orientation="vertical">-->
 
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+<!--                <Space-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_weight="1" />-->
 
-                <TextView
-                    android:id="@+id/myphonenum"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:hint=" 휴대전화"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
-            </LinearLayout>
+<!--                <TextView-->
+<!--                    android:id="@+id/myphonenum"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:hint=" 휴대전화"-->
+<!--                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />-->
+<!--            </LinearLayout>-->
 
-            <Button
-                android:id="@+id/fix_phoneNum"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.3"
-                android:text="전화번호 변경"
-                android:textSize="7dp" />
-        </LinearLayout>
+<!--            <Button-->
+<!--                android:id="@+id/fix_phoneNum"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_weight="0.3"-->
+<!--                android:text="전화번호 변경"-->
+<!--                android:textSize="7dp" />-->
+<!--        </LinearLayout>-->
 
-    </LinearLayout>
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="5dp"
-        android:layout_weight="0" />
+<!--    </LinearLayout>-->
+<!--    <Space-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="5dp"-->
+<!--        android:layout_weight="0" />-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -321,7 +321,7 @@
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="30dp" />
+        android:layout_height="70dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -400,7 +400,19 @@
 
     <Space
         android:layout_width="wrap_content"
-        android:layout_height="100dp"
+        android:layout_height="70dp"
+        android:layout_weight="0" />
+
+    <Button
+        android:id="@+id/password_change_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:text="비밀번호 변경" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
         android:layout_weight="0" />
 
     <LinearLayout

@@ -22,6 +22,8 @@ class Main_Wishlist : Fragment(){
         // 액션바 설정, 이름변경
         val actionBar = (requireActivity() as AppCompatActivity).supportActionBar
         actionBar?.title = "찜목록"
+        actionBar?.setDisplayHomeAsUpEnabled(true)
+        setHasOptionsMenu(true)
         // 뒤로가기 버튼 처리 기본 뒤로가기 버튼 눌렀을 때 홈 프래그먼트로
         root.isFocusableInTouchMode = true
         root.requestFocus()
@@ -51,5 +53,19 @@ class Main_Wishlist : Fragment(){
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                //requireActivity().onBackPressed()
+                val homeFragment = Main_Home()
+                val transaction = requireActivity().supportFragmentManager.beginTransaction()
+                transaction.replace(R.id.fragmentContainer, homeFragment)
+                transaction.addToBackStack(null)
+                transaction.commit()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 }

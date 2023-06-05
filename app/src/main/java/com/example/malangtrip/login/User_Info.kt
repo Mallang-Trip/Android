@@ -11,6 +11,6 @@ data class User_Info(
     val fcmToken: String?=null,
     val driver_Check: Boolean=false,
     val bank : String?=null,
-    val bankNum:Int?=null,
+    val bankNum:String?=null
 
 )
