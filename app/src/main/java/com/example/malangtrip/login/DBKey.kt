@@ -15,6 +15,7 @@ class DBKey {
         const val Comment_Key = "Comment"
         const val Driver = "Driver"
         const val Trip_Info = "TripInfo"
+        const val My_Wishlist = "MyWishlist"
 
     }
 }

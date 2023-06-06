@@ -46,7 +46,7 @@
         <activity android:name=".login.Join_Membership" />
         <activity android:name=".Nav.Chat.Chat_Screen.Chat_Screen" />
         <activity android:name=".Nav.Community.Write_Community.Write_Text" />
-        <activity android:name=".Nav.Home.Jeju.Main_Jeju"/>
+        <activity android:name=".Nav.Home.local.Main_Jeju"/>
         <activity android:name=".Nav.Community.Read_Community.Go_To_Board"
             android:windowSoftInputMode="adjustPan" >
         </activity>

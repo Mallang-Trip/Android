@@ -47,6 +47,8 @@
 
 
     <Button
+        android:background="@android:color/transparent"
+        android:textColor="#000000"
         android:id="@+id/go_logout_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

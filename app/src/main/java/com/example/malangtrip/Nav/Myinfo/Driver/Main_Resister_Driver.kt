@@ -70,7 +70,7 @@ class Main_Resister_Driver : Fragment(){
             }
         }
         //사진 선택
-        binding.selectBtn.setOnClickListener {
+        binding.uploadBtn.setOnClickListener {
             val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
             startActivityForResult(gallery, 100)
         }
@@ -101,7 +101,8 @@ class Main_Resister_Driver : Fragment(){
                                 description,
                                 cartype,
                                 license_Plate,
-                                available_Num
+                                available_Num,
+                                null
                             )
                         )
                 }

@@ -6,6 +6,7 @@ import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
 import android.provider.ContactsContract.CommonDataKinds.Nickname
 import android.provider.MediaStore
+import android.util.Log
 import android.widget.Toast
 
 import androidx.appcompat.app.AppCompatActivity
@@ -26,7 +27,7 @@ class User_Data_Input : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         binding = BLoginUserDataInputBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        supportActionBar?.hide() // 액션바 숨김
 
 
         val curruntUser = Firebase.auth.currentUser
@@ -74,6 +75,7 @@ class User_Data_Input : AppCompatActivity(){
             val email = currentUser?.email.toString()
 
 
+
             if (nickname.isEmpty()||bank.isEmpty()||bank_Num.isEmpty()) {
                 Toast.makeText(this, "닉네임, 계좌번호, 거래은행은 빈 값으로 둘 수 없습니다", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
@@ -81,7 +83,7 @@ class User_Data_Input : AppCompatActivity(){
 
             val mydb = Firebase.database.reference.child(DBKey.DB_USERS).child(curruntId)//내 정보 접근
             val myprofile = mutableMapOf<String, Any>()
-            myprofile["userId"] = email
+            myprofile["email"] = email
             myprofile["nickname"] = nickname
             myprofile["description"] = description
             myprofile["bankNum"] = bank_Num

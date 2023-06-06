@@ -1,19 +1,35 @@
 package com.example.malangtrip.Nav.Wishlist
 
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.malangtrip.Main_Screen
 import com.example.malangtrip.Nav.Home.Main_Home
+import com.example.malangtrip.Nav.Home.Trip_Adapter
+import com.example.malangtrip.Nav.Myinfo.Driver.Driver_Info.Trip_Info
 import com.example.malangtrip.R
 import com.example.malangtrip.databinding.NMyinfoBinding
 import com.example.malangtrip.databinding.NWishlistBinding
+import com.example.malangtrip.login.DBKey
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.ktx.database
+import com.google.firebase.database.ktx.getValue
+import com.google.firebase.ktx.Firebase
+
 //찜목록 메인
 class Main_Wishlist : Fragment(){
     private var _binding: NWishlistBinding? = null
     private val binding get() = _binding!!
-
+    //private lateinit var jejuTripAdapter : Trip_Adapter
+    //    private val jeju_trip_List = mutableListOf<Trip_Info>()
+    private lateinit var MyWishListAdpater : Trip_Adapter
+    private val My_Wishlist = mutableListOf<Trip_Info>()
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
 
 
@@ -24,6 +40,25 @@ class Main_Wishlist : Fragment(){
         actionBar?.title = "찜목록"
         actionBar?.setDisplayHomeAsUpEnabled(true)
         setHasOptionsMenu(true)
+        loadWishlistData()
+        //val recyclerView: RecyclerView = binding.jejuDriverList
+        //        jejuTripAdapter = Trip_Adapter(jeju_trip_List){ it->
+        //
+        //        }
+        //        val gridLayoutManager = GridLayoutManager(requireContext(), 2)
+        //        recyclerView.layoutManager = gridLayoutManager
+        //        recyclerView.adapter = jejuTripAdapter
+        val recyclerView: RecyclerView = binding.wishlist
+        MyWishListAdpater = Trip_Adapter(My_Wishlist){
+
+        }
+        val gridLayoutManager = GridLayoutManager(requireContext(), 2)
+        recyclerView.layoutManager = gridLayoutManager
+        recyclerView.adapter = MyWishListAdpater
+
+
+
+
         // 뒤로가기 버튼 처리 기본 뒤로가기 버튼 눌렀을 때 홈 프래그먼트로
         root.isFocusableInTouchMode = true
         root.requestFocus()
@@ -67,5 +102,34 @@ class Main_Wishlist : Fragment(){
             }
             else -> super.onOptionsItemSelected(item)
         }
+    }
+    private fun loadWishlistData() {
+
+
+        Firebase.database.reference.child(DBKey.My_Wishlist)
+            .addValueEventListener(object:
+                ValueEventListener {
+
+                override fun onCancelled(error: DatabaseError) {
+                    TODO("Not yet implemented")
+                }
+
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    My_Wishlist.clear()
+
+                    snapshot.children.forEach { parentSnapshot ->
+                        parentSnapshot.children.forEach { childSnapshot ->
+                            val mywishlist = childSnapshot.getValue<Trip_Info>()
+
+                            if (mywishlist != null) {
+                                My_Wishlist.add(mywishlist)
+                            }
+
+                        }
+                    }
+
+                    MyWishListAdpater.notifyDataSetChanged()
+                }
+            })
     }
 }
