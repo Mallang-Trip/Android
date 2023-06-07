@@ -11,6 +11,7 @@ import com.example.malangtrip.Nav.Chat.Chat_List.Chat_Info
 import com.example.malangtrip.Nav.Chat.Chat_Screen.Chat_Screen
 import com.example.malangtrip.Nav.Community.CommunityAuth
 import com.example.malangtrip.Nav.Community.CommunityItem
+import com.example.malangtrip.Nav.Myinfo.Driver.Driver_Info.Driver_Info
 import com.example.malangtrip.Nav.Myinfo.Driver.Driver_Info.Trip_Info
 import com.example.malangtrip.R
 import com.example.malangtrip.databinding.NHomeTripTextBinding
@@ -23,48 +24,59 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import java.util.*
-import kotlin.coroutines.jvm.internal.CompletedContinuation.context
+
 
 class Trip_Text : AppCompatActivity(){
     lateinit var binding : NHomeTripTextBinding
     lateinit var driver_Id : String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding=NHomeTripTextBinding.inflate(layoutInflater)
+        binding = NHomeTripTextBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-               val trip_Id =  intent.getStringExtra("trip_Id").toString()
-                  driver_Id= intent.getStringExtra("driver_Id").toString()
+        val trip_Id = intent.getStringExtra("trip_Id").toString()
+        driver_Id = intent.getStringExtra("driver_Id").toString()
 
 
 
-            getTripData(trip_Id)
+        getTripData(trip_Id)
+        binding.checkProfile.setOnClickListener {
+            //val intent = Intent(this, Chat_Screen::class.java)
+            //val intent = Intent(this,)
+        }
         binding.chatBtn.setOnClickListener {
             val My_Id = Firebase.auth.currentUser?.uid ?: ""
             val chat_room_db = Firebase.database.reference.child(DBKey.DB_CHAT_ROOMS).child(My_Id)
                 .child(driver_Id)
-            val driver_Id = Firebase.database.reference.child(DBKey.DB_USERS).child(driver_Id)
-            chat_room_db.get().addOnSuccessListener {
-                var chat_rood_id = ""
-                if (it.value != null) {
-                    val chat_room = it.getValue(Chat_Info::class.java)
-                    chat_rood_id = chat_room?.chatRoomId ?: ""
-                } else {
-                    chat_rood_id = UUID.randomUUID().toString()
-                    val new_chat_room = Chat_Info(
+            val driver_Key = Firebase.database.reference.child(DBKey.DB_USERS).child(driver_Id)
+            driver_Key.get().addOnSuccessListener {
+                val driver = it.getValue(User_Info::class.java)
+
+                chat_room_db.get().addOnSuccessListener {
+                    var chat_rood_id = ""
+                    if (it.value != null) {
+                        val chat_room = it.getValue(Chat_Info::class.java)
+                        chat_rood_id = chat_room?.chatRoomId ?: ""
+                    } else {
+                        chat_rood_id = UUID.randomUUID().toString()
+                        val new_chat_room = Chat_Info(
                         chatRoomId = chat_rood_id,
-                        friend_Name = driver_Id.
-                        friend_Id = friend.userId
-                    )
-                    chat_room_db.setValue(new_chat_room)
+                            friend_Name = driver?.nickname,
+                            friend_Id = driver?.userId
+
+
+                        )
+                        chat_room_db.setValue(new_chat_room)
+                    }
+                    val intent = Intent(this, Chat_Screen::class.java)
+                    intent.putExtra(Chat_Screen.Extra_Frineds_Id, driver?.userId)
+                    intent.putExtra(Chat_Screen.EXTRA_CHAT_ROOM_ID, chat_rood_id)
+                    intent.putExtra("friend_Name", driver?.nickname)
+                    startActivity(intent)
                 }
-                val intent = Intent(this, Chat_Screen::class.java)
-                intent.putExtra(Chat_Screen.Extra_Frineds_Id, friend.userId)
-                intent.putExtra(Chat_Screen.EXTRA_CHAT_ROOM_ID, chat_rood_id)
-                intent.putExtra("friend_Name", friend.nickname)
-                startActivity(intent)
             }
         }
+
 
     }
     private fun getTripData(key:String) {
