@@ -52,6 +52,7 @@
         </activity>
         <activity android:name=".login.Complete_Join"/>
         <activity android:name=".Nav.Community.Write_Community.Fix_Board"/>
+        <activity android:name=".Nav.Home.Trip_Text"/>
         <service
             android:name=".Nav.Chat.MyFirebaseMessagingService"
             android:exported="false">

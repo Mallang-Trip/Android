@@ -86,7 +86,6 @@ class User_List() : Fragment(R.layout.n_chat_userlist) {
                             snapshot.children.forEach {
                                 val user = it.getValue(User_Info::class.java)
                                 user ?: return
-                                Log.d("이름 잘 배껴오나", "$user ")
                                 userlist.add(user)
                             }
                             Userlistadapter.submitList(userlist)

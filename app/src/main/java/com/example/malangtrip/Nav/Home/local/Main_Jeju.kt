@@ -1,5 +1,6 @@
 package com.example.malangtrip.Nav.Home.local
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.*
@@ -9,6 +10,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.malangtrip.Nav.Home.Main_Home
 import com.example.malangtrip.Nav.Home.Trip_Adapter
+import com.example.malangtrip.Nav.Home.Trip_Text
 import com.example.malangtrip.Nav.Myinfo.Driver.Driver_Info.Trip_Info
 import com.example.malangtrip.R
 import com.example.malangtrip.databinding.NHomeJejuBinding
@@ -37,7 +39,10 @@ class Main_Jeju : Fragment(){
         loadTripData()
         val recyclerView: RecyclerView = binding.jejuDriverList
         jejuTripAdapter = Trip_Adapter(jeju_trip_List){ it->
-
+            val intent = Intent(context,Trip_Text::class.java)
+            intent.putExtra("trip_Id",it.tripId)
+            intent.putExtra("driver_Id",it.tripwriterId)
+            startActivity(intent)
         }
         val gridLayoutManager = GridLayoutManager(requireContext(), 2)
         recyclerView.layoutManager = gridLayoutManager

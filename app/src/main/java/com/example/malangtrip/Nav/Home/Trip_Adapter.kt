@@ -61,9 +61,9 @@ class Trip_Adapter(private var tripList: List<Trip_Info>, private val onClick: (
                 }
             })
 
-            binding.tripTilte.text = item.price
-            binding.tripSchedule.text = item.schedule
-            binding.tripPriceText.text = item.price
+            binding.tripTilte.text = "여행 제목 : " + item.title
+            binding.tripSchedule.text = " 여행 일정 : " + item.schedule
+            binding.tripPriceText.text = "가격 : "+ item.price+"원"
             val key =  Firebase.database(DBKey.DB_URL).reference.push().key.toString()
             binding.bookmarkBtn.setOnClickListener{
 
@@ -95,7 +95,9 @@ class Trip_Adapter(private var tripList: List<Trip_Info>, private val onClick: (
                     }
                 }
             }
-
+            binding.root.setOnClickListener {
+                onClick(item)
+            }
         }
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
