@@ -6,32 +6,23 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.provider.ContactsContract.CommonDataKinds.Nickname
 import android.util.Log
-import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.RelativeLayout
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.malangtrip.Nav.Community.Comment.Comment_Adapter
-import com.example.malangtrip.Nav.Community.Comment.Comment_Item
+import com.example.malangtrip.Key.Comment_Item
 import com.example.malangtrip.Nav.Community.CommunityAuth
-import com.example.malangtrip.Nav.Community.CommunityItem
+import com.example.malangtrip.Key.CommunityItem
 import com.example.malangtrip.Nav.Community.Write_Community.Fix_Board
-import com.example.malangtrip.Nav.Community.Write_Community.Write_Text
 import com.example.malangtrip.R
 import com.example.malangtrip.databinding.NCommunityTextBinding
-import com.example.malangtrip.login.DBKey
-import com.example.malangtrip.login.User_Info
+import com.example.malangtrip.Key.DBKey
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
@@ -41,9 +32,6 @@ import com.google.firebase.database.ktx.database
 
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
-import com.kakao.sdk.common.util.SdkLogLevel
-import org.checkerframework.checker.units.qual.m
-import kotlin.properties.Delegates
 
 
 class Go_To_Board : AppCompatActivity(){
@@ -342,4 +330,5 @@ private fun getImageData(key : String)
         }
         return true
     }
+
 }

@@ -4,11 +4,10 @@ import android.os.Bundle
 import android.view.*
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.malangtrip.login.User_Info
-import com.example.malangtrip.Nav.Common_Function_Fragment
-import com.example.malangtrip.R
+import androidx.fragment.app.Fragment
+import com.example.malangtrip.Key.User_Info
 import com.example.malangtrip.databinding.NMyinfoProfileCheckFixProfileBinding
-import com.example.malangtrip.login.DBKey
+import com.example.malangtrip.Key.DBKey
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -17,7 +16,7 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 
 //프로필 변경
-class Fix_Myprofile : Common_Function_Fragment() {
+class Fix_Myprofile : Fragment() {
     private var _binding: NMyinfoProfileCheckFixProfileBinding? = null
 
     // This property is only valid between onCreateView and
@@ -42,9 +41,9 @@ class Fix_Myprofile : Common_Function_Fragment() {
                 val myinfo = it.getValue(User_Info::class.java)?: return@addOnSuccessListener
             binding.fixNicknameEdit.setText(myinfo.nickname)
             binding.fixDesEdit.setText(myinfo.description)
-            binding.InputBank.setText(myinfo.bank)
+            //binding.InputBank.setText(myinfo.bank)
             binding.myId.setText(" "+email)
-            myinfo.bankNum?.let { it1 -> binding.InputBankNum.setText(it1) }
+            //myinfo.bankNum?.let { it1 -> binding.InputBankNum.setText(it1) }
         }
         //수정한거 적용하는 버튼튼
        binding.applyBtn.setOnClickListener {

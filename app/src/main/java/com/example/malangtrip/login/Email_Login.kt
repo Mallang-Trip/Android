@@ -8,8 +8,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.malangtrip.Main_Screen
 import com.example.malangtrip.databinding.BMainLoginScreenBinding
-import com.example.malangtrip.login.DBKey.Companion.DB_URL
-import com.example.malangtrip.login.DBKey.Companion.DB_USERS
+import com.example.malangtrip.Key.DBKey.Companion.DB_URL
+import com.example.malangtrip.Key.DBKey.Companion.DB_USERS
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase

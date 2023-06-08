@@ -2,30 +2,13 @@ package com.example.malangtrip.Nav.Chat
 
 import android.os.Bundle
 import android.view.*
-import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentPagerAdapter
-import androidx.viewpager.widget.PagerAdapter
 import com.example.malangtrip.Main_Screen
-import com.example.malangtrip.Nav.Chat.Chat_List.Chat_Adapter
-import com.example.malangtrip.Nav.Chat.Chat_List.Chat_Info
-import com.example.malangtrip.Nav.Chat.Chat_List.Chat_List
-import com.example.malangtrip.Nav.Chat.User.User_List
 import com.example.malangtrip.Nav.Home.Main_Home
 import com.example.malangtrip.R
 import com.example.malangtrip.databinding.NChatBinding
-import com.example.malangtrip.login.DBKey
-import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.ValueEventListener
-import com.google.firebase.database.ktx.database
-import com.google.firebase.ktx.Firebase
 
 class Main_Chat : Fragment(){
 
@@ -52,9 +35,9 @@ class Main_Chat : Fragment(){
         val tabLayout = binding.tabs
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
             tab.text = when (position) {
-                0 -> "친구 목록"
-                1 -> "채팅방 목록"
-                2 -> "친구 찾기"
+                0 -> "채팅방 목록"
+                1 -> "친구 찾기"
+                //2 -> "친구 목록"
                 else -> ""
             }
         }.attach()

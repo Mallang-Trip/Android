@@ -11,11 +11,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.bumptech.glide.Glide
 import com.example.malangtrip.Nav.Community.CommunityAuth
-import com.example.malangtrip.Nav.Community.CommunityItem
+import com.example.malangtrip.Key.CommunityItem
 
 import com.example.malangtrip.Nav.Community.Read_Community.Go_To_Board
 import com.example.malangtrip.databinding.NCommunityFixTextBinding
-import com.example.malangtrip.login.DBKey
+import com.example.malangtrip.Key.DBKey
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot

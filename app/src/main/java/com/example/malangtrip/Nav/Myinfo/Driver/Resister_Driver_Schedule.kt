@@ -6,10 +6,10 @@ import android.view.*
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.example.malangtrip.Nav.Myinfo.Driver.Driver_Info.Driver_Info
-import com.example.malangtrip.Nav.Myinfo.Driver.Driver_Info.Trip_Info
+import com.example.malangtrip.Key.Driver_Info
+import com.example.malangtrip.Key.Trip_Info
 import com.example.malangtrip.databinding.NMyinfoRegisterDriverScheduleBinding
-import com.example.malangtrip.login.DBKey
+import com.example.malangtrip.Key.DBKey
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
@@ -69,6 +69,7 @@ class Resister_Driver_Schedule : Fragment() {
                 }
 
             }
+            //requireActivity().supportFragmentManager.popBackStack()
         }
         return root
     }

@@ -1,4 +1,4 @@
-package com.example.malangtrip.Nav.Chat.Chat_Screen
+package com.example.malangtrip.Key
 
 class Chat_Screen_Info (
     var chatId: String?=null,

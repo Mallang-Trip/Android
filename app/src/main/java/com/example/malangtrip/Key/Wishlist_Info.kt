@@ -1,4 +1,4 @@
-package com.example.malangtrip.Nav.Myinfo.Driver.Driver_Info
+package com.example.malangtrip.Key
 
 data class Wishlist_Info (
         val tripwriterId: String?=null,

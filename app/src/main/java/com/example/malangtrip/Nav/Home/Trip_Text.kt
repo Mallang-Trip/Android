@@ -3,26 +3,26 @@ package com.example.malangtrip.Nav.Home
 import android.content.ContentValues
 import android.content.Intent
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.util.Log
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import com.example.malangtrip.Nav.Chat.Chat_List.Chat_Info
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.example.malangtrip.Key.Chat_Info
 import com.example.malangtrip.Nav.Chat.Chat_Screen.Chat_Screen
 import com.example.malangtrip.Nav.Community.CommunityAuth
-import com.example.malangtrip.Nav.Community.CommunityItem
-import com.example.malangtrip.Nav.Myinfo.Driver.Driver_Info.Driver_Info
-import com.example.malangtrip.Nav.Myinfo.Driver.Driver_Info.Trip_Info
+import com.example.malangtrip.Key.Trip_Info
 import com.example.malangtrip.R
 import com.example.malangtrip.databinding.NHomeTripTextBinding
-import com.example.malangtrip.login.DBKey
-import com.example.malangtrip.login.User_Info
+import com.example.malangtrip.Key.DBKey
+import com.example.malangtrip.Key.User_Info
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.ktx.storage
 import java.util.*
 
 
@@ -42,7 +42,24 @@ class Trip_Text : AppCompatActivity(){
         getTripData(trip_Id)
         binding.checkProfile.setOnClickListener {
             //val intent = Intent(this, Chat_Screen::class.java)
-            //val intent = Intent(this,)
+            val intent = Intent(this,Driver_Profile::class.java)
+            val imageUrl = driver_Id+".png"
+            intent.putExtra("DriverKey",driver_Id)
+            intent.putExtra("image_url", imageUrl)
+            val storage = Firebase.storage
+            val storageRef = storage.reference
+            val imageRef = storageRef.child(imageUrl)
+            imageRef.downloadUrl.addOnSuccessListener { uri ->
+                Glide.with(this)
+                    .load(uri)
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .preload()
+            }
+
+
+
+
+            startActivity(intent)
         }
         binding.chatBtn.setOnClickListener {
             val My_Id = Firebase.auth.currentUser?.uid ?: ""

@@ -5,10 +5,11 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.malangtrip.Key.Chat_Info
 import com.example.malangtrip.Nav.Chat.Chat_Screen.Chat_Screen
 import com.example.malangtrip.R
 import com.example.malangtrip.databinding.NChatChatlistBinding
-import com.example.malangtrip.login.DBKey.Companion.DB_CHAT_ROOMS
+import com.example.malangtrip.Key.DBKey.Companion.DB_CHAT_ROOMS
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError

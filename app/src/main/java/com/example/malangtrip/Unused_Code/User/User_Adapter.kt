@@ -1,4 +1,4 @@
-package com.example.malangtrip.Nav.Chat.User
+package com.example.malangtrip.Unused_Code.User
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,11 +8,13 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.malangtrip.databinding.NChatUserBinding
-import com.example.malangtrip.login.User_Info
+import com.example.malangtrip.Key.User_Info
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 
-class User_Adapter(private val onClick:(User_Info)->Unit) : ListAdapter<User_Info, User_Adapter.ViewHolder>(differ){
+class User_Adapter(private val onClick:(User_Info)->Unit) : ListAdapter<User_Info, User_Adapter.ViewHolder>(
+    differ
+){
 
     inner class ViewHolder(private val binding: NChatUserBinding):RecyclerView.ViewHolder(binding.root){
         fun bind(item: User_Info)

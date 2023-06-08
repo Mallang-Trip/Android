@@ -2,42 +2,21 @@ package com.example.malangtrip
 
 
 import android.content.Intent
-import android.content.pm.PackageManager
-import android.os.Build
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.annotation.RequiresApi
-import androidx.appcompat.app.AlertDialog
-import androidx.core.content.ContextCompat
-
-import android.Manifest
-
-
-
-
-
-
-
-
-
-
-
 
 
 import com.example.malangtrip.databinding.ActivityMainBinding
-import com.example.malangtrip.login.DBKey
+import com.example.malangtrip.Key.DBKey
 import com.example.malangtrip.login.Email_Login
 import com.example.malangtrip.login.User_Data_Input
-import com.example.malangtrip.login.User_Info
+import com.example.malangtrip.Key.User_Info
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 
-import com.kakao.sdk.common.util.Utility
 //메인 액티비티
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -75,10 +54,10 @@ class MainActivity : AppCompatActivity() {
             val mydb = Firebase.database.reference.child(DBKey.DB_USERS).child(curruntId)//내 정보 접근
            mydb.get().addOnSuccessListener {
               val myinfo = it.getValue(User_Info::class.java)?: return@addOnSuccessListener
-               val bank = myinfo.bank
-               val bank_Num = myinfo.bankNum
+//               val bank = myinfo.bank
+//               val bank_Num = myinfo.bankNum
                val nickName = myinfo.nickname
-               if(bank==null||bank_Num==null||nickName==null)
+               if(/*bank==null||bank_Num==null||*/nickName==null)
                {
                    startActivity(Intent(this, User_Data_Input::class.java))
                }

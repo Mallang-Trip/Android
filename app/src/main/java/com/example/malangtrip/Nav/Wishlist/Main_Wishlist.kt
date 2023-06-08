@@ -10,11 +10,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.malangtrip.Main_Screen
 import com.example.malangtrip.Nav.Home.Main_Home
 import com.example.malangtrip.Nav.Home.Trip_Adapter
-import com.example.malangtrip.Nav.Myinfo.Driver.Driver_Info.Trip_Info
+import com.example.malangtrip.Key.Trip_Info
 import com.example.malangtrip.R
-import com.example.malangtrip.databinding.NMyinfoBinding
 import com.example.malangtrip.databinding.NWishlistBinding
-import com.example.malangtrip.login.DBKey
+import com.example.malangtrip.Key.DBKey
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
@@ -111,24 +110,26 @@ class Main_Wishlist : Fragment(){
                 ValueEventListener {
 
                 override fun onCancelled(error: DatabaseError) {
-                    TODO("Not yet implemented")
+                    Log.e("FirebaseError", "Query canceled: $error")
                 }
 
                 override fun onDataChange(snapshot: DataSnapshot) {
-                    My_Wishlist.clear()
 
-                    snapshot.children.forEach { parentSnapshot ->
-                        parentSnapshot.children.forEach { childSnapshot ->
-                            val mywishlist = childSnapshot.getValue<Trip_Info>()
+                        My_Wishlist.clear()
 
-                            if (mywishlist != null) {
-                                My_Wishlist.add(mywishlist)
+                        snapshot.children.forEach { parentSnapshot ->
+                            parentSnapshot.children.forEach { childSnapshot ->
+                                val mywishlist = childSnapshot.getValue<Trip_Info>()
+
+                                if (mywishlist != null) {
+                                    My_Wishlist.add(mywishlist)
+                                }
+
                             }
-
                         }
-                    }
 
-                    MyWishListAdpater.notifyDataSetChanged()
+                        MyWishListAdpater.notifyDataSetChanged()
+
                 }
             })
     }

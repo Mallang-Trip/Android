@@ -1,7 +1,4 @@
-package com.example.malangtrip.login
-
-import com.example.malangtrip.Nav.Community.CommunityItem
-import com.example.malangtrip.Nav.Myinfo.Driver.Driver_Info.Trip_Info
+package com.example.malangtrip.Key
 
 class DBKey {
     companion object

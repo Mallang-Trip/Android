@@ -1,4 +1,4 @@
-package com.example.malangtrip.Nav.Chat.User
+package com.example.malangtrip.Unused_Code.User
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,13 +9,13 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.malangtrip.Nav.Chat.Chat_List.Chat_Info
+import com.example.malangtrip.Key.Chat_Info
 import com.example.malangtrip.Nav.Chat.Chat_Screen.Chat_Screen
 import com.example.malangtrip.R
 import com.example.malangtrip.databinding.NChatUserlistBinding
-import com.example.malangtrip.login.DBKey.Companion.DB_CHAT_ROOMS
-import com.example.malangtrip.login.DBKey.Companion.DB_Friends
-import com.example.malangtrip.login.User_Info
+import com.example.malangtrip.Key.DBKey.Companion.DB_CHAT_ROOMS
+import com.example.malangtrip.Key.DBKey.Companion.DB_Friends
+import com.example.malangtrip.Key.User_Info
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError

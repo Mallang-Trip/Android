@@ -11,10 +11,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.malangtrip.Nav.Home.Main_Home
 import com.example.malangtrip.Nav.Home.Trip_Adapter
 import com.example.malangtrip.Nav.Home.Trip_Text
-import com.example.malangtrip.Nav.Myinfo.Driver.Driver_Info.Trip_Info
+import com.example.malangtrip.Key.Trip_Info
 import com.example.malangtrip.R
 import com.example.malangtrip.databinding.NHomeJejuBinding
-import com.example.malangtrip.login.DBKey
+import com.example.malangtrip.Key.DBKey
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
@@ -35,7 +35,6 @@ class Main_Jeju : Fragment(){
         actionBar?.setDisplayHomeAsUpEnabled(true)
         actionBar?.setTitle("제주도로 떠나요")
         setHasOptionsMenu(true)
-        actionBar?.setDisplayHomeAsUpEnabled(true)
         loadTripData()
         val recyclerView: RecyclerView = binding.jejuDriverList
         jejuTripAdapter = Trip_Adapter(jeju_trip_List){ it->
@@ -80,7 +79,7 @@ class Main_Jeju : Fragment(){
                             }
                         }
                     }
-
+                    jeju_trip_List.reverse()
                     jejuTripAdapter.notifyDataSetChanged()
                 }
             })

@@ -2,15 +2,12 @@ package com.example.malangtrip.Nav.Community.Comment
 
 
 import android.graphics.Color
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
-import android.widget.LinearLayout
-import android.widget.ListAdapter
 import android.widget.TextView
-import androidx.recyclerview.widget.RecyclerView
+import com.example.malangtrip.Key.Comment_Item
 import com.example.malangtrip.R
 
 

@@ -1,4 +1,4 @@
-package com.example.malangtrip.Nav.Community
+package com.example.malangtrip.Nav.Community.Board_Screen
 
 import android.graphics.Color
 import android.view.LayoutInflater
@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
+import com.example.malangtrip.Key.CommunityItem
 import com.example.malangtrip.R
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -27,7 +28,7 @@ class Board_Adapter(val writer_info :MutableList<CommunityItem>) : BaseAdapter()
         var Every_Write_Text = convertView
         //if(convertView==null)
         //{
-            Every_Write_Text = LayoutInflater.from(parent?.context).inflate(R.layout.n_community_every_board_write_item,parent,false)
+            Every_Write_Text = LayoutInflater.from(parent?.context).inflate(R.layout.n_community_every_board_adapter,parent,false)
 
         //}
 
@@ -46,7 +47,7 @@ class Board_Adapter(val writer_info :MutableList<CommunityItem>) : BaseAdapter()
             }
             val time = Every_Write_Text?.findViewById<TextView>(R.id.every_write_time)
             time?.apply {
-                text = writer_info[position].time+" / "+writer_info[position].commentNum+"개"
+                text = writer_info[position].time+" / 댓글 수 : "+writer_info[position].commentNum+"개"
                 setTextColor(Color.BLUE)
             }
             val writer_Name = Every_Write_Text?.findViewById<TextView>(R.id.nickName)
@@ -62,7 +63,7 @@ class Board_Adapter(val writer_info :MutableList<CommunityItem>) : BaseAdapter()
             content!!.maxLines = 3
             content!!.text=writer_info[position].content
             val time = Every_Write_Text?.findViewById<TextView>(R.id.every_write_time)
-            time!!.text=writer_info[position].time+" / "+writer_info[position].commentNum+"개"
+            time!!.text=writer_info[position].time+" / 댓글 수 : "+writer_info[position].commentNum+"개"
             val writer_Name = Every_Write_Text?.findViewById<TextView>(R.id.nickName)
             writer_Name!!.text=writer_info[position].userName
         }

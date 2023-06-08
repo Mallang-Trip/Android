@@ -1,4 +1,4 @@
-package com.example.malangtrip.Nav.Chat.Chat_List
+package com.example.malangtrip.Key
 
 //선택한 친구 정보
 data class Chat_Info(

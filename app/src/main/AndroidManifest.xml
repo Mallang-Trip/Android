@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -14,15 +15,25 @@
         android:theme="@style/Theme.MalangTrip"
         tools:targetApi="33">
 
-        <activity
-            android:name=".MainActivity"
-            android:exported="true">
+        <activity android:name=".login.SplashActivity"
+
+            android:exported="true"
+            android:theme="@style/SplashTheme">
             <intent-filter>
+
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".MainActivity" />
+<!--            android:exported="true">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+<!--        </activity>-->
         <activity
             android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"
             android:exported="true">
@@ -39,20 +50,23 @@
             </intent-filter>
         </activity> <!-- 로그인 액티비티 -->
         <activity android:name=".login.User_Data_Input" />
-        <activity android:name=".Main_Screen"
-            android:windowSoftInputMode="adjustPan"/>
-        <activity android:name=".login.ToServerTest" />
+        <activity
+            android:name=".Main_Screen"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".Unused_Code.ToServerTest" />
         <activity android:name=".login.Email_Login" />
         <activity android:name=".login.Join_Membership" />
         <activity android:name=".Nav.Chat.Chat_Screen.Chat_Screen" />
         <activity android:name=".Nav.Community.Write_Community.Write_Text" />
-        <activity android:name=".Nav.Home.local.Main_Jeju"/>
-        <activity android:name=".Nav.Community.Read_Community.Go_To_Board"
-            android:windowSoftInputMode="adjustPan" >
-        </activity>
-        <activity android:name=".login.Complete_Join"/>
-        <activity android:name=".Nav.Community.Write_Community.Fix_Board"/>
-        <activity android:name=".Nav.Home.Trip_Text"/>
+        <activity android:name=".Nav.Home.local.Main_Jeju" />
+        <activity
+            android:name=".Nav.Community.Read_Community.Go_To_Board"
+            android:windowSoftInputMode="adjustPan"></activity>
+        <activity android:name=".login.Complete_Join" />
+        <activity android:name=".Nav.Community.Write_Community.Fix_Board" />
+        <activity android:name=".Nav.Home.Trip_Text" />
+        <activity android:name=".Nav.Home.Driver_Profile" />
+
         <service
             android:name=".Nav.Chat.MyFirebaseMessagingService"
             android:exported="false">
@@ -60,16 +74,10 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
+
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_channel_id"
             android:value="@string/default_notification_channel_id" />
-        <!-- 하단네비바 액티비티 -->
-
-<!--        <activity android:name=".Nav.Chat.Main_Chat" />-->
-<!--        <activity android:name=".Nav.Community.Main_Community" />-->
-<!--        <activity android:name=".Nav.Home.Main_Home" />-->
-<!--        <activity android:name=".Nav.Wishlist.Main_Wishlist" />-->
-<!--        <activity android:name=".Nav.Myinfo.Main_Myinfo" />-->
     </application>
 
 </manifest>

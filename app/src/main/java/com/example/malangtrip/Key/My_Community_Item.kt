@@ -1,4 +1,4 @@
-package com.example.malangtrip.Nav.Community
+package com.example.malangtrip.Key
 
 data class My_Community_Item (
     val userId: String="", // 작성자 ID

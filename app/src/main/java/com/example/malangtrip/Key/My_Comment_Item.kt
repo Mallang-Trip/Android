@@ -1,6 +1,6 @@
-package com.example.malangtrip.Nav.Community.Comment
+package com.example.malangtrip.Key
 
-data class Comment_Item (
+data class My_Comment_Item (
     val commentWriter : String = "",
     val commentContent : String = "",
     val commentTime : String =""

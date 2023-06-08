@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="10dp">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -13,51 +14,51 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/trip_Date"
+            <Button
+                android:id="@+id/check_Profile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TextView"
-                android:textAlignment="textEnd"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/write_Time"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView"
-                android:textAlignment="viewEnd" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="20dp" />
+                android:backgroundTint="#D9D9D9"
+                android:text="드라이버 프로필 확인하기"
+                android:textColor="@color/black" />
 
             <TextView
                 android:id="@+id/trip_Content"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="TextView"
-                android:textAlignment="center"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                android:textAlignment="viewStart"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textSize="22sp" />
 
-            <Space
+            <TextView
+                android:id="@+id/trip_Date"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                android:textAlignment="viewStart"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/tripPrice"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="TextView"
-                android:textAlignment="center" />
+                android:textAlignment="viewStart"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textSize="14sp" />
 
-            <Button
-                android:id="@+id/check_Profile"
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
+
+            <TextView
+                android:id="@+id/write_Time"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint=" #469EFF"
-                android:text="드라이버 프로필 확인하기"
-                android:textColor="@color/white" />
+                android:text="TextView"
+                android:textAlignment="viewStart" />
 
             <Button
                 android:id="@+id/chat_Btn"

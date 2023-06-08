@@ -9,7 +9,8 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.malangtrip.login.User_Info
+import com.example.malangtrip.Key.Chat_Screen_Info
+import com.example.malangtrip.Key.User_Info
 import com.example.malangtrip.databinding.NChatChatscreenAdapterBinding
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage

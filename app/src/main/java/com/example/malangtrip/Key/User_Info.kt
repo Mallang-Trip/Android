@@ -1,4 +1,4 @@
-package com.example.malangtrip.login
+package com.example.malangtrip.Key
 
 //유저 정보
 data class User_Info(

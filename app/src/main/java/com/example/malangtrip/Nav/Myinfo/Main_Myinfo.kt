@@ -7,7 +7,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.malangtrip.Main_Screen
-import com.example.malangtrip.login.User_Info
+import com.example.malangtrip.Key.User_Info
 import com.example.malangtrip.Nav.Home.Main_Home
 import com.example.malangtrip.Nav.Myinfo.My_Profile.Fix_Myprofile
 import com.example.malangtrip.Nav.Myinfo.Reservation.Main_Reservation
@@ -15,7 +15,8 @@ import com.example.malangtrip.Nav.Myinfo.Driver.Main_Resister_Driver
 import com.example.malangtrip.Nav.Myinfo.Driver.Resister_Driver_Schedule
 import com.example.malangtrip.R
 import com.example.malangtrip.databinding.NMyinfoBinding
-import com.example.malangtrip.login.DBKey
+import com.example.malangtrip.Key.DBKey
+import com.example.malangtrip.Nav.Community.Board_Screen.MyTextList
 import com.example.malangtrip.login.Email_Login
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.ktx.database
@@ -46,16 +47,24 @@ class Main_Myinfo : Fragment() {
             transaction.commit()
         }
         //내 정보 -> 예약일정
-        binding.Reservation.setOnClickListener {
-            val Reservation_Fragment = Main_Reservation()
-            val transaction = parentFragmentManager.beginTransaction()
-            transaction.replace(R.id.fragmentContainer, Reservation_Fragment)
-            transaction.addToBackStack(null)
-            transaction.commit()
-        }
+//        binding.Reservation.setOnClickListener {
+//            val Reservation_Fragment = Main_Reservation()
+//            val transaction = parentFragmentManager.beginTransaction()
+//            transaction.replace(R.id.fragmentContainer, Reservation_Fragment)
+//            transaction.addToBackStack(null)
+//            transaction.commit()
+//        }
         // 드라이버 등록하기로 이동
         binding.ResisterDriver.setOnClickListener {
             val MyText_Check = Main_Resister_Driver()
+            val transaction = parentFragmentManager.beginTransaction()
+            transaction.replace(R.id.fragmentContainer, MyText_Check)
+            transaction.addToBackStack(null)
+            transaction.commit()
+        }
+        //나의 작성글로 이동
+        binding.MyText.setOnClickListener {
+            val MyText_Check = MyTextList()
             val transaction = parentFragmentManager.beginTransaction()
             transaction.replace(R.id.fragmentContainer, MyText_Check)
             transaction.addToBackStack(null)

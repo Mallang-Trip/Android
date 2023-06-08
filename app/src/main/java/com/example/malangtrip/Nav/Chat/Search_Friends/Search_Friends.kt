@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment
 
 
 import com.example.malangtrip.databinding.NChatSearchFriendBinding
-import com.example.malangtrip.login.DBKey
+import com.example.malangtrip.Key.DBKey
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError

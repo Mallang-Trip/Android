@@ -5,11 +5,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.example.malangtrip.Nav.Home.Trip_Adapter
-import com.example.malangtrip.Nav.Myinfo.Driver.Driver_Info.Trip_Info
-import com.example.malangtrip.Nav.Myinfo.Driver.Driver_Info.Wishlist_Info
+import com.example.malangtrip.Key.Trip_Info
+import com.example.malangtrip.Key.Wishlist_Info
 import com.example.malangtrip.databinding.NHomeTripInfoAdapterBinding
-import com.example.malangtrip.login.DBKey
+import com.example.malangtrip.Key.DBKey
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -57,7 +56,7 @@ class Wishlist_Adapter(private var tripList: List<Trip_Info>, private val onClic
                 }
             })
 
-            binding.tripTilte.text = "여행 제목 : " + item.title
+            binding.tripTitle.text = "여행 제목 : " + item.title
             binding.tripSchedule.text = "여행 일정 : "+item.schedule
             binding.tripPriceText.text = "가격 : "+ item.price+"원"
             val key =  Firebase.database(DBKey.DB_URL).reference.push().key.toString()

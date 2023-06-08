@@ -6,10 +6,11 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.malangtrip.login.User_Info
+import com.example.malangtrip.Key.Chat_Screen_Info
+import com.example.malangtrip.Key.User_Info
 import com.example.malangtrip.R
 import com.example.malangtrip.databinding.NChatChatscreenBinding
-import com.example.malangtrip.login.DBKey
+import com.example.malangtrip.Key.DBKey
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot

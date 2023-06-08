@@ -4,13 +4,17 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.malangtrip.Nav.Home.local.Main_Jeju
 import com.example.malangtrip.R
 import com.example.malangtrip.databinding.NHomeBinding
-import com.example.malangtrip.login.DBKey
+import com.example.malangtrip.Key.DBKey
+import com.example.malangtrip.databinding.NHomeLocalAdapterBinding
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -21,7 +25,7 @@ import com.google.firebase.ktx.Firebase
 //메인 홈
 class Main_Home : Fragment() {
     private var _binding: NHomeBinding? = null
-
+    private lateinit var localAdapter: LocalAdapter
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
@@ -49,16 +53,30 @@ class Main_Home : Fragment() {
         actionBar?.title = "가고 싶은 여행지를 찾아요"
         actionBar?.setHomeAsUpIndicator(R.drawable.my_home_back) // 홈 버튼 아이콘 변경
         setHasOptionsMenu(true)
-        binding.goJeju.setOnClickListener {
+        // Create a list of image resource IDs or URLs
+        val imageList = listOf(R.drawable.jeju,R.drawable.comming_soon,R.drawable.comming_soon,R.drawable.comming_soon,R.drawable.comming_soon
+        ,R.drawable.comming_soon,R.drawable.comming_soon,R.drawable.comming_soon)
 
-            val jeju_Fragment = Main_Jeju()
-            val transaction = parentFragmentManager.beginTransaction()
-            transaction.replace(R.id.fragmentContainer, jeju_Fragment)
-            transaction.addToBackStack(null)
-            transaction.commit()
+        // Initialize the RecyclerView and adapter
+        localAdapter = LocalAdapter(imageList)
+        binding.recyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
+        binding.recyclerView.adapter = localAdapter
+        localAdapter.setOnItemClickListener(object : LocalAdapter.OnItemClickListener {
+            override fun onItemClick(position: Int) {
+                // Handle the item click event here
+                if (position == 0) {
+                    val jeju_Fragment = Main_Jeju()
+                    val transaction = parentFragmentManager.beginTransaction()
+                    transaction.replace(R.id.fragmentContainer, jeju_Fragment)
+                    transaction.addToBackStack(null)
+                    transaction.commit()
+                }
+                else{
+                    Toast.makeText(context, "곧 다른 지역이 추가될 예정입니다!\n기대해주세요!", Toast.LENGTH_SHORT).show()
+                }
+            }
+        })
 
-
-        }
         // 뒤로가기 버튼을 눌렀을 때 앱 종료
         root.isFocusableInTouchMode = true
         root.requestFocus()
@@ -232,4 +250,6 @@ class Main_Home : Fragment() {
                 }
             })
     }
+
+
 }

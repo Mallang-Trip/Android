@@ -4,13 +4,11 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
-import android.provider.ContactsContract.CommonDataKinds.Nickname
 import android.provider.MediaStore
-import android.util.Log
 import android.widget.Toast
 
 import androidx.appcompat.app.AppCompatActivity
-import com.example.malangtrip.Main_Screen
+import com.example.malangtrip.Key.DBKey
 import com.example.malangtrip.databinding.BLoginUserDataInputBinding
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.ktx.database
@@ -69,15 +67,15 @@ class User_Data_Input : AppCompatActivity(){
             }
             val nickname = binding.InputNickname.text.toString()
             val description = binding.InputIntroduce.text.toString()
-            val bank = binding.InputBank.text.toString()
-            val bank_Num = binding.InputBankNum.text.toString()
+          //  val bank = binding.InputBank.text.toString()
+           // val bank_Num = binding.InputBankNum.text.toString()
             val currentUser = Firebase.auth.currentUser
             val email = currentUser?.email.toString()
 
 
 
-            if (nickname.isEmpty()||bank.isEmpty()||bank_Num.isEmpty()) {
-                Toast.makeText(this, "닉네임, 계좌번호, 거래은행은 빈 값으로 둘 수 없습니다", Toast.LENGTH_SHORT).show()
+            if (nickname.isEmpty()/*||bank.isEmpty()||bank_Num.isEmpty()*/) {
+                Toast.makeText(this, "닉네임은 빈 값으로 둘 수 없습니다", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
@@ -86,8 +84,8 @@ class User_Data_Input : AppCompatActivity(){
             myprofile["email"] = email
             myprofile["nickname"] = nickname
             myprofile["description"] = description
-            myprofile["bankNum"] = bank_Num
-            myprofile["bank"] =  bank
+//            myprofile["bankNum"] = bank_Num
+//            myprofile["bank"] =  bank
             mydb.updateChildren(myprofile)
             startActivity(Intent(this,Complete_Join::class.java))
             finish()

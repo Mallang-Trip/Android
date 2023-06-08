@@ -7,21 +7,18 @@ import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
-import android.view.Menu
-import android.view.MenuInflater
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.malangtrip.login.User_Info
+import com.example.malangtrip.Key.User_Info
 import com.example.malangtrip.Nav.Community.CommunityAuth
-import com.example.malangtrip.Nav.Community.CommunityItem
-import com.example.malangtrip.Nav.Home.Main_Home
+import com.example.malangtrip.Key.CommunityItem
 import com.example.malangtrip.R
 
 import com.example.malangtrip.databinding.NCommunityWriteTextBinding
-import com.example.malangtrip.login.DBKey
-import com.example.malangtrip.login.DBKey.Companion.Community_Key
-import com.example.malangtrip.login.DBKey.Companion.DB_URL
+import com.example.malangtrip.Key.DBKey
+import com.example.malangtrip.Key.DBKey.Companion.Community_Key
+import com.example.malangtrip.Key.DBKey.Companion.DB_URL
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase

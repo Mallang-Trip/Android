@@ -1,4 +1,4 @@
-package com.example.malangtrip.Nav.Community
+package com.example.malangtrip.Key
 
 data class CommunityItem(
 
