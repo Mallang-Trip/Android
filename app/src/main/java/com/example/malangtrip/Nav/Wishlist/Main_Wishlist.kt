@@ -14,6 +14,7 @@ import com.example.malangtrip.Key.Trip_Info
 import com.example.malangtrip.R
 import com.example.malangtrip.databinding.NWishlistBinding
 import com.example.malangtrip.Key.DBKey
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
@@ -104,8 +105,8 @@ class Main_Wishlist : Fragment(){
     }
     private fun loadWishlistData() {
 
-
-        Firebase.database.reference.child(DBKey.My_Wishlist)
+        val curruntId = Firebase.auth.currentUser?.uid ?: ""
+        Firebase.database.reference.child(DBKey.My_Wishlist).child(curruntId)
             .addValueEventListener(object:
                 ValueEventListener {
 
@@ -118,14 +119,14 @@ class Main_Wishlist : Fragment(){
                         My_Wishlist.clear()
 
                         snapshot.children.forEach { parentSnapshot ->
-                            parentSnapshot.children.forEach { childSnapshot ->
-                                val mywishlist = childSnapshot.getValue<Trip_Info>()
-
-                                if (mywishlist != null) {
+//                            parentSnapshot.children.forEach { childSnapshot ->
+                                val mywishlist = parentSnapshot.getValue<Trip_Info>()
+//
+                              if (mywishlist != null) {
                                     My_Wishlist.add(mywishlist)
-                                }
-
-                            }
+                               }
+//
+//                            }
                         }
 
                         MyWishListAdpater.notifyDataSetChanged()
