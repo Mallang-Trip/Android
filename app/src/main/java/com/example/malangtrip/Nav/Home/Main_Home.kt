@@ -250,6 +250,9 @@ class Main_Home : Fragment() {
                 }
             })
     }
+   private fun getDataFirebase(data){
+
+   }
 
 
 }
