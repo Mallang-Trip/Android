@@ -1,43 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:orientation="vertical"
     android:padding="16dp">
 
-    <ImageView
-        android:id="@+id/profileImageView"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:src="@drawable/baseline_supervised_user_circle_24"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-<!--        android:src="@drawable/ic_baseline_supervised_user_circle_24"-->
+    <!--    <ImageView-->
+    <!--        android:id="@+id/profileImageView"-->
+    <!--        android:layout_width="50dp"-->
+    <!--        android:layout_height="50dp"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        android:src="@drawable/baseline_supervised_user_circle_24"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent" />-->
 
+
+<!--    <TextView-->
+<!--        android:id="@+id/nicknameTextView"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:textColor="@color/black"-->
+<!--        android:textSize="18sp" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/lastmessagetext"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content" />-->
 
     <TextView
         android:id="@+id/nicknameTextView"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/profileImageView"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="유저이름" />
+        android:text="닉네임"
+        android:textAlignment="viewStart"
+        android:textColor="@color/black" />
 
-    <TextView
-        android:id="@+id/lastmessagetext"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/profileImageView"
-        app:layout_constraintTop_toBottomOf="@id/nicknameTextView"
-        tools:text="마지막 메세지" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/lastmessagetext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="마지막 메세지"
+            android:textAlignment="viewStart" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="TextView" />
+    </LinearLayout>
+
+</LinearLayout>

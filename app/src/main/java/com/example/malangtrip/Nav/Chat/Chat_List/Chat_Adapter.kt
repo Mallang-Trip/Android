@@ -1,5 +1,6 @@
 package com.example.malangtrip.Nav.Chat.Chat_List
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -15,11 +16,14 @@ import com.google.firebase.storage.ktx.storage
 class Chat_Adapter(private val onclick: (Chat_Info)->Unit) : ListAdapter<Chat_Info, Chat_Adapter.ViewHolder>(differ){
 
     inner class ViewHolder(private val binding: NChatChatroomBinding):RecyclerView.ViewHolder(binding.root){
+        //채팅방 목록에 채팅 불러오기
         fun bind(item: Chat_Info)
         {
-            item?.friend_Id?.let { getImageData(it,binding.profileImageView) }
+            //프사인데 나중에 기능 추가할 때 쓰기
+            //item?.friend_Id?.let { getImageData(it,binding.profileImageView) }
+
             binding.nicknameTextView.text = item.friend_Name
-            binding.lastmessagetext.text = item.lastmessage
+            binding.lastmessagetext.text = item.lastMessage
 
             binding.root.setOnClickListener {
                 onclick(item)

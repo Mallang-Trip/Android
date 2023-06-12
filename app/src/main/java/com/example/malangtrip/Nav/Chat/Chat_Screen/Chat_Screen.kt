@@ -11,6 +11,7 @@ import com.example.malangtrip.Key.User_Info
 import com.example.malangtrip.R
 import com.example.malangtrip.databinding.NChatChatscreenBinding
 import com.example.malangtrip.Key.DBKey
+import com.example.malangtrip.Nav.Community.CommunityAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
@@ -122,11 +123,13 @@ class Chat_Screen : AppCompatActivity() {
             }
             //db업데이트
             val updates: MutableMap<String,Any> = hashMapOf(
-                "${DBKey.DB_CHAT_ROOMS}/$MyId/$FriendId/lastmessage" to message,
-                "${DBKey.DB_CHAT_ROOMS}/$FriendId/$MyId/lastmessage" to message,
+                "${DBKey.DB_CHAT_ROOMS}/$MyId/$FriendId/lastMessage" to message,
+                "${DBKey.DB_CHAT_ROOMS}/$FriendId/$MyId/lastMessage" to message,
                 "${DBKey.DB_CHAT_ROOMS}/$FriendId/$MyId/chatRoomId" to ChatRoomId,
                 "${DBKey.DB_CHAT_ROOMS}/$FriendId/$MyId/friend_Id" to MyId,
-                "${DBKey.DB_CHAT_ROOMS}/$FriendId/$MyId/friend_Name" to MyNickname
+                "${DBKey.DB_CHAT_ROOMS}/$FriendId/$MyId/friend_Name" to MyNickname,
+                "${DBKey.DB_CHAT_ROOMS}/$MyId/$FriendId/lastMessageTime" to CommunityAuth.getTime(),
+                "${DBKey.DB_CHAT_ROOMS}/$FriendId/$MyId/lastMessageTime" to CommunityAuth.getTime()
             )
             Log.d("샌드버튼 동작함 닉네임 체크","$MyNickname")
             Firebase.database.reference.updateChildren(updates)

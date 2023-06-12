@@ -14,6 +14,7 @@ import com.example.malangtrip.Nav.Home.local.Main_Jeju
 import com.example.malangtrip.R
 import com.example.malangtrip.databinding.NHomeBinding
 import com.example.malangtrip.Key.DBKey
+import com.example.malangtrip.Key.DBKey.Companion.DB_CHAT_ROOMS
 import com.example.malangtrip.databinding.NHomeLocalAdapterBinding
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
@@ -25,25 +26,16 @@ import com.google.firebase.ktx.Firebase
 //메인 홈
 class Main_Home : Fragment() {
     private var _binding: NHomeBinding? = null
-    private lateinit var localAdapter: LocalAdapter
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
-    //    val actionBar = (requireActivity() as AppCompatActivity).supportActionBar
-//    actionBar?.setDisplayHomeAsUpEnabled(true)
-//    actionBar?.title = "나의 프로필"
-//    actionBar?.setHomeAsUpIndicator(R.drawable.my_home_back) // 홈 버튼 아이콘을 검정색으로 설정
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-// 앱 시작 시 찜 목록을 불러옵니다.///////////
-        Get_Community_Info()
-        Get_MyWishlist_Info()
-        Get_MyInfo()
-        Get_TripInfo()
+    //홈에 표시할 지역리스트
+    private lateinit var localAdapter: LocalAdapter
+    val imageList = listOf(R.drawable.jeju,R.drawable.comming_soon,R.drawable.comming_soon,R.drawable.comming_soon,R.drawable.comming_soon
+        ,R.drawable.comming_soon,R.drawable.comming_soon,R.drawable.comming_soon)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        //데이타 호출
+        getDataFromFirebase()
+
 
         _binding = NHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
@@ -53,11 +45,28 @@ class Main_Home : Fragment() {
         actionBar?.title = "가고 싶은 여행지를 찾아요"
         actionBar?.setHomeAsUpIndicator(R.drawable.my_home_back) // 홈 버튼 아이콘 변경
         setHasOptionsMenu(true)
-        // Create a list of image resource IDs or URLs
-        val imageList = listOf(R.drawable.jeju,R.drawable.comming_soon,R.drawable.comming_soon,R.drawable.comming_soon,R.drawable.comming_soon
-        ,R.drawable.comming_soon,R.drawable.comming_soon,R.drawable.comming_soon)
+        createAdapter()
 
-        // Initialize the RecyclerView and adapter
+
+
+
+
+        // 뒤로가기 버튼을 눌렀을 때 앱 종료
+        root.isFocusableInTouchMode = true
+        root.requestFocus()
+        root.setOnKeyListener { _, keyCode, event ->
+            if (event.action == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK) {
+                showExitDialog()
+                return@setOnKeyListener true
+            }
+            false
+        }
+
+        return root
+    }
+    //홈에 지역 리스트 띄우는 함수
+    private fun createAdapter()
+    {
         localAdapter = LocalAdapter(imageList)
         binding.recyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
         binding.recyclerView.adapter = localAdapter
@@ -76,26 +85,13 @@ class Main_Home : Fragment() {
                 }
             }
         })
-
-        // 뒤로가기 버튼을 눌렀을 때 앱 종료
-        root.isFocusableInTouchMode = true
-        root.requestFocus()
-        root.setOnKeyListener { _, keyCode, event ->
-            if (event.action == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK) {
-                showExitDialog()
-                return@setOnKeyListener true
-            }
-            false
-        }
-
-        return root
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
-
+    //뒤로가기 했을 때 종료
     private fun showExitDialog() {
         val builder = AlertDialog.Builder(requireContext())
         builder.setTitle("앱 종료")
@@ -112,7 +108,7 @@ class Main_Home : Fragment() {
             .setNegativeButton("취소", null)
             .show()
     }
-
+    //왼쪽 위 뒤로가기 했을 때 종료
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
         return when (item.itemId) {
@@ -125,134 +121,39 @@ class Main_Home : Fragment() {
         }
     }
 
-    private fun Get_Community_Info() {
-        Firebase.database.getReference(DBKey.Community_Key)
-            .addListenerForSingleValueEvent(object : ValueEventListener {
-                override fun onDataChange(dataSnapshot: DataSnapshot) {
-                    // 로컬에 찜 목록을 저장합니다.
-                    //val wishlist = dataSnapshot.children.map { it.key }
-                    // TODO: 이 데이터를 사용하여 UI를 업데이트합니다.
-                }
 
-                override fun onCancelled(databaseError: DatabaseError) {
-                    // 쿼리 실행에 실패했을 때의 동작을 수행합니다.
-                    Log.e("FirebaseError", "Query canceled: $databaseError")
-                }
-            })
-
-// 찜 목록이 변경될 때마다 로컬 데이터를 업데이트합니다.
-        Firebase.database.getReference(DBKey.Community_Key)
-            .addValueEventListener(object : ValueEventListener {
-                override fun onDataChange(dataSnapshot: DataSnapshot) {
-                    // 로컬에 찜 목록을 업데이트합니다.
-                    //val wishlist = dataSnapshot.children.map { it.key }
-                    // TODO: 이 데이터를 사용하여 UI를 업데이트합니다.
-                }
-
-                override fun onCancelled(databaseError: DatabaseError) {
-                    // 쿼리 실행에 실패했을 때의 동작을 수행합니다.
-                    Log.e("FirebaseError", "Query canceled: $databaseError")
-                }
-            })
-    }
-
-    private fun Get_MyWishlist_Info() {
-        val myid = Firebase.auth.currentUser?.uid ?: ""
-        Firebase.database.getReference(DBKey.My_Wishlist).child(myid)
-            .addListenerForSingleValueEvent(object : ValueEventListener {
-                override fun onDataChange(dataSnapshot: DataSnapshot) {
-                    // 로컬에 찜 목록을 저장합니다.
-                    //val wishlist = dataSnapshot.children.map { it.key }
-                    // TODO: 이 데이터를 사용하여 UI를 업데이트합니다.
-                }
-
-                override fun onCancelled(databaseError: DatabaseError) {
-                    // 쿼리 실행에 실패했을 때의 동작을 수행합니다.
-                    Log.e("FirebaseError", "Query canceled: $databaseError")
-                }
-            })
-
-// 찜 목록이 변경될 때마다 로컬 데이터를 업데이트합니다.
-        Firebase.database.getReference(DBKey.My_Wishlist).child(myid)
-            .addValueEventListener(object : ValueEventListener {
-                override fun onDataChange(dataSnapshot: DataSnapshot) {
-                    // 로컬에 찜 목록을 업데이트합니다.
-                    //val wishlist = dataSnapshot.children.map { it.key }
-                    // TODO: 이 데이터를 사용하여 UI를 업데이트합니다.
-                }
-
-                override fun onCancelled(databaseError: DatabaseError) {
-                    // 쿼리 실행에 실패했을 때의 동작을 수행합니다.
-                    Log.e("FirebaseError", "Query canceled: $databaseError")
-                }
-            })
-    }
-
-    private fun Get_MyInfo() {
-        val myid = Firebase.auth.currentUser?.uid ?: ""
-        Firebase.database.getReference(DBKey.DB_USERS).child(myid)
-            .addListenerForSingleValueEvent(object : ValueEventListener {
-                override fun onDataChange(dataSnapshot: DataSnapshot) {
-                    // 로컬에 찜 목록을 저장합니다.
-                    //val wishlist = dataSnapshot.children.map { it.key }
-                    // TODO: 이 데이터를 사용하여 UI를 업데이트합니다.
-                }
-
-                override fun onCancelled(databaseError: DatabaseError) {
-                    // 쿼리 실행에 실패했을 때의 동작을 수행합니다.
-                    Log.e("FirebaseError", "Query canceled: $databaseError")
-                }
-            })
-
-// 찜 목록이 변경될 때마다 로컬 데이터를 업데이트합니다.
-        Firebase.database.getReference(DBKey.DB_USERS).child(myid)
-            .addValueEventListener(object : ValueEventListener {
-                override fun onDataChange(dataSnapshot: DataSnapshot) {
-                    // 로컬에 찜 목록을 업데이트합니다.
-                    //val wishlist = dataSnapshot.children.map { it.key }
-                    // TODO: 이 데이터를 사용하여 UI를 업데이트합니다.
-                }
-
-                override fun onCancelled(databaseError: DatabaseError) {
-                    // 쿼리 실행에 실패했을 때의 동작을 수행합니다.
-                    Log.e("FirebaseError", "Query canceled: $databaseError")
-                }
-            })
-    }
-
-    private fun Get_TripInfo() {
-        Firebase.database.getReference(DBKey.Trip_Info)
-            .addListenerForSingleValueEvent(object : ValueEventListener {
-                override fun onDataChange(dataSnapshot: DataSnapshot) {
-                    // 로컬에 찜 목록을 저장합니다.
-                    //val wishlist = dataSnapshot.children.map { it.key }
-                    // TODO: 이 데이터를 사용하여 UI를 업데이트합니다.
-                }
-
-                override fun onCancelled(databaseError: DatabaseError) {
-                    // 쿼리 실행에 실패했을 때의 동작을 수행합니다.
-                    Log.e("FirebaseError", "Query canceled: $databaseError")
-                }
-            })
-
-// 찜 목록이 변경될 때마다 로컬 데이터를 업데이트합니다.
-        Firebase.database.getReference(DBKey.Trip_Info)
-            .addValueEventListener(object : ValueEventListener {
-                override fun onDataChange(dataSnapshot: DataSnapshot) {
-                    // 로컬에 찜 목록을 업데이트합니다.
-                    //val wishlist = dataSnapshot.children.map { it.key }
-                    // TODO: 이 데이터를 사용하여 UI를 업데이트합니다.
-                }
-
-                override fun onCancelled(databaseError: DatabaseError) {
-                    // 쿼리 실행에 실패했을 때의 동작을 수행합니다.
-                    Log.e("FirebaseError", "Query canceled: $databaseError")
-                }
-            })
-    }
-   private fun getDataFirebase(data){
-
+    //파이어베이스에서 데이타 호출 한 번에
+   private fun getDataFromFirebase(){
+        getDataFromFirebaseKey(DBKey.Trip_Info)
+        getDataFromFirebaseKey(DBKey.DB_USERS)
+        getDataFromFirebaseKey(DBKey.My_Wishlist)
+        getDataFromFirebaseKey(DBKey.Community_Key)
+        getDataFromFirebaseKey(DBKey.Comment_Key)
+        getDataFromFirebaseKey(DB_CHAT_ROOMS)
    }
-
+    //중복되는 코드 없애기 위한 함수
+    private fun getDataFromFirebaseKey(dataKey:String)
+    {
+        if(dataKey==DBKey.DB_USERS||dataKey==DBKey.My_Wishlist||dataKey==DB_CHAT_ROOMS)
+        {
+            val myid = Firebase.auth.currentUser?.uid ?: ""
+            Firebase.database.getReference(dataKey).child(myid)
+                .addListenerForSingleValueEvent(object : ValueEventListener {
+                    override fun onDataChange(dataSnapshot: DataSnapshot) {}
+                    override fun onCancelled(databaseError: DatabaseError) {
+                        Log.e("데이터 못 불러왔음", dataKey)
+                    }
+                })
+        }
+        else{
+            Firebase.database.getReference(dataKey)
+                .addListenerForSingleValueEvent(object : ValueEventListener {
+                    override fun onDataChange(dataSnapshot: DataSnapshot) {}
+                    override fun onCancelled(databaseError: DatabaseError) {
+                        Log.e("데이터 못 불러왔음", dataKey)
+                    }
+                })
+        }
+    }
 
 }
