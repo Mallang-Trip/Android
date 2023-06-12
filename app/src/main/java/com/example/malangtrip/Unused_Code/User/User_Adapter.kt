@@ -8,16 +8,16 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.malangtrip.databinding.NChatUserBinding
-import com.example.malangtrip.Key.User_Info
+import com.example.malangtrip.Key.UserInfo
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 
-class User_Adapter(private val onClick:(User_Info)->Unit) : ListAdapter<User_Info, User_Adapter.ViewHolder>(
+class User_Adapter(private val onClick:(UserInfo)->Unit) : ListAdapter<UserInfo, User_Adapter.ViewHolder>(
     differ
 ){
 
     inner class ViewHolder(private val binding: NChatUserBinding):RecyclerView.ViewHolder(binding.root){
-        fun bind(item: User_Info)
+        fun bind(item: UserInfo)
         {
             item?.userId?.let { getImageData(it,binding.profileImageView) }
             binding.nicknameTextView.text = item.nickname
@@ -39,13 +39,13 @@ class User_Adapter(private val onClick:(User_Info)->Unit) : ListAdapter<User_Inf
     }
 
     companion object{
-        val differ = object: DiffUtil.ItemCallback<User_Info>()
+        val differ = object: DiffUtil.ItemCallback<UserInfo>()
         {
-            override fun areContentsTheSame(oldItem: User_Info, newItem: User_Info): Boolean {
+            override fun areContentsTheSame(oldItem: UserInfo, newItem: UserInfo): Boolean {
                 return oldItem.userId == newItem.userId
             }
 
-            override fun areItemsTheSame(oldItem: User_Info, newItem: User_Info): Boolean {
+            override fun areItemsTheSame(oldItem: UserInfo, newItem: UserInfo): Boolean {
                 return oldItem == newItem
             }
         }

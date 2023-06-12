@@ -7,8 +7,8 @@ import android.widget.Toast
 
 
 import androidx.recyclerview.widget.RecyclerView
-import com.example.malangtrip.Key.Trip_Info
-import com.example.malangtrip.Key.Wishlist_Info
+import com.example.malangtrip.Key.TripInfo
+import com.example.malangtrip.Key.WishlistInfo
 import com.example.malangtrip.databinding.NHomeTripInfoAdapterBinding
 import com.example.malangtrip.Key.DBKey
 import com.google.firebase.auth.ktx.auth
@@ -21,19 +21,19 @@ import com.google.firebase.ktx.Firebase
 
 
 
-class Trip_Adapter(private var tripList: List<Trip_Info>, private val onClick: (Trip_Info) -> Unit) : RecyclerView.Adapter<Trip_Adapter.ViewHolder>(){
+class Trip_Adapter(private var tripList: List<TripInfo>, private val onClick: (TripInfo) -> Unit) : RecyclerView.Adapter<Trip_Adapter.ViewHolder>(){
 
     inner class ViewHolder(private val binding: NHomeTripInfoAdapterBinding):RecyclerView.ViewHolder(binding.root){
         var bookmark = false
         val myid = Firebase.auth.currentUser?.uid ?: ""
-        fun bind(item: Trip_Info)
+        fun bind(item: TripInfo)
         {
             Firebase.database.getReference(DBKey.My_Wishlist).child(myid).addListenerForSingleValueEvent(object :
                 ValueEventListener {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
                     for (childSnapshot in dataSnapshot.children) {
 
-                            val wishlist_Key = childSnapshot.getValue<Wishlist_Info>()
+                            val wishlist_Key = childSnapshot.getValue<WishlistInfo>()
                             // Log.d("ChildFound", "Child with key $wishlist_Key found!")
                            // if (wishlist_Key != null) {
                         childSnapshot.key?.let { Log.d("ChildFound", it) }
@@ -79,7 +79,7 @@ class Trip_Adapter(private var tripList: List<Trip_Info>, private val onClick: (
                     item.tripId?.let { it1 ->
                         Firebase.database.getReference(DBKey.My_Wishlist).child(myid).child(
                             it1
-                        ).setValue(Trip_Info(key,item.tripId,item.local,item.title,item.schedule,item.content,item.price))
+                        ).setValue(TripInfo(key,item.tripId,item.local,item.title,item.schedule,item.content,item.price))
                     }
 
                 }

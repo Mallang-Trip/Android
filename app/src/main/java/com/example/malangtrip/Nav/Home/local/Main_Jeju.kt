@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.malangtrip.Nav.Home.Main_Home
 import com.example.malangtrip.Nav.Home.Trip_Adapter
 import com.example.malangtrip.Nav.Home.Trip_Text
-import com.example.malangtrip.Key.Trip_Info
+import com.example.malangtrip.Key.TripInfo
 import com.example.malangtrip.R
 import com.example.malangtrip.databinding.NHomeJejuBinding
 import com.example.malangtrip.Key.DBKey
@@ -27,7 +27,7 @@ class Main_Jeju : Fragment(){
     private var _binding: NHomeJejuBinding?=null
     private val binding get()=_binding!!
     private lateinit var jejuTripAdapter : Trip_Adapter
-    private val jeju_trip_List = mutableListOf<Trip_Info>()
+    private val jeju_trip_List = mutableListOf<TripInfo>()
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = NHomeJejuBinding.inflate(inflater,container,false)
         val root: View = binding.root
@@ -70,7 +70,7 @@ class Main_Jeju : Fragment(){
 
                     snapshot.children.forEach { parentSnapshot ->
                         parentSnapshot.children.forEach { childSnapshot ->
-                            val jeju_Trip = childSnapshot.getValue<Trip_Info>()
+                            val jeju_Trip = childSnapshot.getValue<TripInfo>()
                             jeju_Trip ?: return
                             jeju_Trip.local?.let { it1 -> Log.d("여행 잘 배껴오나", it1) }
                             if(jeju_Trip.local=="jeju")

@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.malangtrip.Main_Screen
 import com.example.malangtrip.Nav.Home.Main_Home
 import com.example.malangtrip.Nav.Home.Trip_Adapter
-import com.example.malangtrip.Key.Trip_Info
+import com.example.malangtrip.Key.TripInfo
 import com.example.malangtrip.R
 import com.example.malangtrip.databinding.NWishlistBinding
 import com.example.malangtrip.Key.DBKey
@@ -29,7 +29,7 @@ class Main_Wishlist : Fragment(){
     //private lateinit var jejuTripAdapter : Trip_Adapter
     //    private val jeju_trip_List = mutableListOf<Trip_Info>()
     private lateinit var MyWishListAdpater : Trip_Adapter
-    private val My_Wishlist = mutableListOf<Trip_Info>()
+    private val My_Wishlist = mutableListOf<TripInfo>()
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
 
 
@@ -120,7 +120,7 @@ class Main_Wishlist : Fragment(){
 
                         snapshot.children.forEach { parentSnapshot ->
 //                            parentSnapshot.children.forEach { childSnapshot ->
-                                val mywishlist = parentSnapshot.getValue<Trip_Info>()
+                                val mywishlist = parentSnapshot.getValue<TripInfo>()
 //
                               if (mywishlist != null) {
                                     My_Wishlist.add(mywishlist)

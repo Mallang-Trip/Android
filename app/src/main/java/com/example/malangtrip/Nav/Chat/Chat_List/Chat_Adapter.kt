@@ -1,6 +1,5 @@
 package com.example.malangtrip.Nav.Chat.Chat_List
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -8,16 +7,16 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.malangtrip.Key.Chat_Info
+import com.example.malangtrip.Key.ChatListInfo
 import com.example.malangtrip.databinding.NChatChatroomBinding
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 
-class Chat_Adapter(private val onclick: (Chat_Info)->Unit) : ListAdapter<Chat_Info, Chat_Adapter.ViewHolder>(differ){
+class Chat_Adapter(private val onclick: (ChatListInfo)->Unit) : ListAdapter<ChatListInfo, Chat_Adapter.ViewHolder>(differ){
 
     inner class ViewHolder(private val binding: NChatChatroomBinding):RecyclerView.ViewHolder(binding.root){
         //채팅방 목록에 채팅 불러오기
-        fun bind(item: Chat_Info)
+        fun bind(item: ChatListInfo)
         {
             //프사인데 나중에 기능 추가할 때 쓰기
             //item?.friend_Id?.let { getImageData(it,binding.profileImageView) }
@@ -40,13 +39,13 @@ class Chat_Adapter(private val onclick: (Chat_Info)->Unit) : ListAdapter<Chat_In
         holder.bind(currentList[position])
     }
     companion object{
-        val differ = object: DiffUtil.ItemCallback<Chat_Info>()
+        val differ = object: DiffUtil.ItemCallback<ChatListInfo>()
         {
-            override fun areContentsTheSame(oldItem: Chat_Info, newItem: Chat_Info): Boolean {
+            override fun areContentsTheSame(oldItem: ChatListInfo, newItem: ChatListInfo): Boolean {
                 return oldItem.chatRoomId == newItem.chatRoomId
             }
 
-            override fun areItemsTheSame(oldItem: Chat_Info, newItem: Chat_Info): Boolean {
+            override fun areItemsTheSame(oldItem: ChatListInfo, newItem: ChatListInfo): Boolean {
                 return oldItem == newItem
             }
         }

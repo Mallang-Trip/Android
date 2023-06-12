@@ -16,7 +16,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.bumptech.glide.Glide
 import com.example.malangtrip.Nav.Community.Comment.Comment_Adapter
-import com.example.malangtrip.Key.Comment_Item
+import com.example.malangtrip.Key.CommentItem
 import com.example.malangtrip.Nav.Community.CommunityAuth
 import com.example.malangtrip.Key.CommunityItem
 import com.example.malangtrip.Nav.Community.Write_Community.Fix_Board
@@ -45,7 +45,7 @@ class Go_To_Board : AppCompatActivity(){
 //    private var imageCount by Delegates.notNull<Int>()
 //    private val imageUrls = mutableListOf<String>()
     private  lateinit var name :String
-    private val commentDataList = mutableListOf<Comment_Item>()
+    private val commentDataList = mutableListOf<CommentItem>()
     private lateinit var commentAdapter: Comment_Adapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -175,7 +175,7 @@ private fun getImageData(key : String)
                             .child(key)
                             .push()
                             .setValue(
-                                Comment_Item(
+                                CommentItem(
                                     name,
                                     binding.commentArea.text.toString(),
                                     CommunityAuth.getTime()
@@ -262,7 +262,7 @@ private fun getImageData(key : String)
 
                     commentDataList.clear()
                 for (dataModel in dataSnapshot.children) {
-                    val item = dataModel.getValue(Comment_Item::class.java)
+                    val item = dataModel.getValue(CommentItem::class.java)
                     commentDataList.add(item!!)
                 }
                 commentAdapter.notifyDataSetChanged()

@@ -8,14 +8,14 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.example.malangtrip.Key.Chat_Info
+import com.example.malangtrip.Key.ChatListInfo
 import com.example.malangtrip.Nav.Chat.Chat_Screen.Chat_Screen
 import com.example.malangtrip.Nav.Community.CommunityAuth
-import com.example.malangtrip.Key.Trip_Info
+import com.example.malangtrip.Key.TripInfo
 import com.example.malangtrip.R
 import com.example.malangtrip.databinding.NHomeTripTextBinding
 import com.example.malangtrip.Key.DBKey
-import com.example.malangtrip.Key.User_Info
+import com.example.malangtrip.Key.UserInfo
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -67,16 +67,16 @@ class Trip_Text : AppCompatActivity(){
                 .child(driver_Id)
             val driver_Key = Firebase.database.reference.child(DBKey.DB_USERS).child(driver_Id)
             driver_Key.get().addOnSuccessListener {
-                val driver = it.getValue(User_Info::class.java)
+                val driver = it.getValue(UserInfo::class.java)
 
                 chat_room_db.get().addOnSuccessListener {
                     var chat_rood_id = ""
                     if (it.value != null) {
-                        val chat_room = it.getValue(Chat_Info::class.java)
+                        val chat_room = it.getValue(ChatListInfo::class.java)
                         chat_rood_id = chat_room?.chatRoomId ?: ""
                     } else {
                         chat_rood_id = UUID.randomUUID().toString()
-                        val new_chat_room = Chat_Info(
+                        val new_chat_room = ChatListInfo(
                         chatRoomId = chat_rood_id,
                             friend_Name = driver?.nickname,
                             friend_Id = driver?.userId
@@ -102,7 +102,7 @@ class Trip_Text : AppCompatActivity(){
 
                 try {
 
-                    val dataModel = dataSnapshot.getValue(Trip_Info::class.java)
+                    val dataModel = dataSnapshot.getValue(TripInfo::class.java)
 
 
                     //binding.boardTitle.text = dataModel!!.title

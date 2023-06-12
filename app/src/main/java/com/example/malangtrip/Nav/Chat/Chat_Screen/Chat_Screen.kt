@@ -6,8 +6,8 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.malangtrip.Key.Chat_Screen_Info
-import com.example.malangtrip.Key.User_Info
+import com.example.malangtrip.Key.ChatPageInfo
+import com.example.malangtrip.Key.UserInfo
 import com.example.malangtrip.R
 import com.example.malangtrip.databinding.NChatChatscreenBinding
 import com.example.malangtrip.Key.DBKey
@@ -41,7 +41,7 @@ class Chat_Screen : AppCompatActivity() {
     private var MyNickname: String = "321321"
 
     //채팅을 하나씩 받을꺼기 떄문에 리스트 하나 만들어주기
-    private var chat_item_list_for_one = mutableListOf<Chat_Screen_Info>()/////////////////////////////
+    private var chat_item_list_for_one = mutableListOf<ChatPageInfo>()/////////////////////////////
 
     //전송 버튼 활성화하는 변수
     private var bool_send = false
@@ -64,7 +64,7 @@ class Chat_Screen : AppCompatActivity() {
         linearLayoutManager = LinearLayoutManager(applicationContext)
         Firebase.database.reference.child(DBKey.DB_USERS).child(MyId).get()
             .addOnSuccessListener {
-                val MyInfo = it.getValue(User_Info::class.java)
+                val MyInfo = it.getValue(UserInfo::class.java)
                MyNickname = MyInfo?.nickname?:"123" //수정필요
                 getFriendData()//상대방 조회
             }//내 정보 조회
@@ -112,7 +112,7 @@ class Chat_Screen : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            val new_Message = Chat_Screen_Info(
+            val new_Message = ChatPageInfo(
                 message=message,
                 userId=MyId
             )
@@ -170,7 +170,7 @@ class Chat_Screen : AppCompatActivity() {
     {
         Firebase.database.reference.child(DBKey.DB_USERS).child(FriendId).get()
             .addOnSuccessListener {
-                val Friends_Info = it.getValue(User_Info::class.java)
+                val Friends_Info = it.getValue(UserInfo::class.java)
                 FriendFcmToken = Friends_Info?.fcmToken.orEmpty()
                 chatScreenAdapter.Friends_Item = Friends_Info
                 bool_send = true
@@ -185,7 +185,7 @@ class Chat_Screen : AppCompatActivity() {
         Firebase.database.reference.child(DBKey.DB_CHATS).child(ChatRoomId).addChildEventListener(object :ChildEventListener{
 
             override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) { // 어뎁터에 메세지 정보 전송
-                val chat_item = snapshot.getValue(Chat_Screen_Info::class.java)
+                val chat_item = snapshot.getValue(ChatPageInfo::class.java)
                 chat_item?:return
                 chat_item_list_for_one.add(chat_item)
                 chatScreenAdapter.submitList(chat_item_list_for_one.toMutableList())

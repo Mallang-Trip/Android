@@ -1,6 +1,6 @@
 package com.example.malangtrip.Key
 
-data class Wishlist_Info (
+data class WishlistInfo (
         val tripwriterId: String?=null,
         val tripId : String?=null,
         val local: String?=null,

@@ -10,7 +10,7 @@ import android.util.Log
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.malangtrip.Key.User_Info
+import com.example.malangtrip.Key.UserInfo
 import com.example.malangtrip.Nav.Community.CommunityAuth
 import com.example.malangtrip.Key.CommunityItem
 import com.example.malangtrip.R
@@ -59,7 +59,7 @@ class Write_Text : AppCompatActivity(){
 
 
             Mydb.get().addOnSuccessListener {
-                val myinfo = it.getValue(User_Info::class.java) ?: return@addOnSuccessListener
+                val myinfo = it.getValue(UserInfo::class.java) ?: return@addOnSuccessListener
                 val My_Name = myinfo.nickname.toString()
 
 

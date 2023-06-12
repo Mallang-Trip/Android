@@ -5,13 +5,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import com.example.malangtrip.Key.DBKey
-import com.example.malangtrip.Key.User_Info
+import com.example.malangtrip.Key.UserInfo
 import com.example.malangtrip.Main_Screen
-import com.example.malangtrip.R
-import com.example.malangtrip.databinding.ASplashactivityBinding
-import com.google.firebase.auth.FirebaseAuth
+import com.example.malangtrip.databinding.ActivityASplashBinding
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
@@ -19,53 +16,44 @@ import com.google.firebase.ktx.Firebase
 
 class SplashActivity : AppCompatActivity() {
 
-
-    private lateinit var binding : ASplashactivityBinding
-
+    private lateinit var binding : ActivityASplashBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ASplashactivityBinding.inflate(layoutInflater)
+        binding = ActivityASplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        setTheme(R.style.AppTheme)
         supportActionBar?.hide() // 액션바 숨김
-        val mAuth: FirebaseAuth = FirebaseAuth.getInstance()
-        var check = false
-        val currentUser = mAuth.currentUser
-
-
-
+        var loginCheck = false
         val curruntId= Firebase.auth.currentUser?.uid?:""
-        Handler(Looper.getMainLooper()).postDelayed({
 
-            Log.d("sdfsdfdsgds",curruntId)
+
+        Handler(Looper.getMainLooper()).postDelayed({
             if(curruntId==null||curruntId=="")
             {
-                startActivity(Intent(this, Email_Login::class.java))
+                startActivity(Intent(this, EmailLogin::class.java))
                 finish()
             }
             val mydb = Firebase.database.reference.child(DBKey.DB_USERS).child(curruntId)//내 정보 접근
             mydb.get().addOnSuccessListener {
 
-                val myinfo = it.getValue(User_Info::class.java)?: return@addOnSuccessListener
+                val myinfo = it.getValue(UserInfo::class.java)?: return@addOnSuccessListener
 
                 val nickName = myinfo.nickname
                 if(nickName==null)
                 {
-                    startActivity(Intent(this, User_Data_Input::class.java))
-                    check = true
+                    startActivity(Intent(this, UserDataInput::class.java))
+                    loginCheck = true
                     finish()
                     return@addOnSuccessListener
                 }
                 else{
                     startActivity(Intent(this, Main_Screen::class.java))
-                    check = true
+                    loginCheck = true
                     finish()
                     return@addOnSuccessListener
                 }
-                if(check==false) {
-                    startActivity(Intent(this, Email_Login::class.java))
-                    Log.d("지나간다",check.toString())
+                if(loginCheck==false) {
+                    startActivity(Intent(this, EmailLogin::class.java))
                     finish()
                 }
             }

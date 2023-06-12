@@ -1,6 +1,6 @@
 package com.example.malangtrip.Key
 
-data class Driver_Info(
+data class DriverInfo(
     val local: String?=null,
     val nickname: String?=null,
     val description: String?=null,

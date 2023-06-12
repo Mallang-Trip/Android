@@ -10,8 +10,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.malangtrip.Key.Driver_Info
-import com.example.malangtrip.Key.Trip_Info
+import com.example.malangtrip.Key.DriverInfo
+import com.example.malangtrip.Key.TripInfo
 import com.example.malangtrip.R
 import com.example.malangtrip.databinding.NHomeDriverProfileScreenBinding
 import com.example.malangtrip.Key.DBKey
@@ -28,7 +28,7 @@ import com.google.firebase.storage.ktx.storage
 class Driver_Profile : AppCompatActivity() {
     lateinit var binding: NHomeDriverProfileScreenBinding
     lateinit var Driver_Trip_Adapter : Trip_Adapter
-    private val driver_trip_List = mutableListOf<Trip_Info>()
+    private val driver_trip_List = mutableListOf<TripInfo>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = NHomeDriverProfileScreenBinding.inflate(layoutInflater)
@@ -71,7 +71,7 @@ class Driver_Profile : AppCompatActivity() {
         driver_Key.get().addOnSuccessListener {
 
 
-            val driver_Profile = it.getValue(Driver_Info::class.java)
+            val driver_Profile = it.getValue(DriverInfo::class.java)
             supportActionBar?.apply {
                 title = "드라이버 닉네임 : " + driver_Profile!!.nickname
                 setDisplayHomeAsUpEnabled(true) // 뒤로가기 버튼 표시
@@ -111,7 +111,7 @@ class Driver_Profile : AppCompatActivity() {
 
                     snapshot.children.forEach { parentSnapshot ->
 
-                            val driver_Trip = parentSnapshot.getValue<Trip_Info>()
+                            val driver_Trip = parentSnapshot.getValue<TripInfo>()
                         driver_Trip ?: return
                         driver_Trip.local?.let { it1 -> Log.d("여행 잘 배껴오나", it1) }
 

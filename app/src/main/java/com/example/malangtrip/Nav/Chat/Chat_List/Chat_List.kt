@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.malangtrip.Key.Chat_Info
+import com.example.malangtrip.Key.ChatListInfo
 import com.example.malangtrip.Nav.Chat.Chat_Screen.Chat_Screen
 import com.example.malangtrip.R
 import com.example.malangtrip.databinding.NChatChatlistBinding
@@ -44,7 +44,7 @@ class Chat_List : Fragment(R.layout.n_chat_chatlist) {
             override fun onDataChange(snapshot: DataSnapshot) {
 
                 val chatRoomList = snapshot.children.mapNotNull {
-                    it.getValue(Chat_Info::class.java)
+                    it.getValue(ChatListInfo::class.java)
                 }
                 chatlistadapter.submitList(chatRoomList)
 

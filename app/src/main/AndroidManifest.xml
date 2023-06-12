@@ -49,20 +49,20 @@
                     android:scheme="kakaoa0d1ab4cd4502733d63c9fa927683fd7" />
             </intent-filter>
         </activity> <!-- 로그인 액티비티 -->
-        <activity android:name=".login.User_Data_Input" />
+        <activity android:name=".login.UserDataInput" />
         <activity
             android:name=".Main_Screen"
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".Unused_Code.ToServerTest" />
-        <activity android:name=".login.Email_Login" />
-        <activity android:name=".login.Join_Membership" />
+        <activity android:name=".login.EmailLogin" />
+        <activity android:name=".login.JoinMembership" />
         <activity android:name=".Nav.Chat.Chat_Screen.Chat_Screen" />
         <activity android:name=".Nav.Community.Write_Community.Write_Text" />
         <activity android:name=".Nav.Home.local.Main_Jeju" />
         <activity
             android:name=".Nav.Community.Read_Community.Go_To_Board"
             android:windowSoftInputMode="adjustPan"></activity>
-        <activity android:name=".login.Complete_Join" />
+        <activity android:name=".login.CompleteJoin" />
         <activity android:name=".Nav.Community.Write_Community.Fix_Board" />
         <activity android:name=".Nav.Home.Trip_Text" />
         <activity android:name=".Nav.Home.Driver_Profile" />

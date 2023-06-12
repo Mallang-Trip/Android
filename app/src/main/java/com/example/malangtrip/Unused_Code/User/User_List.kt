@@ -9,13 +9,13 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.malangtrip.Key.Chat_Info
+import com.example.malangtrip.Key.ChatListInfo
 import com.example.malangtrip.Nav.Chat.Chat_Screen.Chat_Screen
 import com.example.malangtrip.R
 import com.example.malangtrip.databinding.NChatUserlistBinding
 import com.example.malangtrip.Key.DBKey.Companion.DB_CHAT_ROOMS
 import com.example.malangtrip.Key.DBKey.Companion.DB_Friends
-import com.example.malangtrip.Key.User_Info
+import com.example.malangtrip.Key.UserInfo
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -42,11 +42,11 @@ class User_List() : Fragment(R.layout.n_chat_userlist) {
                 chat_room_db.get().addOnSuccessListener {
                     var chat_rood_id = ""
                     if (it.value != null) {
-                        val chat_room = it.getValue(Chat_Info::class.java)
+                        val chat_room = it.getValue(ChatListInfo::class.java)
                         chat_rood_id = chat_room?.chatRoomId ?: ""
                     } else {
                         chat_rood_id = UUID.randomUUID().toString()
-                        val new_chat_room = Chat_Info(
+                        val new_chat_room = ChatListInfo(
                             chatRoomId = chat_rood_id,
                             friend_Name = friend.nickname,
                             friend_Id = friend.userId
@@ -81,10 +81,10 @@ class User_List() : Fragment(R.layout.n_chat_userlist) {
                         }
 
                         override fun onDataChange(snapshot: DataSnapshot) {
-                            val userlist = mutableListOf<User_Info>()
+                            val userlist = mutableListOf<UserInfo>()
 
                             snapshot.children.forEach {
-                                val user = it.getValue(User_Info::class.java)
+                                val user = it.getValue(UserInfo::class.java)
                                 user ?: return
                                 userlist.add(user)
                             }
@@ -110,10 +110,10 @@ class User_List() : Fragment(R.layout.n_chat_userlist) {
 
                 override fun onDataChange(snapshot: DataSnapshot) {
 
-                    val userlist = mutableListOf<User_Info>()
+                    val userlist = mutableListOf<UserInfo>()
 
                     snapshot.children.forEach {
-                        val user = it.getValue(User_Info::class.java)
+                        val user = it.getValue(UserInfo::class.java)
                         user ?: return
                         Log.d("이름 잘 배껴오나","$user ")
                         userlist.add(user)

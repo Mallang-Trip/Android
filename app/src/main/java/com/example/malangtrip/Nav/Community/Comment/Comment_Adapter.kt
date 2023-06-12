@@ -7,11 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
-import com.example.malangtrip.Key.Comment_Item
+import com.example.malangtrip.Key.CommentItem
 import com.example.malangtrip.R
 
 
-class Comment_Adapter(val commentList : MutableList<Comment_Item>) : BaseAdapter(){
+class Comment_Adapter(val commentList : MutableList<CommentItem>) : BaseAdapter(){
     override fun getCount(): Int {
         return commentList.size
     }

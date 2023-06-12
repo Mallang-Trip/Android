@@ -1,7 +1,7 @@
 package com.example.malangtrip.Key
 
 //유저 정보
-data class User_Info(
+data class UserInfo(
     val userId: String?=null,
     val name: String?=null,
     val email:String?=null,

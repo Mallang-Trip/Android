@@ -5,7 +5,7 @@ import android.view.*
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.example.malangtrip.Key.User_Info
+import com.example.malangtrip.Key.UserInfo
 import com.example.malangtrip.databinding.NMyinfoProfileCheckFixProfileBinding
 import com.example.malangtrip.Key.DBKey
 import com.google.firebase.auth.ktx.auth
@@ -38,7 +38,7 @@ class Fix_Myprofile : Fragment() {
         val currentUser = Firebase.auth.currentUser
         val email = currentUser?.email.toString()
         mydb.get().addOnSuccessListener {
-                val myinfo = it.getValue(User_Info::class.java)?: return@addOnSuccessListener
+                val myinfo = it.getValue(UserInfo::class.java)?: return@addOnSuccessListener
             binding.fixNicknameEdit.setText(myinfo.nickname)
             binding.fixDesEdit.setText(myinfo.description)
             //binding.InputBank.setText(myinfo.bank)

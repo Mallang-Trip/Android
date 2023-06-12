@@ -1,6 +1,6 @@
 package com.example.malangtrip.Key
 
-data class My_Comment_Item (
+data class MyCommentItem (
     val commentWriter : String = "",
     val commentContent : String = "",
     val commentTime : String =""

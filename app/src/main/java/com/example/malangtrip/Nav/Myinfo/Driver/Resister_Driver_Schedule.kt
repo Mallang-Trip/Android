@@ -6,8 +6,8 @@ import android.view.*
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.example.malangtrip.Key.Driver_Info
-import com.example.malangtrip.Key.Trip_Info
+import com.example.malangtrip.Key.DriverInfo
+import com.example.malangtrip.Key.TripInfo
 import com.example.malangtrip.databinding.NMyinfoRegisterDriverScheduleBinding
 import com.example.malangtrip.Key.DBKey
 import com.google.firebase.auth.ktx.auth
@@ -56,13 +56,13 @@ class Resister_Driver_Schedule : Fragment() {
                 val mydb = Firebase.database.reference.child(DBKey.Driver).child(curruntId)//내 정보 접근
                 val key =  Firebase.database(DBKey.DB_URL).reference.push().key.toString()
                 mydb.get().addOnSuccessListener {
-                    val myinfo = it.getValue(Driver_Info::class.java)?: return@addOnSuccessListener
+                    val myinfo = it.getValue(DriverInfo::class.java)?: return@addOnSuccessListener
                     local = myinfo.local.toString()
                     Log.d("sdfsd",local)
                     Firebase.database(DBKey.DB_URL).reference.child(DBKey.Trip_Info)
                         .child(curruntId).child(key)
                         .setValue(
-                            Trip_Info(
+                            TripInfo(
                                 curruntId,key,local,title,schedule, content,price
                             )
                         )

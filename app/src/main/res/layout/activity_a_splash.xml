@@ -6,7 +6,7 @@
     android:padding="30dp">
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/iv_logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/main_logo" />

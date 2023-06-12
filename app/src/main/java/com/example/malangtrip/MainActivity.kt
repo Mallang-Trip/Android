@@ -9,9 +9,9 @@ import android.os.Bundle
 
 import com.example.malangtrip.databinding.ActivityMainBinding
 import com.example.malangtrip.Key.DBKey
-import com.example.malangtrip.login.Email_Login
-import com.example.malangtrip.login.User_Data_Input
-import com.example.malangtrip.Key.User_Info
+import com.example.malangtrip.login.EmailLogin
+import com.example.malangtrip.login.UserDataInput
+import com.example.malangtrip.Key.UserInfo
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.ktx.database
@@ -53,13 +53,13 @@ class MainActivity : AppCompatActivity() {
             val curruntId=Firebase.auth.currentUser?.uid?:""
             val mydb = Firebase.database.reference.child(DBKey.DB_USERS).child(curruntId)//내 정보 접근
            mydb.get().addOnSuccessListener {
-              val myinfo = it.getValue(User_Info::class.java)?: return@addOnSuccessListener
+              val myinfo = it.getValue(UserInfo::class.java)?: return@addOnSuccessListener
 //               val bank = myinfo.bank
 //               val bank_Num = myinfo.bankNum
                val nickName = myinfo.nickname
                if(/*bank==null||bank_Num==null||*/nickName==null)
                {
-                   startActivity(Intent(this, User_Data_Input::class.java))
+                   startActivity(Intent(this, UserDataInput::class.java))
                }
                else{
                    startActivity(Intent(this, Main_Screen::class.java))
@@ -71,7 +71,7 @@ class MainActivity : AppCompatActivity() {
         // 데이터 입력 과정으로 가기
 
 
-        startActivity(Intent(this, Email_Login::class.java))
+        startActivity(Intent(this, EmailLogin::class.java))
 
         //서버로 카카오 데이터 보내기 테스트
 //        binding.TestToServerButton.setOnClickListener {

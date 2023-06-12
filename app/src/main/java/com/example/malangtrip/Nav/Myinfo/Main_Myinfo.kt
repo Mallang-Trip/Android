@@ -7,17 +7,16 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.malangtrip.Main_Screen
-import com.example.malangtrip.Key.User_Info
+import com.example.malangtrip.Key.UserInfo
 import com.example.malangtrip.Nav.Home.Main_Home
 import com.example.malangtrip.Nav.Myinfo.My_Profile.Fix_Myprofile
-import com.example.malangtrip.Nav.Myinfo.Reservation.Main_Reservation
 import com.example.malangtrip.Nav.Myinfo.Driver.Main_Resister_Driver
 import com.example.malangtrip.Nav.Myinfo.Driver.Resister_Driver_Schedule
 import com.example.malangtrip.R
 import com.example.malangtrip.databinding.NMyinfoBinding
 import com.example.malangtrip.Key.DBKey
 import com.example.malangtrip.Nav.Community.Board_Screen.MyTextList
-import com.example.malangtrip.login.Email_Login
+import com.example.malangtrip.login.EmailLogin
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
@@ -75,7 +74,7 @@ class Main_Myinfo : Fragment() {
             val curruntId = Firebase.auth.currentUser?.uid ?: "" // 현재 유저 아이디 가져오기
             val mydb = Firebase.database.reference.child(DBKey.DB_USERS).child(curruntId)//내 정보 접근
             mydb.get().addOnSuccessListener {
-                val myinfo = it.getValue(User_Info::class.java)?: return@addOnSuccessListener
+                val myinfo = it.getValue(UserInfo::class.java)?: return@addOnSuccessListener
                 val driver_Check = myinfo.driver_Check.toString()
                 if(driver_Check=="false")
                 {
@@ -92,7 +91,7 @@ class Main_Myinfo : Fragment() {
         }
         binding.goLogoutBtn.setOnClickListener {
             Firebase.auth.signOut()
-            startActivity(Intent(context, Email_Login::class.java))
+            startActivity(Intent(context, EmailLogin::class.java))
             activity?.finish()
         }
 

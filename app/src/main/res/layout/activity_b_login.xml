@@ -8,14 +8,14 @@
     android:padding="30dp">
 
     <ImageView
-        android:id="@+id/logo"
+        android:id="@+id/iv_logo"
         android:layout_width="match_parent"
         android:layout_height="161dp"
         android:layout_weight="0"
         app:srcCompat="@drawable/main_logo" />
 
     <EditText
-        android:id="@+id/id_input"
+        android:id="@+id/et_input_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0"
@@ -29,13 +29,13 @@
         android:hint="비밀번호를 입력해 주세요" />
 
     <Button
-        android:id="@+id/login_btn"
+        android:id="@+id/btn_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="로그인하기" />
 
     <Button
-        android:id="@+id/join_btn"
+        android:id="@+id/btn_join"
         style="@style/Widget.MaterialComponents.Button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -13,8 +13,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.example.malangtrip.Key.User_Info
-import com.example.malangtrip.Key.Driver_Info
+import com.example.malangtrip.Key.UserInfo
+import com.example.malangtrip.Key.DriverInfo
 import com.example.malangtrip.R
 import com.example.malangtrip.databinding.NMyinfoRegisterDriverBinding
 import com.example.malangtrip.Key.DBKey
@@ -47,7 +47,7 @@ class Main_Resister_Driver : Fragment(){
         val curruntId = Firebase.auth.currentUser?.uid ?: "" // 현재 유저 아이디 가져오기
         val mydb = Firebase.database.reference.child(DBKey.DB_USERS).child(curruntId)//내 정보 접근
         mydb.get().addOnSuccessListener {
-            val myinfo = it.getValue(User_Info::class.java)?: return@addOnSuccessListener
+            val myinfo = it.getValue(UserInfo::class.java)?: return@addOnSuccessListener
             name = myinfo.nickname.toString()
             description = myinfo.description.toString()
         }
@@ -95,7 +95,7 @@ class Main_Resister_Driver : Fragment(){
                     Firebase.database(DBKey.DB_URL).reference.child(DBKey.Driver)
                         .child(curruntId)
                         .setValue(
-                            Driver_Info(
+                            DriverInfo(
                                 "jeju",
                                 name,
                                 description,
@@ -110,7 +110,7 @@ class Main_Resister_Driver : Fragment(){
                     Firebase.database(DBKey.DB_URL).reference.child(DBKey.Driver)
                         .child(curruntId)
                         .setValue(
-                            Driver_Info(
+                            DriverInfo(
                                 "ulleung",
                                 name,
                                 description,

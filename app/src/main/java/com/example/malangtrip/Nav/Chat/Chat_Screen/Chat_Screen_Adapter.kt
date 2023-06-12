@@ -9,18 +9,18 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.malangtrip.Key.Chat_Screen_Info
-import com.example.malangtrip.Key.User_Info
+import com.example.malangtrip.Key.ChatPageInfo
+import com.example.malangtrip.Key.UserInfo
 import com.example.malangtrip.databinding.NChatChatscreenAdapterBinding
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 
-class Chat_Screen_Adapter : ListAdapter<Chat_Screen_Info, Chat_Screen_Adapter.ViewHolder>(differ){
+class Chat_Screen_Adapter : ListAdapter<ChatPageInfo, Chat_Screen_Adapter.ViewHolder>(differ){
         //Chat_Screen에서 정보 받아오기
-    var Friends_Item: User_Info?=null
+    var Friends_Item: UserInfo?=null
 
     inner class ViewHolder(private val binding: NChatChatscreenAdapterBinding): RecyclerView.ViewHolder(binding.root){
-        fun bind(item: Chat_Screen_Info)
+        fun bind(item: ChatPageInfo)
         {
             if(item.userId==Friends_Item?.userId)
             {
@@ -49,13 +49,13 @@ class Chat_Screen_Adapter : ListAdapter<Chat_Screen_Info, Chat_Screen_Adapter.Vi
         holder.bind(currentList[position])
     }
     companion object{
-        val differ = object: DiffUtil.ItemCallback<Chat_Screen_Info>()
+        val differ = object: DiffUtil.ItemCallback<ChatPageInfo>()
         {
-            override fun areContentsTheSame(oldItem: Chat_Screen_Info, newItem: Chat_Screen_Info): Boolean {
+            override fun areContentsTheSame(oldItem: ChatPageInfo, newItem: ChatPageInfo): Boolean {
                 return oldItem.chatId == newItem.chatId
             }
 
-            override fun areItemsTheSame(oldItem: Chat_Screen_Info, newItem: Chat_Screen_Info): Boolean {
+            override fun areItemsTheSame(oldItem: ChatPageInfo, newItem: ChatPageInfo): Boolean {
                 return oldItem == newItem
             }
         }
