@@ -20,7 +20,6 @@ class Chat_Adapter(private val onclick: (ChatListInfo)->Unit) : ListAdapter<Chat
         {
             //프사인데 나중에 기능 추가할 때 쓰기
             //item?.friend_Id?.let { getImageData(it,binding.profileImageView) }
-
             binding.nicknameTextView.text = item.friend_Name
             binding.lastmessagetext.text = item.lastMessage
 

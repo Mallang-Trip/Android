@@ -8,7 +8,7 @@ import android.os.Looper
 import com.example.malangtrip.Key.DBKey
 import com.example.malangtrip.Key.UserInfo
 import com.example.malangtrip.Main_Screen
-import com.example.malangtrip.databinding.ActivityASplashBinding
+import com.example.malangtrip.databinding.ActivitySplashBinding
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
@@ -16,11 +16,11 @@ import com.google.firebase.ktx.Firebase
 
 class SplashActivity : AppCompatActivity() {
 
-    private lateinit var binding : ActivityASplashBinding
+    private lateinit var binding : ActivitySplashBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityASplashBinding.inflate(layoutInflater)
+        binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.hide() // 액션바 숨김
         var loginCheck = false

@@ -4,14 +4,14 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.malangtrip.Main_Screen
-import com.example.malangtrip.databinding.ActivityBCompleteJoinBinding
+import com.example.malangtrip.databinding.ActivityCompleteJoinBinding
 
 class CompleteJoin : AppCompatActivity() {
-    private lateinit var binding: ActivityBCompleteJoinBinding
+    private lateinit var binding: ActivityCompleteJoinBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityBCompleteJoinBinding.inflate(layoutInflater)
+        binding = ActivityCompleteJoinBinding.inflate(layoutInflater)
         setContentView(binding.root)
         //홈으로 이동
         binding.btnGoHome.setOnClickListener {

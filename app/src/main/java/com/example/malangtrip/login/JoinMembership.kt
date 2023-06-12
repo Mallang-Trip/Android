@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.malangtrip.databinding.BJoinScreenBinding
+import com.example.malangtrip.databinding.ActivityJoinBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -12,12 +12,12 @@ import com.google.firebase.ktx.Firebase
 
 //회원가입
 class JoinMembership :AppCompatActivity() {
-    lateinit var binding: BJoinScreenBinding
+    lateinit var binding: ActivityJoinBinding
 
     private lateinit var mAuth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = BJoinScreenBinding.inflate(layoutInflater)
+        binding = ActivityJoinBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.hide() // 액션바 숨김
         mAuth = FirebaseAuth.getInstance()

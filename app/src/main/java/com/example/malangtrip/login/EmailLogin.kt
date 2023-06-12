@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.malangtrip.Main_Screen
 import com.example.malangtrip.Key.DBKey.Companion.DB_URL
 import com.example.malangtrip.Key.DBKey.Companion.DB_USERS
-import com.example.malangtrip.databinding.ActivityBLoginBinding
+import com.example.malangtrip.databinding.ActivityLoginBinding
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
@@ -17,11 +17,11 @@ import com.google.firebase.messaging.ktx.messaging
 
 //로그인 화면
 class EmailLogin: AppCompatActivity() {
-    private lateinit var binding: ActivityBLoginBinding
+    private lateinit var binding: ActivityLoginBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityBLoginBinding.inflate(layoutInflater)
+        binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.hide()
 

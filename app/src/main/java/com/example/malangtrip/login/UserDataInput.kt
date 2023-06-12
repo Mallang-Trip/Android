@@ -9,7 +9,7 @@ import android.widget.Toast
 
 import androidx.appcompat.app.AppCompatActivity
 import com.example.malangtrip.Key.DBKey
-import com.example.malangtrip.databinding.ActivityBInputUserDataBinding
+import com.example.malangtrip.databinding.ActivityInputUserDataBinding
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
@@ -18,13 +18,13 @@ import java.io.ByteArrayOutputStream
 
 //데이터 입력 받기
 class UserDataInput : AppCompatActivity() {
-    private lateinit var binding: ActivityBInputUserDataBinding
+    private lateinit var binding: ActivityInputUserDataBinding
 
     private var isImageUpload = false
     private val curruntId = Firebase.auth.currentUser?.uid ?: ""// 현재 유저 아이디 가져오기
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityBInputUserDataBinding.inflate(layoutInflater)
+        binding = ActivityInputUserDataBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.hide() // 액션바 숨김
 
