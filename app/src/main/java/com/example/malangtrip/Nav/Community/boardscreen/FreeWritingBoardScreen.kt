@@ -6,10 +6,10 @@ import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import com.example.malangtrip.key.CommunityItem
-import com.example.malangtrip.Nav.Community.Read_Community.Go_To_Board
+import com.example.malangtrip.Nav.Community.readcommunity.GoToBoard
 import com.example.malangtrip.Nav.Community.Write_Community.Write_Text
 import com.example.malangtrip.R
-import com.example.malangtrip.databinding.NCommunityFreeWriteBoardBinding
+import com.example.malangtrip.databinding.FragmentFreeBoardWritingBinding
 import com.example.malangtrip.key.DBKey
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -19,30 +19,35 @@ import com.google.firebase.ktx.Firebase
 
 
 class FreeWritingBoardScreen : Fragment(){
-    private var _binding: NCommunityFreeWriteBoardBinding? = null
+    private var _binding: FragmentFreeBoardWritingBinding? = null
     private val binding get() = _binding!!
     private val freeWritingBoardList = mutableListOf<CommunityItem>()
     private val boardKeyList = mutableListOf<String>()
     private lateinit var freeBoardadapter : BoardAdapter
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
 
-        _binding = NCommunityFreeWriteBoardBinding.inflate(inflater, container, false)
+        _binding = FragmentFreeBoardWritingBinding.inflate(inflater, container, false)
         val root: View = binding.root
         setHasOptionsMenu(true)
 
-        freeBoardadapter = BoardAdapter(freeWritingBoardList)
-        binding.freeBoardList.adapter = freeBoardadapter
-        binding.freeBoardList.setOnItemClickListener { parent, view, position, id ->
-            val intent = Intent(context, Go_To_Board::class.java)
-            intent.putExtra("name",freeWritingBoardList[position].userName)
-            intent.putExtra("key", boardKeyList[position])
-            startActivity(intent)
-        }
-
+        //글 리스트 불러오기
+        createAdapter()
+        //글 데이터 불러오기
         Get_Every_Board_info()
         return root
 
 
+    }
+    private fun createAdapter()
+    {
+        freeBoardadapter = BoardAdapter(freeWritingBoardList)
+        binding.lvBoard.adapter = freeBoardadapter
+        binding.lvBoard.setOnItemClickListener { parent, view, position, id ->
+            val intent = Intent(context, GoToBoard::class.java)
+            intent.putExtra("name",freeWritingBoardList[position].userName)
+            intent.putExtra("key", boardKeyList[position])
+            startActivity(intent)
+        }
     }
 
     private fun Get_Every_Board_info()

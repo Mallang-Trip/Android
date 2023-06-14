@@ -5,10 +5,10 @@ import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import com.example.malangtrip.key.CommunityItem
-import com.example.malangtrip.Nav.Community.Read_Community.Go_To_Board
+import com.example.malangtrip.Nav.Community.readcommunity.GoToBoard
 import com.example.malangtrip.Nav.Community.Write_Community.Write_Text
 import com.example.malangtrip.R
-import com.example.malangtrip.databinding.FragmentBoardWritingBinding
+import com.example.malangtrip.databinding.FragmentEveryBoardWritingBinding
 import com.example.malangtrip.key.DBKey
 import com.example.malangtrip.key.DBKey.Companion.Community_Key
 import com.google.firebase.database.DataSnapshot
@@ -19,14 +19,14 @@ import com.google.firebase.ktx.Firebase
 
 //전체게시판
 class EveryBoardScreen : Fragment() {
-    private var _binding: FragmentBoardWritingBinding? = null
+    private var _binding: FragmentEveryBoardWritingBinding? = null
     private val binding get() = _binding!!
     private val everyBoardList = mutableListOf<CommunityItem>()
     private val boardKeyList = mutableListOf<String>()
     private lateinit var everyBoardAdapter : BoardAdapter
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
 
-        _binding = FragmentBoardWritingBinding.inflate(inflater, container, false)
+        _binding = FragmentEveryBoardWritingBinding.inflate(inflater, container, false)
         val root: View = binding.root
         setHasOptionsMenu(true)
        
@@ -41,9 +41,9 @@ class EveryBoardScreen : Fragment() {
     private fun createAdapter()
     {
         everyBoardAdapter = BoardAdapter(everyBoardList)
-        binding.freeBoard.adapter = everyBoardAdapter
-        binding.freeBoard.setOnItemClickListener { parent, view, position, id ->
-            val intent = Intent(context, Go_To_Board::class.java)
+        binding.lvBoard.adapter = everyBoardAdapter
+        binding.lvBoard.setOnItemClickListener { parent, view, position, id ->
+            val intent = Intent(context, GoToBoard::class.java)
             intent.putExtra("name",everyBoardList[position].userName)
             intent.putExtra("key", boardKeyList[position])
             startActivity(intent)

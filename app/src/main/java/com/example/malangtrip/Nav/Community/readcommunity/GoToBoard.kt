@@ -1,7 +1,6 @@
-package com.example.malangtrip.Nav.Community.Read_Community
+package com.example.malangtrip.Nav.Community.readcommunity
 
 import android.content.ContentValues.TAG
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
@@ -15,13 +14,13 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.bumptech.glide.Glide
-import com.example.malangtrip.Nav.Community.Comment.Comment_Adapter
 import com.example.malangtrip.key.CommentItem
 import com.example.malangtrip.Nav.Community.CommunityAuth
 import com.example.malangtrip.key.CommunityItem
 import com.example.malangtrip.Nav.Community.Write_Community.Fix_Board
+import com.example.malangtrip.Nav.Community.comment.CommentAdapter
 import com.example.malangtrip.R
-import com.example.malangtrip.databinding.NCommunityTextBinding
+import com.example.malangtrip.databinding.ActivityBoardInsideBinding
 import com.example.malangtrip.key.DBKey
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.ktx.auth
@@ -34,63 +33,46 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 
 
-class Go_To_Board : AppCompatActivity(){
-    private lateinit var binding: NCommunityTextBinding
+class GoToBoard : AppCompatActivity(){
+    private lateinit var binding: ActivityBoardInsideBinding
 
 
     private lateinit var key: String
-    var menu_Check = false
+    var menuCheck = false
     //사진 여러장
     //private lateinit var imageAdapter: Board_Image_Adapter
 //    private var imageCount by Delegates.notNull<Int>()
 //    private val imageUrls = mutableListOf<String>()
     private  lateinit var name :String
     private val commentDataList = mutableListOf<CommentItem>()
-    private lateinit var commentAdapter: Comment_Adapter
+    private lateinit var commentAdapter: CommentAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding =NCommunityTextBinding.inflate(layoutInflater)
+        binding =ActivityBoardInsideBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
 
         key = intent.getStringExtra("key").toString()
         name  = intent.getStringExtra("name").toString()
-
-        Log.d("게시판 키값",key)
+        
     //사진 여러장
 //        imageAdapter = Board_Image_Adapter(imageUrls)
 //        binding.imageItems.adapter = imageAdapter
 //        binding.imageItems.layoutManager = LinearLayoutManager(this)
 
-
+        //글쓰기 데이터 가져오기
         getBoardData(key)
+        //이미지 가져오기
         getImageData(key)
-        binding.commentBtn.setOnClickListener {
-            val comment = binding.commentArea.text.toString()
-            if(comment==null)
-            {
-                Toast.makeText(this, "아무 것도 입력하지 않으셨습니다.", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
-            insertComment(key)
-            Toast.makeText(this, "댓글 입력 완료", Toast.LENGTH_SHORT).show()
-//            binding.commentLV.post {
-//                binding.commentLV.setSelection(commentAdapter.count - 1)
-//            }
-            // 키보드 내리기
-            val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-            imm.hideSoftInputFromWindow(binding.commentArea.windowToken, 0)
-
-            Handler(Looper.getMainLooper()).postDelayed({
-                binding.forDown.fullScroll(View.FOCUS_DOWN)
-            }, 300)
+        //댓글 등록하기
+        binding.btnRegisterComment.setOnClickListener {
+            registerComment()
         }
        // getCommentData(key)
 
         //리스트뷰
-        commentAdapter = Comment_Adapter(commentDataList)
-        binding.commentLV.adapter = commentAdapter
-        getCommentData(key)
+        //댓글 생성
+        createComment()
         //리사이클러뷰
 //        commentAdapter = Comment_Adapter(commentDataList)
 //        binding.commentLV.layoutManager = LinearLayoutManager(this)
@@ -99,6 +81,33 @@ class Go_To_Board : AppCompatActivity(){
 
 
 
+    }
+    private fun createComment()
+    {
+        commentAdapter = CommentAdapter(commentDataList)
+        binding.lvComment.adapter = commentAdapter
+        getCommentData(key)
+    }
+    private fun registerComment()
+    {
+        val comment = binding.etComment.text.toString()
+        if(comment==null)
+        {
+            Toast.makeText(this, "아무 것도 입력하지 않으셨습니다.", Toast.LENGTH_SHORT).show()
+            return
+        }
+        insertComment(key)
+        Toast.makeText(this, "댓글 입력 완료", Toast.LENGTH_SHORT).show()
+//            binding.commentLV.post {
+//                binding.commentLV.setSelection(commentAdapter.count - 1)
+//            }
+        // 키보드 내리기
+        val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(binding.etComment.windowToken, 0)
+
+        Handler(Looper.getMainLooper()).postDelayed({
+            binding.svDown.fullScroll(View.FOCUS_DOWN)
+        }, 300)
     }
 
     //사진 여러장
@@ -128,7 +137,7 @@ private fun getImageData(key : String)
     val storageReference = Firebase.storage.reference.child(key + ".png")
 
     // ImageView in your Activity
-    val imageViewFromFB = binding.imageArea
+    val imageViewFromFB = binding.ivBoardImg
     Log.d("123",key + ".png")
     storageReference.downloadUrl.addOnCompleteListener(OnCompleteListener { task ->
         if(task.isSuccessful) {
@@ -139,7 +148,7 @@ private fun getImageData(key : String)
 
 
         } else {
-                binding.imageArea.isVisible = false
+                binding.ivBoardImg.isVisible = false
         }
     })
 }
@@ -158,14 +167,14 @@ private fun getImageData(key : String)
         }
     })
 
-        val myid = Firebase.auth.currentUser?.uid ?: "" // 현재 유저 아이디 가져오기
+        val myId = Firebase.auth.currentUser?.uid ?: "" // 현재 유저 아이디 가져오기
         // comment
         //   - BoardKey
         //        - CommentKey
         //            - CommentData
         //            - CommentData
         //            - CommentData
-        Firebase.database.getReference("Users").child(myid).child("nickname")
+        Firebase.database.getReference("Users").child(myId).child("nickname")
             .addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
                     val name = dataSnapshot.getValue(String::class.java)
@@ -177,12 +186,12 @@ private fun getImageData(key : String)
                             .setValue(
                                 CommentItem(
                                     name,
-                                    binding.commentArea.text.toString(),
+                                    binding.etComment.text.toString(),
                                     CommunityAuth.getTime()
 
                                 )
                             )
-                        binding.commentArea.setText("")
+                        binding.etComment.setText("")
                         getCommentData(key)
                         //binding.commentLV.setSelection(commentAdapter.count - 1)
 
@@ -215,20 +224,20 @@ private fun getImageData(key : String)
                         setDisplayHomeAsUpEnabled(true) // 뒤로가기 버튼 표시
                         supportActionBar?.setHomeAsUpIndicator(R.drawable.my_home_back)
                     }
-                    binding.boardContent.text = dataModel!!.content
-                    binding.boardTime.text = dataModel!!.time
-                    binding.boardUserName.text = dataModel!!.userName
-                    val myid = Firebase.auth.currentUser?.uid ?: "" // 현재 유저 아이디 가져오기
-                    val text_id = dataModel.userId
-                    if(myid==text_id)
+                    binding.tvContent.text = dataModel!!.content
+                    binding.tvWritingTime.text = dataModel!!.time
+                    binding.tvWriterName.text = dataModel!!.userName
+                    val myId = Firebase.auth.currentUser?.uid ?: "" // 현재 유저 아이디 가져오기
+                    val textId = dataModel.userId
+                    if(myId==textId)
                     {
 
-                        Log.d("나 자신임",myid)
-                        menu_Check=true
+                        Log.d("나 자신임",myId)
+                        menuCheck=true
                         //invalidateOptionsMenu()
                     }
                     else{
-                        Log.d("나 자신이 아님",myid)
+                        Log.d("나 자신이 아님",myId)
                     }
 
                 } catch (e: Exception) {
@@ -250,7 +259,7 @@ private fun getImageData(key : String)
 
     Firebase.database(DBKey.DB_URL).reference.child(DBKey.Community_Key).child(key).addValueEventListener(postListener)
     }
-
+    //이미지 빨리 불러오려고
     override fun onResume() {
         super.onResume()
         getImageData(key)
@@ -287,12 +296,13 @@ private fun getImageData(key : String)
 
 
     }
+    //댓글 생길 때마다 댓글 어댑터 높이 조정
     fun updateListViewHeight() {
         val totalHeight = commentDataList.size *81
-        val params = binding.commentLV.layoutParams
+        val params = binding.lvComment.layoutParams
         params.height = totalHeight.dpToPx()
-        binding.commentLV.layoutParams = params
-        binding.commentLV.requestLayout()
+        binding.lvComment.layoutParams = params
+        binding.lvComment.requestLayout()
 
 
     }
@@ -308,7 +318,7 @@ private fun getImageData(key : String)
                 finish()
                 true
             }
-            R.id.fix_Btn->{
+            R.id.btn_fix->{
                 val intent = Intent(this, Fix_Board::class.java)
                 intent.putExtra("key", key)
                 intent.putExtra("name", name)
@@ -316,7 +326,7 @@ private fun getImageData(key : String)
                 finish()
                 true
             }
-            R.id.delete_Btn->{
+            R.id.btn_delete->{
                 Firebase.database.getReference("EveryCommunity").child(key).removeValue()
                 Toast.makeText(this,"글이 삭제되었습니다",Toast.LENGTH_LONG).show()
                 true
@@ -325,8 +335,8 @@ private fun getImageData(key : String)
         }
     }
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        if(menu_Check) {
-            menuInflater.inflate(R.menu.fix_board, menu)
+        if(menuCheck) {
+            menuInflater.inflate(R.menu.menu_fix_board, menu)
         }
         return true
     }

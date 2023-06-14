@@ -7,7 +7,7 @@ import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.malangtrip.key.CommunityItem
-import com.example.malangtrip.Nav.Community.Read_Community.Go_To_Board
+import com.example.malangtrip.Nav.Community.readcommunity.GoToBoard
 import com.example.malangtrip.Nav.Community.Write_Community.Write_Text
 import com.example.malangtrip.R
 import com.example.malangtrip.key.DBKey
@@ -38,7 +38,7 @@ class MyTextList : Fragment(){
         Every_adapter = MyBoardAdapter(Every_Board_List)
         binding.freeBoard.adapter = Every_adapter
         binding.freeBoard.setOnItemClickListener { parent, view, position, id ->
-            val intent = Intent(context, Go_To_Board::class.java)
+            val intent = Intent(context, GoToBoard::class.java)
 //            intent.putExtra("title",Every_Board_List[position].title)
 //            intent.putExtra("time",Every_Board_List[position].time)
 //            intent.putExtra("content",Every_Board_List[position].content)

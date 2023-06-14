@@ -6,10 +6,10 @@ import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import com.example.malangtrip.key.CommunityItem
-import com.example.malangtrip.Nav.Community.Read_Community.Go_To_Board
+import com.example.malangtrip.Nav.Community.readcommunity.GoToBoard
 import com.example.malangtrip.Nav.Community.Write_Community.Write_Text
 import com.example.malangtrip.R
-import com.example.malangtrip.databinding.NCommunityFellowPassengerBoardBinding
+import com.example.malangtrip.databinding.FragmentFellowPassengerBoardWritingBinding
 import com.example.malangtrip.key.DBKey
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -19,14 +19,14 @@ import com.google.firebase.ktx.Firebase
 
 
 class FellowPassengerBoardScreen : Fragment(){
-    private var _binding: NCommunityFellowPassengerBoardBinding? = null
+    private var _binding: FragmentFellowPassengerBoardWritingBinding? = null
     private val binding get() = _binding!!
     private val fellowPassengerBoardList = mutableListOf<CommunityItem>()
     private val boardKeyList = mutableListOf<String>()
     private lateinit var fellowPassengerBoardAdapter : BoardAdapter
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
 
-        _binding = NCommunityFellowPassengerBoardBinding.inflate(inflater, container, false)
+        _binding = FragmentFellowPassengerBoardWritingBinding.inflate(inflater, container, false)
         val root: View = binding.root
         setHasOptionsMenu(true)
 
@@ -42,9 +42,9 @@ class FellowPassengerBoardScreen : Fragment(){
     private fun createAdapter()
     {
         fellowPassengerBoardAdapter = BoardAdapter(fellowPassengerBoardList)
-        binding.pasengerList.adapter = fellowPassengerBoardAdapter
-        binding.pasengerList.setOnItemClickListener { parent, view, position, id ->
-            val intent = Intent(context, Go_To_Board::class.java)
+        binding.lvBoard.adapter = fellowPassengerBoardAdapter
+        binding.lvBoard.setOnItemClickListener { parent, view, position, id ->
+            val intent = Intent(context, GoToBoard::class.java)
             intent.putExtra("name",fellowPassengerBoardList[position].userName)
             intent.putExtra("key", boardKeyList[position])
             startActivity(intent)

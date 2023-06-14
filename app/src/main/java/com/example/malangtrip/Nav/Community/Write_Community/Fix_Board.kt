@@ -13,7 +13,7 @@ import com.bumptech.glide.Glide
 import com.example.malangtrip.Nav.Community.CommunityAuth
 import com.example.malangtrip.key.CommunityItem
 
-import com.example.malangtrip.Nav.Community.Read_Community.Go_To_Board
+import com.example.malangtrip.Nav.Community.readcommunity.GoToBoard
 import com.example.malangtrip.databinding.NCommunityFixTextBinding
 import com.example.malangtrip.key.DBKey
 import com.google.android.gms.tasks.OnCompleteListener
@@ -171,7 +171,7 @@ class Fix_Board : AppCompatActivity() {
 
 
         finish()
-        val intent = Intent(this, Go_To_Board::class.java)
+        val intent = Intent(this, GoToBoard::class.java)
         intent.putExtra("key", key)
         intent.putExtra("name",name)
         startActivity(intent)

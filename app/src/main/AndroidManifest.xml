@@ -60,7 +60,7 @@
         <activity android:name=".Nav.Community.Write_Community.Write_Text" />
         <activity android:name=".Nav.Home.local.Main_Jeju" />
         <activity
-            android:name=".Nav.Community.Read_Community.Go_To_Board"
+            android:name=".Nav.Community.readcommunity.GoToBoard"
             android:windowSoftInputMode="adjustPan"></activity>
         <activity android:name=".login.CompleteJoin" />
         <activity android:name=".Nav.Community.Write_Community.Fix_Board" />

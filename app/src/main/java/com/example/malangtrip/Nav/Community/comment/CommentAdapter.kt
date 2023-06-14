@@ -1,4 +1,4 @@
-package com.example.malangtrip.Nav.Community.Comment
+package com.example.malangtrip.Nav.Community.comment
 
 
 import android.graphics.Color
@@ -11,7 +11,7 @@ import com.example.malangtrip.key.CommentItem
 import com.example.malangtrip.R
 
 
-class Comment_Adapter(val commentList : MutableList<CommentItem>) : BaseAdapter(){
+class CommentAdapter(val commentList : MutableList<CommentItem>) : BaseAdapter(){
     override fun getCount(): Int {
         return commentList.size
     }
@@ -25,32 +25,32 @@ class Comment_Adapter(val commentList : MutableList<CommentItem>) : BaseAdapter(
     }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-        var Comment_Text = convertView
-        if(Comment_Text==null) {
-            Comment_Text = LayoutInflater.from(parent?.context)
-                .inflate(R.layout.n_community_comment_adapter, parent, false)
+        var commentText = convertView
+        if(commentText==null) {
+            commentText = LayoutInflater.from(parent?.context)
+                .inflate(R.layout.adapter_comment, parent, false)
         }
-        val title = Comment_Text?.findViewById<TextView>(R.id.UserName)
+        val title = commentText?.findViewById<TextView>(R.id.tv_name)
         title?.apply {
             text = commentList[position].commentWriter
             setTextColor(Color.BLUE)
         }
-        val content = Comment_Text?.findViewById<TextView>(R.id.content)
+        val content = commentText?.findViewById<TextView>(R.id.tv_content)
         content!!.text=commentList[position].commentContent
-        val time = Comment_Text?.findViewById<TextView>(R.id.timeArea)
+        val time = commentText?.findViewById<TextView>(R.id.tv_time)
         time!!.text=commentList[position].commentTime
 
 
 
 
-        return  Comment_Text!!
+        return  commentText!!
     }
 
 
 
 }
 
-
+//리사이클러 뷰 코드
 //class Comment_Adapter(val commentList: MutableList<Comment_Item>) : RecyclerView.Adapter<Comment_Adapter.CommentViewHolder>() {
 //
 //    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CommentViewHolder {

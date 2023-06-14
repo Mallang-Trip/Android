@@ -7,7 +7,7 @@
     android:padding="20dp">
 
     <TextView
-        android:id="@+id/UserName"
+        android:id="@+id/tv_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="name"
@@ -17,14 +17,14 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/content"
+        android:id="@+id/tv_content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="content"
         android:textSize="14sp" />
 
     <TextView
-        android:id="@+id/timeArea"
+        android:id="@+id/tv_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="time"

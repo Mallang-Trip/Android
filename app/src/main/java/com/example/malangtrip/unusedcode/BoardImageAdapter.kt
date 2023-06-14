@@ -1,6 +1,5 @@
-package com.example.malangtrip.Nav.Community.Read_Community
+package com.example.malangtrip.unusedcode
 
-import android.app.AlertDialog
 import android.app.DownloadManager
 import android.content.Context
 import android.net.Uri
@@ -8,17 +7,15 @@ import android.os.Environment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.malangtrip.Nav.Community.Write_Community.ImageAdapter
 import com.example.malangtrip.R
-
-class Board_Image_Adapter(private val imageList: List<String>) : RecyclerView.Adapter<Board_Image_Adapter.ImageViewHolder>() {
+//복수의 이미지 사용할 때
+class BoardImageAdapter(private val imageList: List<String>) : RecyclerView.Adapter<BoardImageAdapter.ImageViewHolder>() {
 
     inner class ImageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val imageView: ImageView = itemView.findViewById(R.id.imageView)
+        val imageView: ImageView = itemView.findViewById(R.id.iv_board_img)
 //        init {
 //            imageView.setOnClickListener {
 //                val context = itemView.context
@@ -55,7 +52,7 @@ class Board_Image_Adapter(private val imageList: List<String>) : RecyclerView.Ad
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.n_community_text_image_adapter, parent, false)
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.adatper_board_image, parent, false)
         return ImageViewHolder(itemView)
     }
 
