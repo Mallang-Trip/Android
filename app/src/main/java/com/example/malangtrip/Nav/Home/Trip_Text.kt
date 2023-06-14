@@ -8,14 +8,14 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.example.malangtrip.Key.ChatListInfo
-import com.example.malangtrip.Nav.Chat.Chat_Screen.Chat_Screen
+import com.example.malangtrip.key.ChatListInfo
+import com.example.malangtrip.Nav.chat.chatinside.ChatInside
 import com.example.malangtrip.Nav.Community.CommunityAuth
-import com.example.malangtrip.Key.TripInfo
+import com.example.malangtrip.key.TripInfo
 import com.example.malangtrip.R
 import com.example.malangtrip.databinding.NHomeTripTextBinding
-import com.example.malangtrip.Key.DBKey
-import com.example.malangtrip.Key.UserInfo
+import com.example.malangtrip.key.DBKey
+import com.example.malangtrip.key.UserInfo
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -78,17 +78,17 @@ class Trip_Text : AppCompatActivity(){
                         chat_rood_id = UUID.randomUUID().toString()
                         val new_chat_room = ChatListInfo(
                         chatRoomId = chat_rood_id,
-                            friend_Name = driver?.nickname,
-                            friend_Id = driver?.userId
+                            friendName = driver?.nickname,
+                            friendId = driver?.userId
 
 
                         )
                         chat_room_db.setValue(new_chat_room)
                     }
-                    val intent = Intent(this, Chat_Screen::class.java)
-                    intent.putExtra(Chat_Screen.Extra_Frineds_Id, driver?.userId)
-                    intent.putExtra(Chat_Screen.EXTRA_CHAT_ROOM_ID, chat_rood_id)
-                    intent.putExtra("friend_Name", driver?.nickname)
+                    val intent = Intent(this, ChatInside::class.java)
+                    intent.putExtra(ChatInside.Extra_Frineds_Id, driver?.userId)
+                    intent.putExtra(ChatInside.EXTRA_CHAT_ROOM_ID, chat_rood_id)
+                    intent.putExtra("friendName", driver?.nickname)
                     startActivity(intent)
                 }
             }

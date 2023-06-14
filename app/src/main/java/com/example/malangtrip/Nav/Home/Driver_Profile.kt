@@ -10,11 +10,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.malangtrip.Key.DriverInfo
-import com.example.malangtrip.Key.TripInfo
+import com.example.malangtrip.key.DriverInfo
+import com.example.malangtrip.key.TripInfo
 import com.example.malangtrip.R
 import com.example.malangtrip.databinding.NHomeDriverProfileScreenBinding
-import com.example.malangtrip.Key.DBKey
+import com.example.malangtrip.key.DBKey
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
@@ -85,7 +85,7 @@ class Driver_Profile : AppCompatActivity() {
                     Driver_Trip_Adapter = Trip_Adapter(driver_trip_List){ it->
                             val intent = Intent(this,Trip_Text::class.java)
                             intent.putExtra("trip_Id",it.tripId)
-                            intent.putExtra("driver_Id",it.tripwriterId)
+                            intent.putExtra("driver_Id",it.tripWriterId)
                             startActivity(intent)
                         }
                         val LinearLayoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)

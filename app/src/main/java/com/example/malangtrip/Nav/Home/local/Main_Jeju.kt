@@ -11,10 +11,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.malangtrip.Nav.Home.Main_Home
 import com.example.malangtrip.Nav.Home.Trip_Adapter
 import com.example.malangtrip.Nav.Home.Trip_Text
-import com.example.malangtrip.Key.TripInfo
+import com.example.malangtrip.key.TripInfo
 import com.example.malangtrip.R
 import com.example.malangtrip.databinding.NHomeJejuBinding
-import com.example.malangtrip.Key.DBKey
+import com.example.malangtrip.key.DBKey
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
@@ -40,7 +40,7 @@ class Main_Jeju : Fragment(){
         jejuTripAdapter = Trip_Adapter(jeju_trip_List){ it->
             val intent = Intent(context,Trip_Text::class.java)
             intent.putExtra("trip_Id",it.tripId)
-            intent.putExtra("driver_Id",it.tripwriterId)
+            intent.putExtra("driver_Id",it.tripWriterId)
             startActivity(intent)
         }
         val gridLayoutManager = GridLayoutManager(requireContext(), 2)

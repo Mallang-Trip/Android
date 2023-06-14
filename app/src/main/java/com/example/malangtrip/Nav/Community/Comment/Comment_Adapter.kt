@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
-import com.example.malangtrip.Key.CommentItem
+import com.example.malangtrip.key.CommentItem
 import com.example.malangtrip.R
 
 

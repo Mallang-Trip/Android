@@ -8,10 +8,10 @@ import android.os.Bundle
 
 
 import com.example.malangtrip.databinding.ActivityMainBinding
-import com.example.malangtrip.Key.DBKey
+import com.example.malangtrip.key.DBKey
 import com.example.malangtrip.login.EmailLogin
 import com.example.malangtrip.login.UserDataInput
-import com.example.malangtrip.Key.UserInfo
+import com.example.malangtrip.key.UserInfo
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.ktx.database

@@ -5,10 +5,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.example.malangtrip.Key.TripInfo
-import com.example.malangtrip.Key.WishlistInfo
+import com.example.malangtrip.key.TripInfo
+import com.example.malangtrip.key.WishlistInfo
 import com.example.malangtrip.databinding.NHomeTripInfoAdapterBinding
-import com.example.malangtrip.Key.DBKey
+import com.example.malangtrip.key.DBKey
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -62,7 +62,7 @@ class Wishlist_Adapter(private var tripList: List<TripInfo>, private val onClick
             val key =  Firebase.database(DBKey.DB_URL).reference.push().key.toString()
             binding.bookmarkBtn.setOnClickListener{
 
-                if(item.tripwriterId==myid)
+                if(item.tripWriterId==myid)
                 {
                     Toast.makeText(binding.root.context, "자신의 글은 북마크에 추가하지 못합니다", Toast.LENGTH_SHORT).show()
                     return@setOnClickListener

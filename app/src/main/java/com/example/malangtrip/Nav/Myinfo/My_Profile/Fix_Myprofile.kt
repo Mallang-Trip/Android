@@ -5,13 +5,10 @@ import android.view.*
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.example.malangtrip.Key.UserInfo
+import com.example.malangtrip.key.UserInfo
 import com.example.malangtrip.databinding.NMyinfoProfileCheckFixProfileBinding
-import com.example.malangtrip.Key.DBKey
+import com.example.malangtrip.key.DBKey
 import com.google.firebase.auth.ktx.auth
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 
@@ -65,22 +62,22 @@ class Fix_Myprofile : Fragment() {
            //friend내에 모든 나의 닉네임 찾아서 변경하는 코드 작성해야함
           // mydb_in_friends.updateChildren(myprofile)
            // Friend 내에 모든 나의 닉네임 찾아서 변경하는 코드
-           mydb_in_friends.addListenerForSingleValueEvent(object : ValueEventListener {
-               override fun onDataChange(snapshot: DataSnapshot) {
-                   for (user in snapshot.children) { // 모든 사용자에 대해서
-                       for (friend in user.children) { // 각 사용자의 친구 목록에 대해서
-                           val friendNickname = friend.child("nickname").getValue(String::class.java)
-                           if (friendNickname == Nickname) {
-                               friend.ref.child("description").setValue(Description)
-                           }
-                       }
-                   }
-               }
-
-               override fun onCancelled(error: DatabaseError) {
-                   //Log.w(TAG, "Failed to read value.", error.toException())
-               }
-           })
+//           mydb_in_friends.addListenerForSingleValueEvent(object : ValueEventListener {
+//               override fun onDataChange(snapshot: DataSnapshot) {
+//                   for (user in snapshot.children) { // 모든 사용자에 대해서
+//                       for (friend in user.children) { // 각 사용자의 친구 목록에 대해서
+//                           val friendNickname = friend.child("nickname").getValue(String::class.java)
+//                           if (friendNickname == Nickname) {
+//                               friend.ref.child("description").setValue(Description)
+//                           }
+//                       }
+//                   }
+//               }
+//
+//               override fun onCancelled(error: DatabaseError) {
+//                   //Log.w(TAG, "Failed to read value.", error.toException())
+//               }
+//           })
            requireActivity().supportFragmentManager.popBackStack()
        }
 

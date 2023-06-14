@@ -10,15 +10,15 @@ import android.util.Log
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.malangtrip.Key.UserInfo
+import com.example.malangtrip.key.UserInfo
 import com.example.malangtrip.Nav.Community.CommunityAuth
-import com.example.malangtrip.Key.CommunityItem
+import com.example.malangtrip.key.CommunityItem
 import com.example.malangtrip.R
 
 import com.example.malangtrip.databinding.NCommunityWriteTextBinding
-import com.example.malangtrip.Key.DBKey
-import com.example.malangtrip.Key.DBKey.Companion.Community_Key
-import com.example.malangtrip.Key.DBKey.Companion.DB_URL
+import com.example.malangtrip.key.DBKey
+import com.example.malangtrip.key.DBKey.Companion.Community_Key
+import com.example.malangtrip.key.DBKey.Companion.DB_URL
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase

@@ -9,13 +9,11 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.malangtrip.Nav.Home.local.Main_Jeju
 import com.example.malangtrip.R
 import com.example.malangtrip.databinding.NHomeBinding
-import com.example.malangtrip.Key.DBKey
-import com.example.malangtrip.Key.DBKey.Companion.DB_CHAT_ROOMS
-import com.example.malangtrip.databinding.NHomeLocalAdapterBinding
+import com.example.malangtrip.key.DBKey
+import com.example.malangtrip.key.DBKey.Companion.DB_CHAT_ROOMS
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError

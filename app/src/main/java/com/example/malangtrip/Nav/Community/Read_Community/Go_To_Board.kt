@@ -16,13 +16,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.bumptech.glide.Glide
 import com.example.malangtrip.Nav.Community.Comment.Comment_Adapter
-import com.example.malangtrip.Key.CommentItem
+import com.example.malangtrip.key.CommentItem
 import com.example.malangtrip.Nav.Community.CommunityAuth
-import com.example.malangtrip.Key.CommunityItem
+import com.example.malangtrip.key.CommunityItem
 import com.example.malangtrip.Nav.Community.Write_Community.Fix_Board
 import com.example.malangtrip.R
 import com.example.malangtrip.databinding.NCommunityTextBinding
-import com.example.malangtrip.Key.DBKey
+import com.example.malangtrip.key.DBKey
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot

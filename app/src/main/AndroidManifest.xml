@@ -53,10 +53,10 @@
         <activity
             android:name=".Main_Screen"
             android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".Unused_Code.ToServerTest" />
+        <activity android:name=".unusedcode.ToServerTest" />
         <activity android:name=".login.EmailLogin" />
         <activity android:name=".login.JoinMembership" />
-        <activity android:name=".Nav.Chat.Chat_Screen.Chat_Screen" />
+        <activity android:name=".Nav.chat.chatinside.ChatInside" />
         <activity android:name=".Nav.Community.Write_Community.Write_Text" />
         <activity android:name=".Nav.Home.local.Main_Jeju" />
         <activity
@@ -68,7 +68,7 @@
         <activity android:name=".Nav.Home.Driver_Profile" />
 
         <service
-            android:name=".Nav.Chat.MyFirebaseMessagingService"
+            android:name=".Nav.chat.MyFirebaseMessagingService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />

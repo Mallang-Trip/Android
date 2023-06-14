@@ -6,10 +6,10 @@ import android.view.*
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.example.malangtrip.Key.DriverInfo
-import com.example.malangtrip.Key.TripInfo
+import com.example.malangtrip.key.DriverInfo
+import com.example.malangtrip.key.TripInfo
 import com.example.malangtrip.databinding.NMyinfoRegisterDriverScheduleBinding
-import com.example.malangtrip.Key.DBKey
+import com.example.malangtrip.key.DBKey
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase

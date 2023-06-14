@@ -8,7 +8,7 @@ import android.provider.MediaStore
 import android.widget.Toast
 
 import androidx.appcompat.app.AppCompatActivity
-import com.example.malangtrip.Key.DBKey
+import com.example.malangtrip.key.DBKey
 import com.example.malangtrip.databinding.ActivityInputUserDataBinding
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.ktx.database
@@ -96,6 +96,7 @@ class UserDataInput : AppCompatActivity() {
         if (nickname.isEmpty()/*||bank.isEmpty()||bank_Num.isEmpty()*/) {
             Toast.makeText(this, "닉네임은 빈 값으로 둘 수 없습니다", Toast.LENGTH_SHORT).show()
             return
+        }
 
             val mydb = Firebase.database.reference.child(DBKey.DB_USERS).child(curruntId)//내 정보 접근
             val myprofile = mutableMapOf<String, Any>()
@@ -109,5 +110,5 @@ class UserDataInput : AppCompatActivity() {
             startActivity(Intent(this, CompleteJoin::class.java))
             finish()
         }
-    }
+
 }

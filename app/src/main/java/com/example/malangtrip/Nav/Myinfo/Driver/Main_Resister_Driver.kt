@@ -13,11 +13,11 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.example.malangtrip.Key.UserInfo
-import com.example.malangtrip.Key.DriverInfo
+import com.example.malangtrip.key.UserInfo
+import com.example.malangtrip.key.DriverInfo
 import com.example.malangtrip.R
 import com.example.malangtrip.databinding.NMyinfoRegisterDriverBinding
-import com.example.malangtrip.Key.DBKey
+import com.example.malangtrip.key.DBKey
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
@@ -120,7 +120,7 @@ class Main_Resister_Driver : Fragment(){
                             )
                         )
                 }
-                Toast.makeText(context,"빠른 시일내에 드라이버 등록 심사가 될 예정입니다 감사합니다.ㅛ", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context,"빠른 시일내에 드라이버 등록 심사가 될 예정입니다 감사합니다.", Toast.LENGTH_SHORT).show()
                 requireActivity().supportFragmentManager.popBackStack()
 
             }

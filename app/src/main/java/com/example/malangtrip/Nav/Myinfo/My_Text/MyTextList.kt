@@ -1,4 +1,4 @@
-package com.example.malangtrip.Nav.Community.Board_Screen
+package com.example.malangtrip.Nav.Community.boardscreen
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,12 +6,11 @@ import android.util.Log
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.example.malangtrip.Key.CommunityItem
+import com.example.malangtrip.key.CommunityItem
 import com.example.malangtrip.Nav.Community.Read_Community.Go_To_Board
 import com.example.malangtrip.Nav.Community.Write_Community.Write_Text
 import com.example.malangtrip.R
-import com.example.malangtrip.databinding.NCommunityFreeWriteBoardBinding
-import com.example.malangtrip.Key.DBKey
+import com.example.malangtrip.key.DBKey
 import com.example.malangtrip.databinding.NMyinfoMyTextBinding
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot

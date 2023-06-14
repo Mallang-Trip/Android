@@ -4,9 +4,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.example.malangtrip.Nav.Community.Board_Screen.Every_Board_Screen
-import com.example.malangtrip.Nav.Community.Board_Screen.Fellow_Passenger_Board_Screen
-import com.example.malangtrip.Nav.Community.Board_Screen.Free_Write_Board_Screen
+import com.example.malangtrip.Nav.Community.boardscreen.EveryBoardScreen
+import com.example.malangtrip.Nav.Community.boardscreen.FellowPassengerBoardScreen
+import com.example.malangtrip.Nav.Community.boardscreen.FreeWritingBoardScreen
 
 class CommunityViewPagerAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) :
     FragmentStateAdapter(fragmentManager, lifecycle) {
@@ -15,9 +15,9 @@ class CommunityViewPagerAdapter(fragmentManager: FragmentManager, lifecycle: Lif
 
     override fun createFragment(position: Int): Fragment {
         return when (position) {
-            0 -> Every_Board_Screen()
-            1 -> Free_Write_Board_Screen()
-            2 -> Fellow_Passenger_Board_Screen()
+            0 -> EveryBoardScreen()
+            1 -> FreeWritingBoardScreen()
+            2 -> FellowPassengerBoardScreen()
             else -> throw IllegalArgumentException("Invalid position")
         }
     }

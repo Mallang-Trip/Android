@@ -5,8 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import com.example.malangtrip.Key.DBKey
-import com.example.malangtrip.Key.UserInfo
+import com.example.malangtrip.key.DBKey
+import com.example.malangtrip.key.UserInfo
 import com.example.malangtrip.Main_Screen
 import com.example.malangtrip.databinding.ActivitySplashBinding
 import com.google.firebase.auth.ktx.auth

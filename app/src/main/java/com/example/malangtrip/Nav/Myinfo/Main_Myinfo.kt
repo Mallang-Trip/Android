@@ -7,15 +7,15 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.malangtrip.Main_Screen
-import com.example.malangtrip.Key.UserInfo
+import com.example.malangtrip.key.UserInfo
 import com.example.malangtrip.Nav.Home.Main_Home
 import com.example.malangtrip.Nav.Myinfo.My_Profile.Fix_Myprofile
 import com.example.malangtrip.Nav.Myinfo.Driver.Main_Resister_Driver
 import com.example.malangtrip.Nav.Myinfo.Driver.Resister_Driver_Schedule
 import com.example.malangtrip.R
 import com.example.malangtrip.databinding.NMyinfoBinding
-import com.example.malangtrip.Key.DBKey
-import com.example.malangtrip.Nav.Community.Board_Screen.MyTextList
+import com.example.malangtrip.key.DBKey
+import com.example.malangtrip.Nav.Community.boardscreen.MyTextList
 import com.example.malangtrip.login.EmailLogin
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.ktx.database
@@ -75,7 +75,7 @@ class Main_Myinfo : Fragment() {
             val mydb = Firebase.database.reference.child(DBKey.DB_USERS).child(curruntId)//내 정보 접근
             mydb.get().addOnSuccessListener {
                 val myinfo = it.getValue(UserInfo::class.java)?: return@addOnSuccessListener
-                val driver_Check = myinfo.driver_Check.toString()
+                val driver_Check = myinfo.driverCheck.toString()
                 if(driver_Check=="false")
                 {
                     Toast.makeText(context,"드라이버로 등록된 사람만 사용할 수 있는 기능입니다.", Toast.LENGTH_SHORT).show()

@@ -1,15 +1,12 @@
-package com.example.malangtrip.Nav.Community.Board_Screen
+package com.example.malangtrip.Nav.Community.boardscreen
 
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
-import com.example.malangtrip.Key.CommunityItem
+import com.example.malangtrip.key.CommunityItem
 import com.example.malangtrip.R
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
 
 class MyBoardAdapter(val writer_info :MutableList<CommunityItem>) : BaseAdapter() {
     override fun getCount(): Int {
@@ -33,14 +30,14 @@ class MyBoardAdapter(val writer_info :MutableList<CommunityItem>) : BaseAdapter(
         //}
 
 
-            val title = Every_Write_Text?.findViewById<TextView>(R.id.every_write_title)
+            val title = Every_Write_Text?.findViewById<TextView>(R.id.tv_writing_title)
             title!!.text=writer_info[position].title
-            val content = Every_Write_Text?.findViewById<TextView>(R.id.every_write_content)
+            val content = Every_Write_Text?.findViewById<TextView>(R.id.tv_writing_content)
             content!!.maxLines = 3
             content!!.text=writer_info[position].content
-            val time = Every_Write_Text?.findViewById<TextView>(R.id.every_write_time)
+            val time = Every_Write_Text?.findViewById<TextView>(R.id.tv_time)
             time!!.text=writer_info[position].time+" / 댓글 수 : "+writer_info[position].commentNum+"개"
-            val writer_Name = Every_Write_Text?.findViewById<TextView>(R.id.nickName)
+            val writer_Name = Every_Write_Text?.findViewById<TextView>(R.id.tv_nickname)
             writer_Name!!.text=writer_info[position].userName
 
         return  Every_Write_Text!!

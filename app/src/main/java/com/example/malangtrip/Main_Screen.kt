@@ -1,19 +1,15 @@
 package com.example.malangtrip
 
 import android.Manifest
-import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
-import android.view.MenuItem
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
-import com.example.malangtrip.Nav.Chat.Main_Chat
+import com.example.malangtrip.Nav.chat.chatlist.ChatList
 import com.example.malangtrip.Nav.Community.Main_Community
 import com.example.malangtrip.Nav.Home.Main_Home
 import com.example.malangtrip.Nav.Myinfo.Main_Myinfo
@@ -59,7 +55,7 @@ class Main_Screen : AppCompatActivity() {
                 }
                 R.id.navigation_chat -> { //채팅 메뉴로
                     val transaction = fragmentManager.beginTransaction()
-                    val chatFragment = Main_Chat()
+                    val chatFragment = ChatList()
                     transaction.replace(R.id.fragmentContainer, chatFragment)
                     transaction.addToBackStack(null)
                     transaction.commit()

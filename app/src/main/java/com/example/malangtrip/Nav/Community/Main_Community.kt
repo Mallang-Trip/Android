@@ -7,7 +7,6 @@ import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.malangtrip.Main_Screen
-import com.example.malangtrip.Nav.Chat.ChatViewPagerAdapter
 import com.example.malangtrip.Nav.Home.Main_Home
 import com.example.malangtrip.R
 import com.example.malangtrip.databinding.NCommunityBinding

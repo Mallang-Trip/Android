@@ -10,10 +10,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.malangtrip.Main_Screen
 import com.example.malangtrip.Nav.Home.Main_Home
 import com.example.malangtrip.Nav.Home.Trip_Adapter
-import com.example.malangtrip.Key.TripInfo
+import com.example.malangtrip.key.TripInfo
 import com.example.malangtrip.R
 import com.example.malangtrip.databinding.NWishlistBinding
-import com.example.malangtrip.Key.DBKey
+import com.example.malangtrip.key.DBKey
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
