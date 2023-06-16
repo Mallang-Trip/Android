@@ -17,7 +17,7 @@ import com.bumptech.glide.Glide
 import com.example.malangtrip.key.CommentItem
 import com.example.malangtrip.Nav.Community.CommunityAuth
 import com.example.malangtrip.key.CommunityItem
-import com.example.malangtrip.Nav.Community.Write_Community.Fix_Board
+import com.example.malangtrip.Nav.Community.writecommunity.FixBoard
 import com.example.malangtrip.Nav.Community.comment.CommentAdapter
 import com.example.malangtrip.R
 import com.example.malangtrip.databinding.ActivityBoardInsideBinding
@@ -319,7 +319,7 @@ private fun getImageData(key : String)
                 true
             }
             R.id.btn_fix->{
-                val intent = Intent(this, Fix_Board::class.java)
+                val intent = Intent(this, FixBoard::class.java)
                 intent.putExtra("key", key)
                 intent.putExtra("name", name)
                 startActivity(intent)

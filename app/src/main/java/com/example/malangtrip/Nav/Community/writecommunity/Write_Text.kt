@@ -1,4 +1,4 @@
-package com.example.malangtrip.Nav.Community.Write_Community
+package com.example.malangtrip.Nav.Community.writecommunity
 
 
 import android.content.Intent

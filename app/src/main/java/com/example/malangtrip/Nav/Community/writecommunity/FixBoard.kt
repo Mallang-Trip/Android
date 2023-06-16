@@ -1,4 +1,4 @@
-package com.example.malangtrip.Nav.Community.Write_Community
+package com.example.malangtrip.Nav.Community.writecommunity
 
 import android.content.ContentValues.TAG
 import android.content.Intent
@@ -27,7 +27,7 @@ import com.google.firebase.storage.ktx.storage
 import java.io.ByteArrayOutputStream
 
 
-class Fix_Board : AppCompatActivity() {
+class FixBoard : AppCompatActivity() {
     private lateinit var binding : NCommunityFixTextBinding
 
 
@@ -62,7 +62,7 @@ class Fix_Board : AppCompatActivity() {
 
         binding.inputBtn.setOnClickListener {
             if(photo_Check) {
-                upload_Image(key)
+                uploadImage(key)
                 editBoardDataWithDelay(key)
             }
             else {
@@ -96,7 +96,7 @@ class Fix_Board : AppCompatActivity() {
         }
     }
 
-    private fun upload_Image(key : String){
+    private fun uploadImage(key : String){
 
         val storage = Firebase.storage
         val storageRef = storage.reference

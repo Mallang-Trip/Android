@@ -6,7 +6,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.malangtrip.key.chatPageInfo
+import com.example.malangtrip.key.ChatPageInfo
 import com.example.malangtrip.key.UserInfo
 import com.example.malangtrip.R
 import com.example.malangtrip.key.DBKey
@@ -40,7 +40,7 @@ class ChatInside : AppCompatActivity() {
     private var myNickname: String = ""
 
     //채팅을 하나씩 받을꺼기 떄문에 리스트 하나 만들어주기
-    private var chatItemList = mutableListOf<chatPageInfo>()/////////////////////////////
+    private var chatItemList = mutableListOf<ChatPageInfo>()/////////////////////////////
 
     //전송 버튼 활성화하는 변수
     private var sendCheck = false
@@ -97,7 +97,7 @@ class ChatInside : AppCompatActivity() {
         Firebase.database.reference.child(DBKey.DB_CHATS).child(chatRoomId).addChildEventListener(object :ChildEventListener{
 
             override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) { // 어뎁터에 메세지 정보 전송
-                val chatItem = snapshot.getValue(chatPageInfo::class.java)
+                val chatItem = snapshot.getValue(ChatPageInfo::class.java)
                 chatItem?:return
                 chatItemList.add(chatItem)
                 chatScreenAdapter.submitList(chatItemList.toMutableList())
@@ -155,7 +155,7 @@ class ChatInside : AppCompatActivity() {
             return
         }
 
-        val newMessage = chatPageInfo(
+        val newMessage = ChatPageInfo(
             message=message,
             userId=myId
 

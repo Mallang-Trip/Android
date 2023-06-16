@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.malangtrip.key.CommunityItem
 import com.example.malangtrip.Nav.Community.readcommunity.GoToBoard
-import com.example.malangtrip.Nav.Community.Write_Community.Write_Text
+import com.example.malangtrip.Nav.Community.writecommunity.Write_Text
 import com.example.malangtrip.R
 import com.example.malangtrip.key.DBKey
 import com.example.malangtrip.databinding.NMyinfoMyTextBinding
