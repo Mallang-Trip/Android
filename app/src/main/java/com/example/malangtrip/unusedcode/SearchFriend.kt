@@ -80,9 +80,7 @@ class SearchFriend : Fragment(){
                             infoFriend["description"]=description
                             infoFriend["fcmToken"]=fcmToken
                             Log.d("닉네임확인",nickname)
-                            if (myId != null) {
-                                Firebase.database(DBKey.DB_URL).reference.child(DBKey.DB_Friends).child(myId).child(userId).updateChildren(infoFriend)
-                            }
+
                             break
                         }
 

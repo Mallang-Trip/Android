@@ -56,19 +56,19 @@
         <activity android:name=".unusedcode.ToServerTest" />
         <activity android:name=".login.EmailLogin" />
         <activity android:name=".login.JoinMembership" />
-        <activity android:name=".Nav.chat.chatinside.ChatInside" />
-        <activity android:name=".Nav.Community.writecommunity.Write_Text" />
-        <activity android:name=".Nav.Home.local.Main_Jeju" />
+        <activity android:name=".nav.chat.chatinside.ChatInside" />
+        <activity android:name=".nav.community.writecommunity.WriteText" />
+        <activity android:name=".nav.home.local.MainJeju" />
         <activity
-            android:name=".Nav.Community.readcommunity.GoToBoard"
+            android:name=".nav.community.readcommunity.GoToBoard"
             android:windowSoftInputMode="adjustPan"></activity>
         <activity android:name=".login.CompleteJoin" />
-        <activity android:name=".Nav.Community.writecommunity.FixBoard" />
-        <activity android:name=".Nav.Home.Trip_Text" />
-        <activity android:name=".Nav.Home.Driver_Profile" />
+        <activity android:name=".nav.community.writecommunity.FixBoard" />
+        <activity android:name=".nav.home.TripText" />
+        <activity android:name=".nav.home.DriverProfile" />
 
         <service
-            android:name=".Nav.chat.MyFirebaseMessagingService"
+            android:name=".nav.chat.MyFirebaseMessagingService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />

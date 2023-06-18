@@ -9,11 +9,11 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import com.example.malangtrip.Nav.chat.chatlist.ChatList
-import com.example.malangtrip.Nav.Community.Main_Community
-import com.example.malangtrip.Nav.Home.Main_Home
-import com.example.malangtrip.Nav.Myinfo.Main_Myinfo
-import com.example.malangtrip.Nav.Wishlist.Main_Wishlist
+import com.example.malangtrip.nav.chat.chatlist.ChatList
+import com.example.malangtrip.nav.community.MainCommunity
+import com.example.malangtrip.nav.home.MainHome
+import com.example.malangtrip.nav.myinfo.MainMyinfo
+import com.example.malangtrip.nav.wishlist.MainWishlist
 import com.example.malangtrip.databinding.BMainScreenBinding
 //메인 화면
 class Main_Screen : AppCompatActivity() {
@@ -34,7 +34,7 @@ class Main_Screen : AppCompatActivity() {
         //처음에 홈으로 세팅
         val fragmentManager = supportFragmentManager
         val transaction = fragmentManager.beginTransaction()
-        val HomeFragment = Main_Home()
+        val HomeFragment = MainHome()
         transaction.replace(R.id.fragmentContainer, HomeFragment)
         transaction.addToBackStack(null)
         transaction.commit()
@@ -44,7 +44,7 @@ class Main_Screen : AppCompatActivity() {
             when (menuItem.itemId) {
                 R.id.navigation_home -> { // 홈 버튼 눌렀을 때 모든 프래그먼트 제거 or 홈프래그먼트로
                     val transaction = fragmentManager.beginTransaction()
-                    val HomeFragment = Main_Home()
+                    val HomeFragment = MainHome()
                     transaction.replace(R.id.fragmentContainer, HomeFragment)
                     transaction.addToBackStack(null)
                     transaction.commit()
@@ -63,7 +63,7 @@ class Main_Screen : AppCompatActivity() {
                 }
                 R.id.navigation_wishlist -> {//찜 목록으로
                     val transaction = fragmentManager.beginTransaction()
-                    val wishlistFragment = Main_Wishlist()
+                    val wishlistFragment = MainWishlist()
                     transaction.replace(R.id.fragmentContainer, wishlistFragment)
                     transaction.addToBackStack(null)
                     transaction.commit()
@@ -71,7 +71,7 @@ class Main_Screen : AppCompatActivity() {
                 }
                 R.id.navigation_myinfo -> {//내 정보로
                     val transaction = fragmentManager.beginTransaction()
-                    val myinfoFragment = Main_Myinfo()
+                    val myinfoFragment = MainMyinfo()
                     transaction.replace(R.id.fragmentContainer, myinfoFragment)
                     transaction.addToBackStack(null)
                     transaction.commit()
@@ -79,7 +79,7 @@ class Main_Screen : AppCompatActivity() {
                 }
                 R.id.navigation_community -> {// 커뮤니티 메뉴로
                     val transaction = fragmentManager.beginTransaction()
-                    val communityFragment = Main_Community()
+                    val communityFragment = MainCommunity()
                     transaction.replace(R.id.fragmentContainer, communityFragment)
                     transaction.addToBackStack(null)
                     transaction.commit()

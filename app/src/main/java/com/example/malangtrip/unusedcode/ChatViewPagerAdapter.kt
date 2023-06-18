@@ -4,7 +4,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.example.malangtrip.Nav.chat.chatlist.ChatList
+import com.example.malangtrip.nav.chat.chatlist.ChatList
 
 //채팅 탭 레이아웃 관리하는 어뎁터
 class ChatViewPagerAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) :

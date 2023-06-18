@@ -24,7 +24,7 @@
                     android:background="#000000"/>
 
                 <EditText
-                    android:id="@+id/edit_Title"
+                    android:id="@+id/ev_title"
                     android:layout_margin="20dp"
                     android:layout_width="match_parent"
                     android:background="@android:color/transparent"
@@ -32,7 +32,7 @@
                     android:layout_height="60dp"/>
 
                 <EditText
-                    android:id="@+id/edit_Content"
+                    android:id="@+id/ev_content"
                     android:layout_margin="20dp"
                     android:layout_width="match_parent"
                     android:hint="내용을 입력해주세요"
@@ -41,39 +41,39 @@
 
 
                 <ImageView
-                    android:id="@+id/imageArea"
+                    android:id="@+id/img_area"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="20dp"
                    />
 
                 <RadioGroup
-                    android:id="@+id/check_board"
+                    android:id="@+id/rg_choice_board"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:checkedButton="@id/select_free">
+                    android:checkedButton="@id/rb_free">
 
                     <RadioButton
-                        android:id="@+id/select_free"
+                        android:id="@+id/rb_free"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="자유게시판" />
 
                     <RadioButton
-                        android:id="@+id/select_passenger"
+                        android:id="@+id/rb_passanger"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="동행자 구해요 게시판" />
                 </RadioGroup>
 
                 <Button
-                    android:id="@+id/image_choice_btn"
+                    android:id="@+id/btn_img_choice"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="사진선택" />
 
                 <Button
-                    android:id="@+id/input_btn"
+                    android:id="@+id/btn_input"
                     android:text="입력"
                     android:layout_width="match_parent"
                     android:layout_marginTop="50dp"

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import com.example.malangtrip.key.DBKey
 import com.example.malangtrip.key.UserInfo
 import com.example.malangtrip.Main_Screen
@@ -15,7 +16,7 @@ import com.google.firebase.ktx.Firebase
 
 
 class SplashActivity : AppCompatActivity() {
-
+    val usersRef = Firebase.database.reference.child(DBKey.DB_USERS)
     private lateinit var binding : ActivitySplashBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,14 +27,25 @@ class SplashActivity : AppCompatActivity() {
         var loginCheck = false
         val curruntId= Firebase.auth.currentUser?.uid?:""
 
-
         Handler(Looper.getMainLooper()).postDelayed({
             if(curruntId==null||curruntId=="")
             {
+                Log.d("123","지금 여기 거치는 중")
                 startActivity(Intent(this, EmailLogin::class.java))
                 finish()
             }
-            val mydb = Firebase.database.reference.child(DBKey.DB_USERS).child(curruntId)//내 정보 접근
+            if (curruntId.isNotEmpty()) {
+                val mydb = usersRef.child(curruntId)
+
+                mydb.get().addOnSuccessListener { snapshot ->
+                    if (snapshot.exists()) {
+                    } else {
+                        startActivity(Intent(this, EmailLogin::class.java))
+                    }
+                    finish()
+                }
+            }
+            val mydb = usersRef.child(curruntId)//내 정보 접근
             mydb.get().addOnSuccessListener {
 
                 val myinfo = it.getValue(UserInfo::class.java)?: return@addOnSuccessListener

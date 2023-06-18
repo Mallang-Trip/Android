@@ -5,10 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".nav.wishlist.MainWishlist" >
+    android:padding="10dp"
+    tools:context=".nav.home.MainHome">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/wishlist"
+        android:id="@+id/rv_local"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
 </LinearLayout>
