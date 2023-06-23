@@ -72,9 +72,9 @@ class MainHome : Fragment() {
             override fun onItemClick(position: Int) {
                 // Handle the item click event here
                 if (position == 0) {
-                    val jeju_Fragment = MainJeju()
+                    val jejuFragment = MainJeju()
                     val transaction = parentFragmentManager.beginTransaction()
-                    transaction.replace(R.id.fragmentContainer, jeju_Fragment)
+                    transaction.replace(R.id.fragmentContainer, jejuFragment)
                     transaction.addToBackStack(null)
                     transaction.commit()
                 }

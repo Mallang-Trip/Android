@@ -106,8 +106,7 @@ class MainWishlist : Fragment(){
 
         val curruntId = Firebase.auth.currentUser?.uid ?: ""
         Firebase.database.reference.child(DBKey.My_Wishlist).child(curruntId)
-            .addValueEventListener(object:
-                ValueEventListener {
+            .addValueEventListener(object: ValueEventListener {
 
                 override fun onCancelled(error: DatabaseError) {
                     Log.e("FirebaseError", "Query canceled: $error")
@@ -127,21 +126,20 @@ class MainWishlist : Fragment(){
 //                              }
 //                } })
         override fun onDataChange(snapshot: DataSnapshot) {
-            myWishlist.clear()
+                        myWishlist.clear()
 
-            snapshot.children.forEach { parentSnapshot ->
-                parentSnapshot.children.forEach { childSnapshot ->
-                    val myWishlist = childSnapshot.getValue<TripInfo>()
-                    myWishlist ?: return
-                    myWishlist.local?.let { it1 -> Log.d("여행 잘 배껴오나", it1) }
-                    this@MainWishlist.myWishlist.add(myWishlist)
 
+                            snapshot.children.forEach {snapshot->
+                                val myWishlist = snapshot.getValue<TripInfo>()
+                                myWishlist ?: return
+                                myWishlist.local?.let { it1 -> Log.d("여행 잘 배껴오나", it1) }
+                                this@MainWishlist.myWishlist.add(myWishlist)
+
+                            }
+
+                        myWishlist.reverse()
+                        myWishListAdapter.notifyDataSetChanged()
                 }
-            }
-            myWishlist.reverse()
-            myWishListAdapter.notifyDataSetChanged()
-        }
-
             })
     }
 }
