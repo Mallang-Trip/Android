@@ -9,80 +9,57 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
+import com.example.malangtrip.databinding.ActivityMainHomeBinding
 import com.example.malangtrip.nav.chat.chatlist.ChatList
 import com.example.malangtrip.nav.community.MainCommunity
 import com.example.malangtrip.nav.home.MainHome
 import com.example.malangtrip.nav.myinfo.MainMyinfo
 import com.example.malangtrip.nav.wishlist.MainWishlist
-import com.example.malangtrip.databinding.BMainScreenBinding
 //메인 화면
-class Main_Screen : AppCompatActivity() {
-    lateinit var binding: BMainScreenBinding
-
+class MainScreen : AppCompatActivity() {
+    lateinit var binding: ActivityMainHomeBinding
+    val fragmentManager = supportFragmentManager
+    val transaction = fragmentManager.beginTransaction()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = BMainScreenBinding.inflate(layoutInflater)
+        binding = ActivityMainHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
         //supportActionBar?.apply {
            // setDisplayShowCustomEnabled(true)
             //setDisplayShowTitleEnabled(false)  // 필요한 경우 제목 표시를 비활성화합니다.
          //   setCustomView(R.layout.action_bar)
        // }
-        //알림권한 물어보기ㅛ
-
+        //알림권한 물어보기
         askNotificationPermission()
         //처음에 홈으로 세팅
-        val fragmentManager = supportFragmentManager
-        val transaction = fragmentManager.beginTransaction()
-        val HomeFragment = MainHome()
-        transaction.replace(R.id.fragmentContainer, HomeFragment)
+        val homeFragment = MainHome()
+        transaction.replace(R.id.fragmentContainer, homeFragment)
         transaction.addToBackStack(null)
         transaction.commit()
-        binding.navigationView.selectedItemId = R.id.navigation_home
+        binding.navigationView.selectedItemId = R.id.item_home
         //밑에 5개 네비바메뉴 선택했을 때 코드
         binding.navigationView.setOnNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
-                R.id.navigation_home -> { // 홈 버튼 눌렀을 때 모든 프래그먼트 제거 or 홈프래그먼트로
-                    val transaction = fragmentManager.beginTransaction()
-                    val HomeFragment = MainHome()
-                    transaction.replace(R.id.fragmentContainer, HomeFragment)
-                    transaction.addToBackStack(null)
-                    transaction.commit()
-                    restoreActionBar() // 액션바 원상복구
-//                    fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
-//                    restoreActionBar() // 액션바 원상복구
+                R.id.item_home -> { // 홈 버튼 눌렀을 때 모든 프래그먼트 제거 or 홈프래그먼트로
+                    goToFragment(MainHome())
+                    restoreActionBar()
                     true
                 }
-                R.id.navigation_chat -> { //채팅 메뉴로
-                    val transaction = fragmentManager.beginTransaction()
-                    val chatFragment = ChatList()
-                    transaction.replace(R.id.fragmentContainer, chatFragment)
-                    transaction.addToBackStack(null)
-                    transaction.commit()
+                R.id.item_chat -> { //채팅 메뉴로
+                    goToFragment(ChatList())
                     true
                 }
-                R.id.navigation_wishlist -> {//찜 목록으로
-                    val transaction = fragmentManager.beginTransaction()
-                    val wishlistFragment = MainWishlist()
-                    transaction.replace(R.id.fragmentContainer, wishlistFragment)
-                    transaction.addToBackStack(null)
-                    transaction.commit()
+                R.id.item_wishlist -> {//찜 목록으로
+                    goToFragment(MainWishlist())
                     true
                 }
-                R.id.navigation_myinfo -> {//내 정보로
-                    val transaction = fragmentManager.beginTransaction()
-                    val myinfoFragment = MainMyinfo()
-                    transaction.replace(R.id.fragmentContainer, myinfoFragment)
-                    transaction.addToBackStack(null)
-                    transaction.commit()
+                R.id.item_myinfo -> {//내 정보로
+                    goToFragment(MainMyinfo())
                     true
                 }
-                R.id.navigation_community -> {// 커뮤니티 메뉴로
-                    val transaction = fragmentManager.beginTransaction()
-                    val communityFragment = MainCommunity()
-                    transaction.replace(R.id.fragmentContainer, communityFragment)
-                    transaction.addToBackStack(null)
-                    transaction.commit()
+                R.id.item_community -> {// 커뮤니티 메뉴로
+                    goToFragment(MainCommunity())
                     true
                 }
                 else -> false
@@ -97,10 +74,7 @@ class Main_Screen : AppCompatActivity() {
             //setDisplayHomeAsUpEnabled(false)
         }
     }
-    public fun Nav_Home()
-    {
-        binding.navigationView.selectedItemId = R.id.navigation_home
-    }
+
 
     private val requestPermissionLauncher = registerForActivityResult(
         ActivityResultContracts.RequestPermission()
@@ -136,5 +110,13 @@ class Main_Screen : AppCompatActivity() {
                 requestPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
             }.setNegativeButton("취소") { dialogInterface, _ -> dialogInterface.cancel() }
             .show()
+    }
+    private fun goToFragment(fragment: Fragment)
+    {
+        val transaction = fragmentManager.beginTransaction()
+        val goFragment = fragment
+        transaction.replace(R.id.fragmentContainer, goFragment)
+        transaction.addToBackStack(null)
+        transaction.commit()
     }
 }

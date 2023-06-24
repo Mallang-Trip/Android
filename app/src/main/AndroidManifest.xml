@@ -15,7 +15,7 @@
         android:theme="@style/Theme.MalangTrip"
         tools:targetApi="33">
 
-        <activity android:name=".login.SplashActivity"
+        <activity android:name=".SplashActivity"
 
             android:exported="true"
             android:theme="@style/SplashTheme">
@@ -51,7 +51,7 @@
         </activity> <!-- 로그인 액티비티 -->
         <activity android:name=".login.UserDataInput" />
         <activity
-            android:name=".Main_Screen"
+            android:name=".MainScreen"
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".unusedcode.ToServerTest" />
         <activity android:name=".login.EmailLogin" />

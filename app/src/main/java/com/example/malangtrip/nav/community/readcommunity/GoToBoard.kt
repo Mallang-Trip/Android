@@ -153,7 +153,7 @@ private fun getImageData(key : String)
     })
 }
 
-    fun insertComment(key : String){
+    private fun insertComment(key : String){
     val boardDb = Firebase.database.reference.child(DBKey.Community_Key).child(key)
     boardDb.addListenerForSingleValueEvent(object : ValueEventListener {
         override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -314,7 +314,6 @@ private fun getImageData(key : String)
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             android.R.id.home -> {
-                //requireActivity().onBackPressed()
                 finish()
                 true
             }

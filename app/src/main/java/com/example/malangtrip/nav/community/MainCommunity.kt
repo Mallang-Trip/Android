@@ -6,7 +6,7 @@ import android.view.*
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.example.malangtrip.Main_Screen
+import com.example.malangtrip.MainScreen
 import com.example.malangtrip.nav.home.MainHome
 import com.example.malangtrip.R
 import com.example.malangtrip.databinding.FragmentMainCommunityBinding
@@ -60,8 +60,8 @@ class MainCommunity : Fragment(){
 
                 // 현재 프래그먼트가 액티비티에 연결되어 있을 때에만 동작
                 if (isAdded) {
-                    val mainActivity = activity as? Main_Screen
-                    mainActivity?.binding?.navigationView?.selectedItemId = R.id.navigation_home
+                    val mainActivity = activity as? MainScreen
+                    mainActivity?.binding?.navigationView?.selectedItemId = R.id.item_home
                 }
 
                 val homeFragment = MainHome()

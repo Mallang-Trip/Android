@@ -14,8 +14,7 @@ import com.example.malangtrip.key.UserInfo
 import com.example.malangtrip.key.GetTime
 import com.example.malangtrip.key.CommunityItem
 import com.example.malangtrip.R
-
-import com.example.malangtrip.databinding.NCommunityWriteTextBinding
+import com.example.malangtrip.databinding.ActivityWriteTextBinding
 import com.example.malangtrip.key.DBKey
 import com.example.malangtrip.key.DBKey.Companion.Community_Key
 import com.example.malangtrip.key.DBKey.Companion.DB_URL
@@ -27,7 +26,7 @@ import java.io.ByteArrayOutputStream
 
 
 class WriteText : AppCompatActivity(){
-    private lateinit var binding: NCommunityWriteTextBinding
+    private lateinit var binding: ActivityWriteTextBinding
     //private lateinit var imageAdapter: ImageAdapter
     private lateinit var key: String
     private var photoCheck : Boolean = false
@@ -36,7 +35,7 @@ class WriteText : AppCompatActivity(){
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = NCommunityWriteTextBinding.inflate(layoutInflater)
+        binding = ActivityWriteTextBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.apply {
             title = "글쓰기"

@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.malangtrip.databinding.NChatUserBinding
+import com.example.malangtrip.databinding.AdapterUserBinding
 import com.example.malangtrip.key.UserInfo
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
@@ -16,12 +16,12 @@ class UserAdapter(private val onClick:(UserInfo)->Unit) : ListAdapter<UserInfo, 
     differ
 ){
 
-    inner class ViewHolder(private val binding: NChatUserBinding):RecyclerView.ViewHolder(binding.root){
+    inner class ViewHolder(private val binding: AdapterUserBinding):RecyclerView.ViewHolder(binding.root){
         fun bind(item: UserInfo)
         {
-            item?.userId?.let { getImageData(it,binding.profileImageView) }
-            binding.nicknameTextView.text = item.nickname
-            binding.descriptionTextView.text = item.description
+            item?.userId?.let { getImageData(it,binding.ivProfilePhoto) }
+            binding.tvNickname.text = item.nickname
+            binding.tvDes.text = item.description
 
             binding.root.setOnClickListener {
                 onClick(item)
@@ -30,7 +30,7 @@ class UserAdapter(private val onClick:(UserInfo)->Unit) : ListAdapter<UserInfo, 
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(NChatUserBinding.inflate(LayoutInflater.from(parent.context),parent,false))
+        return ViewHolder(AdapterUserBinding.inflate(LayoutInflater.from(parent.context),parent,false))
 
     }
 

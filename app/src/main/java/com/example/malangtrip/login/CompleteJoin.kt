@@ -3,7 +3,7 @@ package com.example.malangtrip.login
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.malangtrip.Main_Screen
+import com.example.malangtrip.MainScreen
 import com.example.malangtrip.databinding.ActivityCompleteJoinBinding
 
 class CompleteJoin : AppCompatActivity() {
@@ -25,7 +25,7 @@ class CompleteJoin : AppCompatActivity() {
     }
     private fun startMainScreen()
     {
-            startActivity(Intent(this,Main_Screen::class.java))
+            startActivity(Intent(this,MainScreen::class.java))
             finish()
     }
     private fun goEmailLogin()

@@ -1,4 +1,4 @@
-package com.example.malangtrip.login
+package com.example.malangtrip
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -8,8 +8,9 @@ import android.os.Looper
 import android.util.Log
 import com.example.malangtrip.key.DBKey
 import com.example.malangtrip.key.UserInfo
-import com.example.malangtrip.Main_Screen
 import com.example.malangtrip.databinding.ActivitySplashBinding
+import com.example.malangtrip.login.EmailLogin
+import com.example.malangtrip.login.UserDataInput
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
@@ -59,7 +60,7 @@ class SplashActivity : AppCompatActivity() {
                     return@addOnSuccessListener
                 }
                 else{
-                    startActivity(Intent(this, Main_Screen::class.java))
+                    startActivity(Intent(this, MainScreen::class.java))
                     loginCheck = true
                     finish()
                     return@addOnSuccessListener

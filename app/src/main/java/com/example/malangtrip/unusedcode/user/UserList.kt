@@ -2,17 +2,13 @@ package com.example.malangtrip.unusedcode.user
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleObserver
-import androidx.lifecycle.OnLifecycleEvent
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.malangtrip.key.ChatListInfo
 import com.example.malangtrip.nav.chat.chatinside.ChatInside
 import com.example.malangtrip.R
-import com.example.malangtrip.databinding.NChatUserlistBinding
+import com.example.malangtrip.databinding.FragmentUserlistBinding
 import com.example.malangtrip.key.DBKey.Companion.DB_CHAT_ROOMS
 import com.google.firebase.auth.ktx.auth
 
@@ -22,12 +18,12 @@ import com.google.firebase.ktx.Firebase
 import java.util.UUID
 
 //채팅 목록 EX)카톡 두번째 페이지
-class UserList() : Fragment(R.layout.n_chat_userlist) {
-    private lateinit var binding : NChatUserlistBinding
+class UserList() : Fragment(R.layout.fragment_userlist) {
+    private lateinit var binding : FragmentUserlistBinding
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding = NChatUserlistBinding.bind(view)
+        binding = FragmentUserlistBinding.bind(view)
 
 
         //상대방이 날 눌렀을 때
@@ -60,7 +56,7 @@ class UserList() : Fragment(R.layout.n_chat_userlist) {
 
         }
 
-        binding.userListRecyclerView.apply {
+        binding.rvUserlist.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = Userlistadapter
         }

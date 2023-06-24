@@ -8,12 +8,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.malangtrip.Main_Screen
+import com.example.malangtrip.MainScreen
 import com.example.malangtrip.nav.home.MainHome
 import com.example.malangtrip.nav.home.TripAdapter
 import com.example.malangtrip.key.TripInfo
 import com.example.malangtrip.R
-import com.example.malangtrip.databinding.NWishlistBinding
+import com.example.malangtrip.databinding.FragmentWishlistBinding
 import com.example.malangtrip.key.DBKey
 import com.example.malangtrip.nav.home.TripText
 import com.google.firebase.auth.ktx.auth
@@ -26,16 +26,15 @@ import com.google.firebase.ktx.Firebase
 
 //찜목록 메인
 class MainWishlist : Fragment(){
-    private var _binding: NWishlistBinding? = null
+    private var _binding: FragmentWishlistBinding? = null
     private val binding get() = _binding!!
-    //private lateinit var jejuTripAdapter : Trip_Adapter
-    //    private val jeju_trip_List = mutableListOf<Trip_Info>()
     private lateinit var myWishListAdapter : TripAdapter
     private val myWishlist = mutableListOf<TripInfo>()
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
 
 
-        _binding = NWishlistBinding.inflate(inflater, container, false)
+        _binding = FragmentWishlistBinding.inflate(inflater, container, false)
         val root: View = binding.root
         // 액션바 설정, 이름변경
         val actionBar = (requireActivity() as AppCompatActivity).supportActionBar
@@ -44,7 +43,7 @@ class MainWishlist : Fragment(){
         setHasOptionsMenu(true)
         loadWishlistData()
         Log.d("내 위시리스트", myWishlist.toString())
-        val recyclerView: RecyclerView = binding.wishlist
+        val recyclerView: RecyclerView = binding.rvWishlist
         myWishListAdapter = TripAdapter(myWishlist){
             val intent = Intent(context, TripText::class.java)
             intent.putExtra("trip_Id",it.tripId)
@@ -66,8 +65,8 @@ class MainWishlist : Fragment(){
 
                 // 현재 프래그먼트가 액티비티에 연결되어 있을 때에만 동작
                 if (isAdded) {
-                    val mainActivity = activity as? Main_Screen
-                    mainActivity?.binding?.navigationView?.selectedItemId = R.id.navigation_home
+                    val mainActivity = activity as? MainScreen
+                    mainActivity?.binding?.navigationView?.selectedItemId = R.id.item_home
                 }
 
                 val homeFragment = MainHome()
@@ -112,19 +111,6 @@ class MainWishlist : Fragment(){
                     Log.e("FirebaseError", "Query canceled: $error")
                 }
 
-//                override fun onDataChange(snapshot: DataSnapshot) {
-//
-//                        myWishlist.clear()
-//                                val mywishlist = snapshot.getValue<TripInfo>()
-//
-//                              if (mywishlist != null) {
-//                                  myWishlist.add(mywishlist)
-//
-//
-//                                  myWishListAdapter.notifyDataSetChanged()
-//
-//                              }
-//                } })
         override fun onDataChange(snapshot: DataSnapshot) {
                         myWishlist.clear()
 
@@ -136,7 +122,6 @@ class MainWishlist : Fragment(){
                                 this@MainWishlist.myWishlist.add(myWishlist)
 
                             }
-
                         myWishlist.reverse()
                         myWishListAdapter.notifyDataSetChanged()
                 }

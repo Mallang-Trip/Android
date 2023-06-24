@@ -9,7 +9,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.malangtrip.key.TripInfo
 import com.example.malangtrip.key.WishlistInfo
-import com.example.malangtrip.databinding.NHomeTripInfoAdapterBinding
+import com.example.malangtrip.databinding.AdapterTripInfoBinding
 import com.example.malangtrip.key.DBKey
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
@@ -23,7 +23,7 @@ import com.google.firebase.ktx.Firebase
 
 class TripAdapter(private var tripList: List<TripInfo>, private val onClick: (TripInfo) -> Unit) : RecyclerView.Adapter<TripAdapter.ViewHolder>(){
 
-    inner class ViewHolder(private val binding: NHomeTripInfoAdapterBinding):RecyclerView.ViewHolder(binding.root){
+    inner class ViewHolder(private val binding: AdapterTripInfoBinding):RecyclerView.ViewHolder(binding.root){
         var bookmark = false
         val myId = Firebase.auth.currentUser?.uid ?: ""
         fun bind(item: TripInfo)
@@ -100,7 +100,7 @@ class TripAdapter(private var tripList: List<TripInfo>, private val onClick: (Tr
         }
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(NHomeTripInfoAdapterBinding.inflate(LayoutInflater.from(parent.context),parent,false))
+        return ViewHolder(AdapterTripInfoBinding.inflate(LayoutInflater.from(parent.context),parent,false))
 
     }
 
