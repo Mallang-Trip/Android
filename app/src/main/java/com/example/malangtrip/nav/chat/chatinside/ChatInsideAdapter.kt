@@ -20,6 +20,7 @@ class ChatInsideAdapter : ListAdapter<ChatPageInfo, ChatInsideAdapter.ViewHolder
     var friendItem: UserInfo?=null
 
     inner class ViewHolder(private val binding: AdapterChatMessageBinding): RecyclerView.ViewHolder(binding.root){
+
         fun bind(item: ChatPageInfo)
         {
             if(item.userId==friendItem?.userId)

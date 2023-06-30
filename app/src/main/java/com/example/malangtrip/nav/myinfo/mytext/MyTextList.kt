@@ -45,8 +45,10 @@ class MyTextList : Fragment(){
     private fun createAdapter()
     {
         myBoardadapter = MyBoardAdapter(everyBoardList)
-        binding.lvMyBoard.adapter = myBoardadapter
-        binding.lvMyBoard.setOnItemClickListener { parent, view, position, id ->
+        binding.rvMyText.adapter = myBoardadapter{it->
+
+        }
+        binding.rvMyText.setOnItemClickListener { ->
             val intent = Intent(context, GoToBoard::class.java)
 //            intent.putExtra("title",Every_Board_List[position].title)
 //            intent.putExtra("time",Every_Board_List[position].time)
