@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.malangtrip.key.CommunityItem
 import com.example.malangtrip.nav.community.readcommunity.GoToBoard
 import com.example.malangtrip.nav.community.writecommunity.WriteText
@@ -30,8 +31,7 @@ class EveryBoardScreen : Fragment() {
         val root: View = binding.root
         setHasOptionsMenu(true)
        
-        //게시판 어댑터 생성
-        createAdapter()
+
         //데이터 받아오기
         getEveryBoardInfo()
         return root
@@ -40,13 +40,15 @@ class EveryBoardScreen : Fragment() {
     }
     private fun createAdapter()
     {
-        everyBoardAdapter = BoardAdapter(everyBoardList)
-        binding.lvBoard.adapter = everyBoardAdapter
-        binding.lvBoard.setOnItemClickListener { parent, view, position, id ->
+        everyBoardAdapter = BoardAdapter(everyBoardList){communityItem->
             val intent = Intent(context, GoToBoard::class.java)
-            intent.putExtra("name",everyBoardList[position].userName)
-            intent.putExtra("key", boardKeyList[position])
+            intent.putExtra("name",communityItem.userName)
+            intent.putExtra("key", communityItem.communityKey)
             startActivity(intent)
+        }
+        binding.rvBoard.apply {
+            layoutManager = LinearLayoutManager(context)
+            adapter = everyBoardAdapter
         }
     }
     private fun getEveryBoardInfo()
@@ -65,6 +67,8 @@ class EveryBoardScreen : Fragment() {
                     }
                     boardKeyList.reverse()
                     everyBoardList.reverse()
+                    //게시판 어댑터 생성
+                    createAdapter()
                     everyBoardAdapter.notifyDataSetChanged()
                 }
                 else

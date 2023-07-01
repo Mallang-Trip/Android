@@ -1,7 +1,7 @@
 package com.example.malangtrip.key
 
 data class CommunityItem(
-
+    val communityKey:  String="",
     val userId: String="", // 작성자 ID
     val userName: String="", // 작성자 이름
     var title: String="", // 글 제목

@@ -40,9 +40,10 @@ import com.example.malangtrip.key.ChatListInfo
 //    }
 //}
 //private val onclick: (ChatListInfo)->Unit
-class MyBoardAdapter(private val onclick: (CommunityItem) ->Unit) : RecyclerView.Adapter<MyBoardAdapter.ViewHolder>()
+class MyBoardAdapter(private val everyBoardList: MutableList<CommunityItem>,private val onclick: (CommunityItem) ->Unit) : RecyclerView.Adapter<MyBoardAdapter.ViewHolder>()
 {
-    var myBoardInfo: MutableList<CommunityItem> = mutableListOf()
+
+    var myBoardInfo: MutableList<CommunityItem> = everyBoardList
     class ViewHolder(private val binding: AdapterBoardListBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item:CommunityItem,onclick: (CommunityItem) ->Unit)
         {

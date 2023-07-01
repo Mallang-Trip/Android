@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.malangtrip.key.CommunityItem
 import com.example.malangtrip.nav.community.readcommunity.GoToBoard
 import com.example.malangtrip.databinding.FragmentMyTextListBinding
@@ -32,7 +33,7 @@ class MyTextList : Fragment(){
         actionBar?.setDisplayHomeAsUpEnabled(true)
         actionBar?.title = "나의 작성글 내역"
 
-        createAdapter()
+
 
 //        binding.writeBtn.setOnClickListener {
 //            startActivity(Intent(context, Write_Text::class.java))
@@ -44,20 +45,27 @@ class MyTextList : Fragment(){
     }
     private fun createAdapter()
     {
-        myBoardadapter = MyBoardAdapter(everyBoardList)
-        binding.rvMyText.adapter = myBoardadapter{it->
-
-        }
-        binding.rvMyText.setOnItemClickListener { ->
+            myBoardadapter = MyBoardAdapter(everyBoardList){communityItem->
             val intent = Intent(context, GoToBoard::class.java)
-//            intent.putExtra("title",Every_Board_List[position].title)
-//            intent.putExtra("time",Every_Board_List[position].time)
-//            intent.putExtra("content",Every_Board_List[position].content)
-            intent.putExtra("name",everyBoardList[position].userName)
-            intent.putExtra("key", boardKeyList[position])
-
+            intent.putExtra("name",communityItem.userName)
+            intent.putExtra("key", communityItem.communityKey)
             startActivity(intent)
+       }
+        binding.rvMyText.apply {
+            layoutManager = LinearLayoutManager(context)
+            adapter = myBoardadapter
         }
+
+//        binding.rvMyText.setOnItemClickListener { ->
+//            val intent = Intent(context, GoToBoard::class.java)
+////            intent.putExtra("title",Every_Board_List[position].title)
+////            intent.putExtra("time",Every_Board_List[position].time)
+////            intent.putExtra("content",Every_Board_List[position].content)
+//            intent.putExtra("name",everyBoardList[position].userName)
+//            intent.putExtra("key", boardKeyList[position])
+//
+//            startActivity(intent)
+//        }
     }
     private fun getEveryBoardInfo()
     {
@@ -73,11 +81,15 @@ class MyTextList : Fragment(){
                             everyBoardList.add(item!!)
                             boardKeyList.add(WriteSnapshot.key.toString())
                         }
+                        //chatListAdapter.submitList(chatRoomList)
                         //Every_Board_List.add(item!!)
+
 
                     }
                     boardKeyList.reverse()
                     everyBoardList.reverse()
+
+                    createAdapter()
                     myBoardadapter.notifyDataSetChanged()
                     Log.d("dffff",everyBoardList.toString())
                 }

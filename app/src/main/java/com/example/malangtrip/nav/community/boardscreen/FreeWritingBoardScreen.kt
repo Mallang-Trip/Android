@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.malangtrip.key.CommunityItem
 import com.example.malangtrip.nav.community.readcommunity.GoToBoard
 import com.example.malangtrip.nav.community.writecommunity.WriteText
@@ -30,8 +31,6 @@ class FreeWritingBoardScreen : Fragment(){
         val root: View = binding.root
         setHasOptionsMenu(true)
 
-        //글 리스트 불러오기
-        createAdapter()
         //글 데이터 불러오기
         Get_Every_Board_info()
         return root
@@ -40,13 +39,15 @@ class FreeWritingBoardScreen : Fragment(){
     }
     private fun createAdapter()
     {
-        freeBoardadapter = BoardAdapter(freeWritingBoardList)
-        binding.lvBoard.adapter = freeBoardadapter
-        binding.lvBoard.setOnItemClickListener { parent, view, position, id ->
+        freeBoardadapter = BoardAdapter(freeWritingBoardList){communityItem->
             val intent = Intent(context, GoToBoard::class.java)
-            intent.putExtra("name",freeWritingBoardList[position].userName)
-            intent.putExtra("key", boardKeyList[position])
+            intent.putExtra("name",communityItem.userName)
+            intent.putExtra("key", communityItem.communityKey)
             startActivity(intent)
+        }
+        binding.rvBoard.apply {
+            layoutManager = LinearLayoutManager(context)
+            adapter = freeBoardadapter
         }
     }
 
@@ -65,6 +66,8 @@ class FreeWritingBoardScreen : Fragment(){
                     }
                     boardKeyList.reverse()
                     freeWritingBoardList.reverse()
+                    //글 리스트 불러오기
+                    createAdapter()
                     freeBoardadapter.notifyDataSetChanged()
                     Log.d("dffff",freeWritingBoardList.toString())
                 }

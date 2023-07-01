@@ -92,11 +92,11 @@ class WriteText : AppCompatActivity(){
                 when (selectedRadioButtonId) {
                     R.id.rb_free -> {
                         Firebase.database(DB_URL).reference.child(Community_Key).child(key)
-                            .setValue(CommunityItem(uid,myName, title, content, time,"free"))
+                            .setValue(CommunityItem(key,uid,myName, title, content, time,"free"))
                     }
                     R.id.rb_passanger -> {
                         Firebase.database(DB_URL).reference.child(Community_Key).child(key)
-                            .setValue(CommunityItem(uid,myName, title, content, time,"passenger"))
+                            .setValue(CommunityItem(key,uid,myName, title, content, time,"passenger"))
                     }
                 }
                 if(photoCheck==true)

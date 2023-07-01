@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.malangtrip.key.CommunityItem
 import com.example.malangtrip.nav.community.readcommunity.GoToBoard
 import com.example.malangtrip.nav.community.writecommunity.WriteText
@@ -31,8 +32,7 @@ class FellowPassengerBoardScreen : Fragment(){
         setHasOptionsMenu(true)
 
 
-        //어뎁터 생성
-        createAdapter()
+
         //데이터 받아오기
         getFellowPassengerBoardinfo()
         return root
@@ -41,13 +41,16 @@ class FellowPassengerBoardScreen : Fragment(){
     }
     private fun createAdapter()
     {
-        fellowPassengerBoardAdapter = BoardAdapter(fellowPassengerBoardList)
-        binding.lvBoard.adapter = fellowPassengerBoardAdapter
-        binding.lvBoard.setOnItemClickListener { parent, view, position, id ->
+
+        fellowPassengerBoardAdapter = BoardAdapter(fellowPassengerBoardList){communityItem->
             val intent = Intent(context, GoToBoard::class.java)
-            intent.putExtra("name",fellowPassengerBoardList[position].userName)
-            intent.putExtra("key", boardKeyList[position])
+            intent.putExtra("name",communityItem.userName)
+            intent.putExtra("key", communityItem.communityKey)
             startActivity(intent)
+        }
+        binding.rvBoard.apply {
+            layoutManager = LinearLayoutManager(context)
+            adapter = fellowPassengerBoardAdapter
         }
     }
     private fun getFellowPassengerBoardinfo()
@@ -67,6 +70,8 @@ class FellowPassengerBoardScreen : Fragment(){
                     }
                     fellowPassengerBoardList.reverse()
                     fellowPassengerBoardList.reverse()
+                    //어뎁터 생성
+                    createAdapter()
                     fellowPassengerBoardAdapter.notifyDataSetChanged()
                     Log.d("dffff",fellowPassengerBoardList.toString())
                 }
